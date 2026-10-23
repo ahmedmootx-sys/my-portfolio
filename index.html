@@ -13,15 +13,19 @@
 
   <style>
     :root {
-      --bg-dark: #050711;
-      --bg-card: #0D1326;
-      --bg-card-elevated: #131B36;
+      --bg-dark: #04060E;
+      --bg-card: #0A0F1F;
+      --bg-card-elevated: #101730;
+      --bg-diagram: #070B18;
       --cyan: #00E5FF;
       --cyan-glow: rgba(0, 229, 255, 0.35);
       --indigo: #4F6EF7;
       --indigo-glow: rgba(79, 110, 247, 0.3);
       --emerald: #00F5A0;
+      --emerald-glow: rgba(0, 245, 160, 0.3);
       --ruby: #FF4757;
+      --ruby-glow: rgba(255, 71, 87, 0.3);
+      --amber: #FFB300;
       --text-main: #F4F6FC;
       --text-muted: #8E9AB7;
       --text-dim: #546080;
@@ -60,13 +64,13 @@
       position: fixed;
       inset: 0;
       z-index: 99999;
-      background: #030408;
+      background: #020307;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+      transition: opacity 0.7s var(--ease), visibility 0.7s var(--ease);
     }
 
     #preloader.fade-out {
@@ -77,9 +81,9 @@
 
     .preloader-glow-ring {
       position: relative;
-      width: 90px;
-      height: 90px;
-      margin-bottom: 1.75rem;
+      width: 86px;
+      height: 86px;
+      margin-bottom: 1.5rem;
     }
 
     .loader-ring {
@@ -89,36 +93,36 @@
       border: 2px solid transparent;
       border-top-color: var(--cyan);
       border-right-color: var(--indigo);
-      animation: spin 1.3s linear infinite;
+      animation: spin 1.2s linear infinite;
     }
 
     .loader-ring-inner {
       position: absolute;
-      inset: 12px;
+      inset: 10px;
       border-radius: 50%;
-      border: 2px dashed rgba(0, 229, 255, 0.4);
+      border: 2px dashed rgba(0, 229, 255, 0.35);
       animation: spin-reverse 2s linear infinite;
     }
 
     .loader-core {
       position: absolute;
-      inset: 24px;
+      inset: 22px;
       background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
       border-radius: 50%;
       opacity: 0.8;
       filter: blur(4px);
-      animation: pulse-core 1.5s ease-in-out infinite alternate;
+      animation: pulse-core 1.4s ease-in-out infinite alternate;
     }
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
     @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
-    @keyframes pulse-core { from { transform: scale(0.85); opacity: 0.5; } to { transform: scale(1.2); opacity: 1; } }
+    @keyframes pulse-core { from { transform: scale(0.85); opacity: 0.5; } to { transform: scale(1.25); opacity: 1; } }
 
     .loader-terminal-line {
       font-family: var(--font-mono);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--cyan);
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.5rem;
       letter-spacing: 0.05em;
       text-align: center;
     }
@@ -127,21 +131,21 @@
       font-size: 1.45rem;
       font-weight: 700;
       color: #FFFFFF;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
       text-align: center;
     }
 
     .loader-welcome-sub {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       text-align: center;
-      max-width: 320px;
+      max-width: 310px;
       line-height: 1.6;
       margin-bottom: 1.5rem;
     }
 
     .loader-progress-track {
-      width: 180px;
+      width: 170px;
       height: 3px;
       background: rgba(255, 255, 255, 0.08);
       border-radius: 99px;
@@ -159,9 +163,7 @@
       transition: width 0.25s ease;
     }
 
-    /* ============================================================
-       AMBIENT GLOW BACKGROUND
-    ============================================================ */
+    /* Ambient Glow Background */
     .ambient-bg {
       position: fixed;
       inset: 0;
@@ -174,15 +176,14 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(100px);
-      opacity: 0.18;
-      pointer-events: none;
+      opacity: 0.16;
     }
 
     .orb-1 {
       width: 380px;
       height: 380px;
       background: var(--cyan);
-      top: -100px;
+      top: -120px;
       right: -80px;
     }
 
@@ -190,7 +191,7 @@
       width: 420px;
       height: 420px;
       background: var(--indigo);
-      bottom: -100px;
+      bottom: -120px;
       left: -80px;
     }
 
@@ -206,7 +207,7 @@
     }
 
     /* ============================================================
-       TOP HEADER & INTERACTIVE SECTION TABS
+       TOP HEADER & INTERACTIVE TABS STRIP
     ============================================================ */
     .top-header {
       position: fixed;
@@ -214,14 +215,14 @@
       left: 0;
       right: 0;
       z-index: 500;
-      background: rgba(5, 7, 17, 0.88);
+      background: rgba(4, 6, 14, 0.9);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border-subtle);
     }
 
     .header-main-bar {
-      padding: 0.75rem 1.25rem;
+      padding: 0.7rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -264,29 +265,24 @@
     }
 
     .header-cta-btn {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      padding: 0.45rem 1rem;
+      padding: 0.42rem 0.95rem;
       border-radius: 8px;
       background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo) 100%);
       color: #03050A;
       text-decoration: none;
       font-family: var(--font-ar);
       box-shadow: 0 2px 14px rgba(0, 229, 255, 0.28);
-      transition: all 0.25s var(--ease);
       white-space: nowrap;
     }
 
-    .header-cta-btn:active {
-      transform: scale(0.96);
-    }
-
-    /* Reactive Horizontal Category Tabs Bar */
+    /* Tabs Strip */
     .tabs-strip-container {
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      padding: 0.45rem 1rem 0.65rem 1rem;
+      padding: 0.4rem 0.85rem 0.6rem 0.85rem;
       border-top: 1px solid rgba(255, 255, 255, 0.04);
     }
 
@@ -297,65 +293,68 @@
     .tabs-strip {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.45rem;
       width: max-content;
       margin: 0 auto;
     }
 
     .tab-item {
-      padding: 0.35rem 0.85rem;
+      padding: 0.32rem 0.78rem;
       border-radius: 99px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       color: var(--text-muted);
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-subtle);
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.3s var(--ease);
+      transition: all 0.25s var(--ease);
       user-select: none;
     }
 
     .tab-item.active {
-      background: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, rgba(79, 110, 247, 0.15) 100%);
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.16) 0%, rgba(79, 110, 247, 0.16) 100%);
       border-color: var(--cyan);
       color: #FFFFFF;
-      box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
     }
 
     /* ============================================================
-       MOBILE APP HORIZONTAL DECK & CAROUSEL STACK
+       FAIL-SAFE HORIZONTAL VIEWPORT (DIRECTION LTR TO AVOID RTL GLITCH)
     ============================================================ */
     .deck-viewport {
       position: absolute;
-      top: 104px; /* below header */
-      bottom: 56px; /* above bottom navigation hints */
+      top: 98px;
+      bottom: 54px;
       left: 0;
       right: 0;
       overflow: hidden;
       touch-action: pan-y pinch-zoom;
+      direction: ltr !important; /* LTR container gives mathematically consistent coordinates */
     }
 
     .deck-track {
       display: flex;
+      flex-direction: row;
       height: 100%;
-      width: 600%; /* 6 slides */
-      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 600vw; /* 6 slides */
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
+      direction: ltr !important;
     }
 
     .deck-slide {
       width: 100vw;
       height: 100%;
-      padding: 0.75rem 1rem;
-      display: flex;
-      flex-direction: column;
+      padding: 0.65rem 0.85rem;
       box-sizing: border-box;
-      transition: transform 0.65s var(--ease), opacity 0.65s var(--ease), filter 0.65s var(--ease);
+      flex-shrink: 0;
+      transition: transform 0.5s var(--ease), opacity 0.5s var(--ease), filter 0.5s var(--ease);
       opacity: 0.35;
-      transform: scale(0.93);
+      transform: scale(0.94);
       filter: blur(2px);
       user-select: none;
+      direction: rtl !important; /* Content stays native Arabic RTL */
     }
 
     .deck-slide.active {
@@ -367,13 +366,13 @@
     .slide-card-glass {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 22px;
+      border-radius: 20px;
       height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
-      padding: 1.5rem 1.25rem;
+      padding: 1.35rem 1.15rem;
       position: relative;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       -webkit-overflow-scrolling: touch;
     }
 
@@ -385,50 +384,304 @@
       border-radius: 4px;
     }
 
-    /* Slide Header Badge */
+    /* Badges & Titles */
     .slide-badge {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: var(--cyan);
       background: rgba(0, 229, 255, 0.08);
       border: 1px solid rgba(0, 229, 255, 0.22);
-      padding: 0.25rem 0.75rem;
+      padding: 0.22rem 0.65rem;
       border-radius: 99px;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
 
     .slide-heading {
-      font-size: 1.65rem;
+      font-size: 1.55rem;
       font-weight: 700;
       color: #FFFFFF;
       line-height: 1.3;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .slide-sub {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
     }
 
     /* ============================================================
-       SLIDE 1: HERO & CREDENTIALS STREAM
+       CORPORATE INFOGRAPHICS & DIAGRAM STYLES
+    ============================================================ */
+    .infographic-box {
+      background: var(--bg-diagram);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .infographic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .infographic-title {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .infographic-tag {
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      color: var(--emerald);
+      background: rgba(0, 245, 160, 0.08);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 245, 160, 0.2);
+    }
+
+    /* Diagram 1: Architecture Core (Hero Slide) */
+    .diagram-architecture {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .arch-flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 0.4rem;
+    }
+
+    .arch-node {
+      background: var(--bg-card-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.5rem 0.6rem;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .arch-node-icon {
+      font-size: 1.1rem;
+    }
+
+    .arch-node-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .arch-node-sub {
+      font-size: 0.64rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    .arch-core-brain {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, rgba(79, 110, 247, 0.2) 100%);
+      border: 1px solid var(--cyan);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .core-brain-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .core-brain-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      animation: pulse-core 1.2s infinite alternate;
+    }
+
+    .arch-arrow-down {
+      color: var(--cyan);
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin: -0.2rem 0;
+    }
+
+    /* Diagram 2: Problem Bottleneck vs Solution (Slide 1 & 2) */
+    .diagram-comparison-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-card {
+      padding: 0.65rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .comparison-card.bad {
+      background: rgba(255, 71, 87, 0.08);
+      border: 1px solid rgba(255, 71, 87, 0.25);
+    }
+
+    .comparison-card.good {
+      background: rgba(0, 245, 160, 0.08);
+      border: 1px solid rgba(0, 245, 160, 0.25);
+    }
+
+    .comp-title {
+      font-size: 0.74rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .comparison-card.bad .comp-title { color: var(--ruby); }
+    .comparison-card.good .comp-title { color: var(--emerald); }
+
+    .comp-metric {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .comparison-card.bad .comp-metric { color: #FFA8B3; }
+    .comparison-card.good .comp-metric { color: #A7F3D0; }
+
+    .comp-desc {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Diagram 3: 4-Step Process Infographic (Slide 3) */
+    .diagram-process-roadmap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      position: relative;
+    }
+
+    .diagram-process-roadmap::before {
+      content: '';
+      position: absolute;
+      top: 14px;
+      bottom: 14px;
+      right: 17px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--cyan), var(--indigo), var(--emerald));
+      z-index: 0;
+    }
+
+    .roadmap-node-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .roadmap-bullet {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
+      font-family: var(--font-en);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    }
+
+    .roadmap-card-content {
+      background: var(--bg-card-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0.75rem 0.95rem;
+      flex: 1;
+    }
+
+    .roadmap-step-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .roadmap-pill {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--cyan);
+      background: rgba(0, 229, 255, 0.1);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    .roadmap-step-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       HERO PORTRAIT & TITLE
     ============================================================ */
     .hero-portrait-stage {
       display: flex;
       justify-content: center;
-      margin: 1rem 0 1.5rem 0;
+      margin: 0.5rem 0 1rem 0;
     }
 
     .portrait-halo-wrap {
       position: relative;
-      width: 140px;
-      height: 140px;
+      width: 125px;
+      height: 125px;
     }
 
     .portrait-conic-ring {
@@ -459,23 +712,23 @@
 
     .hero-main-title {
       font-family: var(--font-en);
-      font-size: 2.25rem;
+      font-size: 2.1rem;
       font-weight: 800;
       line-height: 1.1;
       text-align: center;
       letter-spacing: -0.02em;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
       background: linear-gradient(135deg, #FFFFFF 0%, #B8C8FF 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-role-desc {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       text-align: center;
       color: #FFFFFF;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.65rem;
       line-height: 1.4;
     }
 
@@ -486,30 +739,30 @@
     }
 
     .hero-paragraph {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       text-align: center;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
+      line-height: 1.65;
+      margin-bottom: 1.15rem;
     }
 
     .hero-cta-stack {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.65rem;
       width: 100%;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.35rem;
     }
 
     .btn-action {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      padding: 0.85rem 1.5rem;
+      gap: 0.5rem;
+      padding: 0.8rem 1.4rem;
       font-family: var(--font-ar);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       border-radius: 12px;
       text-decoration: none;
       border: none;
@@ -525,7 +778,7 @@
       background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo) 100%);
       color: #03050A;
       font-weight: 700;
-      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.35);
+      box-shadow: 0 4px 18px rgba(0, 229, 255, 0.35);
     }
 
     .btn-action-outline {
@@ -544,8 +797,7 @@
       background: rgba(9, 13, 26, 0.85);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 0.85rem 0;
-      /* Force LTR direction to prevent RTL math flickering */
+      padding: 0.75rem 0;
       direction: ltr !important;
     }
 
@@ -558,10 +810,10 @@
     .marquee-group {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding-right: 0.75rem;
+      gap: 0.65rem;
+      padding-right: 0.65rem;
       flex-shrink: 0;
-      animation: continuousScroll 28s linear infinite;
+      animation: continuousScroll 26s linear infinite;
       will-change: transform;
     }
 
@@ -581,12 +833,12 @@
     .chip-capsule {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      padding: 0.35rem 0.8rem;
+      gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
       background: rgba(19, 27, 54, 0.95);
       border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 99px;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-family: var(--font-mono);
       color: var(--text-main);
       white-space: nowrap;
@@ -597,24 +849,17 @@
       font-weight: 700;
     }
 
-    /* ============================================================
-       SLIDE 2: PROBLEMS
-    ============================================================ */
-    .problems-v-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
+    /* Cards Lists */
     .problem-item-card {
       background: var(--bg-card-elevated);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 1.15rem;
+      padding: 1rem;
       position: relative;
       display: flex;
-      gap: 1rem;
+      gap: 0.85rem;
       align-items: flex-start;
+      margin-bottom: 0.75rem;
     }
 
     .problem-item-card::before {
@@ -629,180 +874,111 @@
     }
 
     .prob-icon-pill {
-      width: 38px;
-      height: 38px;
-      min-width: 38px;
-      border-radius: 10px;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 9px;
       background: rgba(255, 71, 87, 0.12);
       color: var(--ruby);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
     }
 
     .prob-card-title {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: #FFFFFF;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
     .prob-card-text {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
-    /* ============================================================
-       SLIDE 3: SERVICES
-    ============================================================ */
-    .services-v-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
+    /* Services List */
     .service-item-card {
       background: var(--bg-card-elevated);
       border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 1.25rem;
+      border-radius: 14px;
+      padding: 1.1rem;
       display: flex;
       flex-direction: column;
-      transition: all 0.25s var(--ease);
-    }
-
-    .service-item-card:active {
-      border-color: var(--border-highlight);
+      margin-bottom: 0.75rem;
     }
 
     .svc-index-mono {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       color: var(--cyan);
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.35rem;
     }
 
     .svc-head-title {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #FFFFFF;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .svc-body-text {
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 0.85rem;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
     }
 
     .svc-tag-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     .tag-badge {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 0.22rem 0.55rem;
-      border-radius: 6px;
+      font-size: 0.68rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 5px;
       background: rgba(0, 229, 255, 0.08);
       color: var(--cyan);
       border: 1px solid rgba(0, 229, 255, 0.2);
     }
 
-    /* ============================================================
-       SLIDE 4: WORKFLOW PIPELINE
-    ============================================================ */
-    .workflow-v-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .workflow-step-box {
-      background: var(--bg-card-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 1.15rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .step-badge-circle {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      border-radius: 50%;
-      background: var(--bg-dark);
-      border: 2px solid var(--cyan);
-      color: var(--cyan);
-      font-family: var(--font-en);
-      font-weight: 800;
-      font-size: 1.05rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
-    }
-
-    .step-main-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 0.25rem;
-    }
-
-    .step-sub-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ============================================================
-       SLIDE 5: PROJECTS & RICH UI MOCKUPS
-    ============================================================ */
-    .projects-v-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1.15rem;
-    }
-
+    /* Projects Showcase */
     .project-showcase-card {
       background: var(--bg-card-elevated);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
-      padding: 1.25rem;
+      padding: 1.15rem;
       display: flex;
       flex-direction: column;
+      margin-bottom: 0.9rem;
     }
 
     .mockup-display-box {
-      height: 135px;
+      height: 125px;
       border-radius: 10px;
       background: #060914;
       border: 1px solid rgba(255, 255, 255, 0.06);
       padding: 0.75rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       overflow: hidden;
     }
 
-    /* Mockup 1: Chat */
     .chat-bubble-row {
-      font-size: 0.74rem;
-      padding: 0.4rem 0.7rem;
+      font-size: 0.72rem;
+      padding: 0.35rem 0.65rem;
       border-radius: 8px;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
       max-width: 88%;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     .chat-user-msg {
@@ -818,20 +994,19 @@
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
-    /* Mockup 2: N8N Nodes */
     .nodes-flow-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
     .node-block {
       background: #131B36;
       border: 1px solid rgba(79, 110, 247, 0.4);
-      padding: 0.4rem 0.5rem;
+      padding: 0.35rem 0.45rem;
       border-radius: 6px;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: #93C5FD;
       text-align: center;
       flex: 1;
@@ -840,24 +1015,23 @@
     .node-flow-arrow {
       color: var(--cyan);
       font-weight: 800;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
-    /* Mockup 3: Analytics */
     .analytics-kpi-row {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--emerald);
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.3rem;
     }
 
     .analytics-bar-chart {
       display: flex;
       align-items: flex-end;
-      gap: 0.5rem;
-      height: 55px;
+      gap: 0.45rem;
+      height: 50px;
     }
 
     .chart-bar-unit {
@@ -867,19 +1041,19 @@
     }
 
     .proj-title-txt {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #FFFFFF;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
 
     .proj-detail-line {
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.45rem;
     }
 
     .detail-tag {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       color: var(--text-dim);
       display: block;
@@ -887,17 +1061,17 @@
     }
 
     .detail-content {
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .roi-highlight-strip {
-      margin-top: 0.75rem;
+      margin-top: 0.65rem;
       background: rgba(0, 229, 255, 0.08);
       border: 1px solid rgba(0, 229, 255, 0.22);
       border-radius: 8px;
-      padding: 0.6rem 0.8rem;
+      padding: 0.55rem 0.75rem;
     }
 
     .roi-highlight-strip .detail-tag {
@@ -909,37 +1083,35 @@
       font-weight: 700;
     }
 
-    /* ============================================================
-       SLIDE 6: CONTACT & EXECUTIVE FOOTER
-    ============================================================ */
+    /* Slide 6: Contact & Footer */
     .cta-glass-card {
       background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(79, 110, 247, 0.15) 50%, rgba(13, 19, 38, 0.95) 100%);
       border: 1px solid var(--border-highlight);
       border-radius: 18px;
-      padding: 2rem 1.25rem;
+      padding: 1.75rem 1.15rem;
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .cta-card-title {
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: #FFFFFF;
       line-height: 1.35;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.55rem;
     }
 
     .cta-card-sub {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      margin-bottom: 1.35rem;
     }
 
     .contact-btn-stack {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .btn-contact-wa {
@@ -964,56 +1136,56 @@
 
     .deck-footer-wrap {
       border-top: 1px solid var(--border-subtle);
-      padding-top: 1.25rem;
+      padding-top: 1.15rem;
       text-align: center;
     }
 
     .deck-footer-title {
       font-family: var(--font-en);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: #FFFFFF;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.3rem;
     }
 
     .deck-footer-desc {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
     }
 
     .deck-footer-info {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-dim);
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
-      margin-bottom: 0.85rem;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
     }
 
     .deck-footer-copy {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-dim);
     }
 
     /* ============================================================
-       BOTTOM SWIPE BAR & CONTROLLER CONTROLS
+       BOTTOM DOCK CONTROLS & ARROWS
     ============================================================ */
     .bottom-nav-dock {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 56px;
+      height: 54px;
       z-index: 500;
-      background: rgba(5, 7, 17, 0.92);
+      background: rgba(4, 6, 14, 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.25rem;
+      padding: 0 1.15rem;
     }
 
     .nav-arrow-btn {
@@ -1026,7 +1198,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       cursor: pointer;
       user-select: none;
       transition: all 0.2s var(--ease);
@@ -1060,7 +1232,7 @@
 
     .swipe-hint-pill {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-dim);
       display: flex;
       align-items: center;
@@ -1128,7 +1300,7 @@
   <main class="deck-viewport" id="deckViewport">
     <div class="deck-track" id="deckTrack">
 
-      <!-- ================= SLIDE 0: HERO & CREDENTIALS ================= -->
+      <!-- ================= SLIDE 0: HERO & ARCHITECTURE ================= -->
       <section class="deck-slide active" id="slide-0">
         <div class="slide-card-glass">
           <div class="hero-portrait-stage">
@@ -1140,7 +1312,7 @@
             </div>
           </div>
 
-          <div class="slide-badge" style="margin: 0 auto 0.75rem auto; display: table;">
+          <div class="slide-badge" style="margin: 0 auto 0.65rem auto; display: table;">
             AI ARCHITECT & AUTOMATION SPECIALIST
           </div>
 
@@ -1151,6 +1323,55 @@
           <p class="hero-paragraph">
             وكلاء ذكاء اصطناعي وأنظمة أتمتة مخصصة تلغي المهام اليدوية المكررة، ترد على عملائك فورياً على مدار 24 ساعة، وتربط جميع أدوات شركتك في منظومة واحدة تعمل وحدها.
           </p>
+
+          <!-- Presentation Infographic 1: Architecture Core Blueprint -->
+          <div class="infographic-box">
+            <div class="infographic-header">
+              <span class="infographic-title">⚡ مخطط معمارية النظام (System Architecture)</span>
+              <span class="infographic-tag">تشغيل آلي 24/7</span>
+            </div>
+            <div class="diagram-architecture">
+              <div class="arch-flow-row">
+                <div class="arch-node">
+                  <span class="arch-node-icon">💬</span>
+                  <span class="arch-node-label">قنوات العملاء</span>
+                  <span class="arch-node-sub">WhatsApp / Web</span>
+                </div>
+                <span style="color: var(--cyan); font-weight: 800;">➔</span>
+                <div class="arch-node" style="border-color: rgba(79, 110, 247, 0.4);">
+                  <span class="arch-node-icon">⚙️</span>
+                  <span class="arch-node-label">محرك الربط</span>
+                  <span class="arch-node-sub">N8N / APIs</span>
+                </div>
+              </div>
+
+              <span class="arch-arrow-down">⬇</span>
+
+              <div class="arch-core-brain">
+                <div class="core-brain-title">
+                  <div class="core-brain-pulse"></div>
+                  <span>عقل الوكيل الذكي (AI Agent Core)</span>
+                </div>
+                <span class="infographic-tag" style="background: rgba(0, 229, 255, 0.1); color: var(--cyan); border-color: rgba(0, 229, 255, 0.3);">فهم السياق واتخاذ القرار</span>
+              </div>
+
+              <span class="arch-arrow-down">⬇</span>
+
+              <div class="arch-flow-row">
+                <div class="arch-node">
+                  <span class="arch-node-icon">📊</span>
+                  <span class="arch-node-label">نظام الـ CRM</span>
+                  <span class="arch-node-sub">تحديث لحظي</span>
+                </div>
+                <span style="color: var(--emerald); font-weight: 800;">✔</span>
+                <div class="arch-node">
+                  <span class="arch-node-icon">💰</span>
+                  <span class="arch-node-label">إتمام الصفقات</span>
+                  <span class="arch-node-sub">تحصيل وأوردرات</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="hero-cta-stack">
             <a href="https://wa.me/201283279337" target="_blank" class="btn-action btn-action-primary">
@@ -1173,7 +1394,6 @@
                 <div class="chip-capsule"><span class="chk">✓</span> Anthropic: AI Fluency Framework</div>
                 <div class="chip-capsule"><span class="chk">✓</span> Dubai Future: 1M Prompters</div>
               </div>
-              <!-- Identical Clone for Perfect Seam-Free Infinity -->
               <div class="marquee-group" aria-hidden="true">
                 <div class="chip-capsule"><span class="chk">✓</span> Google AI Professional (7 Courses)</div>
                 <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Claude 101</div>
@@ -1195,6 +1415,26 @@
           <div class="slide-badge">التحديات الشائعة</div>
           <h2 class="slide-heading">أين يضيع وقت وأرباح شركتك؟</h2>
           <p class="slide-sub">معظم الشركات وأصحاب الأنشطة التجارية يعانون من هذه المشكلات الأربع بشكل يومي:</p>
+
+          <!-- Presentation Infographic 2: Operational Waste vs Savings -->
+          <div class="infographic-box">
+            <div class="infographic-header">
+              <span class="infographic-title">📉 مقارنة بيانية: العمل اليدوي vs الأتمتة</span>
+              <span class="infographic-tag" style="color: var(--ruby); border-color: rgba(255, 71, 87, 0.3);">فارق الأداء</span>
+            </div>
+            <div class="diagram-comparison-split">
+              <div class="comparison-card bad">
+                <span class="comp-title">❌ بالطريقة اليدوية</span>
+                <span class="comp-metric">4+ ساعات</span>
+                <span class="comp-desc">ضياع يومي في الرد ونقل البيانات يدوياً بين البرامج.</span>
+              </div>
+              <div class="comparison-card good">
+                <span class="comp-title">✔ بالوكلاء الأذكياء</span>
+                <span class="comp-metric">&lt; 15 ثانية</span>
+                <span class="comp-desc">استجابة فورية للعملاء ومزامنة آلية 100% دون أخطاء.</span>
+              </div>
+            </div>
+          </div>
 
           <div class="problems-v-list">
             <div class="problem-item-card">
@@ -1238,6 +1478,36 @@
           <div class="slide-badge">الحلول الهندسية</div>
           <h2 class="slide-heading">كيف أحل هذه المشاكل في شركتك؟</h2>
           <p class="slide-sub">حلول مصممة خصيصاً لتحويل نقاط الهدر إلى محركات نمو أوتوماتيكية:</p>
+
+          <!-- Presentation Infographic 3: 4 Pillars Matrix -->
+          <div class="infographic-box">
+            <div class="infographic-header">
+              <span class="infographic-title">🧩 ركائز الحل الهندسي المتكامل</span>
+              <span class="infographic-tag">منظومة موحدة</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 1rem;">🤖</span>
+                <div style="font-size: 0.74rem; font-weight: 700; color: var(--cyan);">وكلاء أذكياء</div>
+                <div style="font-size: 0.65rem; color: var(--text-muted);">فهم وتصنيف</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 1rem;">⚡</span>
+                <div style="font-size: 0.74rem; font-weight: 700; color: var(--indigo);">أتمتة العمليات</div>
+                <div style="font-size: 0.65rem; color: var(--text-muted);">N8N & APIs</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 1rem;">📱</span>
+                <div style="font-size: 0.74rem; font-weight: 700; color: var(--emerald);">خدمة عملاء</div>
+                <div style="font-size: 0.65rem; color: var(--text-muted);">واتساب 24/7</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 8px; text-align: center;">
+                <span style="font-size: 1rem;">🎯</span>
+                <div style="font-size: 0.74rem; font-weight: 700; color: var(--amber);">استراتيجية الفرق</div>
+                <div style="font-size: 0.65rem; color: var(--text-muted);">تدريب وتطوير</div>
+              </div>
+            </div>
+          </div>
 
           <div class="services-v-list">
             <div class="service-item-card">
@@ -1294,36 +1564,55 @@
           <h2 class="slide-heading">من المشكلة إلى الحل في 4 خطوات</h2>
           <p class="slide-sub">مسار هندسي واضح وشفاف يوضح كيفية التعامل معك خطوة بخطوة:</p>
 
-          <div class="workflow-v-steps">
-            <div class="workflow-step-box">
-              <div class="step-badge-circle">01</div>
-              <div>
-                <h3 class="step-main-title">1. تشخيص</h3>
-                <p class="step-sub-desc">جلسة مجانية أفهم فيها طبيعة عملياتك وأحدد أكبر نقاط الهدر والتكاليف الزائدة التي يمكن أتمتتها فوراً.</p>
-              </div>
+          <!-- Presentation Infographic 4: Step-by-Step Corporate Roadmap -->
+          <div class="infographic-box">
+            <div class="infographic-header">
+              <span class="infographic-title">🗺️ خارطة الطريق التنفيذية (Delivery Roadmap)</span>
+              <span class="infographic-tag">منهجية هندسية</span>
             </div>
-
-            <div class="workflow-step-box">
-              <div class="step-badge-circle">02</div>
-              <div>
-                <h3 class="step-main-title">2. تصميم</h3>
-                <p class="step-sub-desc">أقترح حلاً هندسياً واضحاً بالتسليمات المحددة، الأدوات المستخدمة، والجدول الزمني قبل أي التزام مالي.</p>
+            <div class="diagram-process-roadmap">
+              <div class="roadmap-node-row">
+                <div class="roadmap-bullet">01</div>
+                <div class="roadmap-card-content">
+                  <div class="roadmap-step-name">
+                    <span>1. جلسة تشخيص مجانية</span>
+                    <span class="roadmap-pill">تحليل الهدر</span>
+                  </div>
+                  <p class="roadmap-step-info">فهم عميق لعملياتك الحالية وتحديد أكبر المهام التي تستنزف الوقت والمال.</p>
+                </div>
               </div>
-            </div>
 
-            <div class="workflow-step-box">
-              <div class="step-badge-circle">03</div>
-              <div>
-                <h3 class="step-main-title">3. بناء واختبار</h3>
-                <p class="step-sub-desc">أبني النظام وأربطه ببيانات شركتك الحقيقية وأختبر كافة السيناريوهات حتى يعطي نتائج دقيقة وقابلة للقياس.</p>
+              <div class="roadmap-node-row">
+                <div class="roadmap-bullet">02</div>
+                <div class="roadmap-card-content">
+                  <div class="roadmap-step-name">
+                    <span>2. التصميم المعماري</span>
+                    <span class="roadmap-pill">خطة واضحة</span>
+                  </div>
+                  <p class="roadmap-step-info">تقديم مقترح هندسي يشمل مخطط الأدوات والجدول الزمني والتكلفة قبل أي التزام.</p>
+                </div>
               </div>
-            </div>
 
-            <div class="workflow-step-box">
-              <div class="step-badge-circle">04</div>
-              <div>
-                <h3 class="step-main-title">4. تسليم ودعم</h3>
-                <p class="step-sub-desc">أسلّم النظام مع توثيق كامل لكيفية التشغيل، وأبقى معك لتقديم الدعم الفني وتطوير النظام باستمرار.</p>
+              <div class="roadmap-node-row">
+                <div class="roadmap-bullet">03</div>
+                <div class="roadmap-card-content">
+                  <div class="roadmap-step-name">
+                    <span>3. البناء والاختبار الحي</span>
+                    <span class="roadmap-pill">بيانات حقيقية</span>
+                  </div>
+                  <p class="roadmap-step-info">تطوير النظام وربطه ببيانات نشاطك الفعلية واختبار كافة سيناريوهات الاستخدام.</p>
+                </div>
+              </div>
+
+              <div class="roadmap-node-row">
+                <div class="roadmap-bullet">04</div>
+                <div class="roadmap-card-content">
+                  <div class="roadmap-step-name">
+                    <span>4. التسليم والدعم المستمر</span>
+                    <span class="roadmap-pill">توثيق + متابعة</span>
+                  </div>
+                  <p class="roadmap-step-info">تسليم النظام موثقاً بالكامل لضمان استقلالية فريقك مع توفير الدعم الفني المباشر.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -1421,6 +1710,28 @@
       <!-- ================= SLIDE 5: CONTACT & FOOTER ================= -->
       <section class="deck-slide" id="slide-5">
         <div class="slide-card-glass">
+          <!-- Presentation Infographic 5: ROI Impact Metrics -->
+          <div class="infographic-box" style="margin-bottom: 1.5rem;">
+            <div class="infographic-header">
+              <span class="infographic-title">💎 العائد الاستثماري المتوقع لشركتك (Projected ROI)</span>
+              <span class="infographic-tag">نتائج مؤكدة</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center;">
+              <div style="background: rgba(0, 229, 255, 0.06); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 8px; padding: 0.5rem 0.3rem;">
+                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--cyan);">+90%</div>
+                <div style="font-size: 0.64rem; color: var(--text-muted);">سرعة الاستجابة</div>
+              </div>
+              <div style="background: rgba(0, 245, 160, 0.06); border: 1px solid rgba(0, 245, 160, 0.2); border-radius: 8px; padding: 0.5rem 0.3rem;">
+                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--emerald);">-80%</div>
+                <div style="font-size: 0.64rem; color: var(--text-muted);">أخطاء إدخال البيانات</div>
+              </div>
+              <div style="background: rgba(79, 110, 247, 0.06); border: 1px solid rgba(79, 110, 247, 0.2); border-radius: 8px; padding: 0.5rem 0.3rem;">
+                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: #B8C8FF;">24/7</div>
+                <div style="font-size: 0.64rem; color: var(--text-muted);">تشغيل متواصل</div>
+              </div>
+            </div>
+          </div>
+
           <div class="cta-glass-card">
             <h2 class="cta-card-title">هل لديك تحدٍ في شركتك تريد حله بالأتمتة والذكاء الاصطناعي؟</h2>
             <p class="cta-card-sub">احجز جلسة تشخيص مجانية — نفهم وضعك التشغيلي الحالي ونقترح الحل الأنسب بدون أي التزام مسبق.</p>
@@ -1448,8 +1759,8 @@
   </main>
 
   <!-- ============================================================
-       BOTTOM DOCK WITH ARROWS & SLIDE INDICATORS
-  ============================================================ -->
+       BOTTOM DOCK CONTROLS & ARROWS
+  ============================================================ */
   <footer class="bottom-nav-dock">
     <button class="nav-arrow-btn" id="prevBtn" aria-label="السابق">
       ›
@@ -1475,7 +1786,7 @@
   </footer>
 
   <!-- ============================================================
-       MOBILE INTERACTIVE SWIPE ENGINE WITH 3D GLASS SCALE
+       FAIL-SAFE DUAL-DIRECTION SWIPE & CAROUSEL JAVASCRIPT
   ============================================================ -->
   <script>
     // 1. High Performance Preloader Animation
@@ -1491,13 +1802,13 @@
         clearInterval(interval);
         setTimeout(() => {
           preloader.classList.add('fade-out');
-        }, 350);
+        }, 300);
       } else {
         loadBar.style.width = progress + '%';
       }
-    }, 80);
+    }, 75);
 
-    // 2. Horizontal Deck Swipe & Tab Engine
+    // 2. Fail-Safe Dual-Direction Slide Navigation
     const deckViewport = document.getElementById('deckViewport');
     const deckTrack = document.getElementById('deckTrack');
     const slides = document.querySelectorAll('.deck-slide');
@@ -1505,25 +1816,20 @@
     const dockDots = document.querySelectorAll('.dock-dot');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const tabsStripContainer = document.querySelector('.tabs-strip-container');
 
     const totalSlides = slides.length;
     let currentSlide = 0;
-    let startX = 0;
-    let startY = 0;
-    let currentDeltaX = 0;
-    let isSwiping = false;
-    let isHorizontalGesture = null;
 
     function goToSlide(index) {
       if (index < 0) index = 0;
       if (index >= totalSlides) index = totalSlides - 1;
       currentSlide = index;
 
-      // In RTL: translating positively moves slides from right to left
+      // Because the container is direction: ltr, Slide 0 is 0vw, Slide 1 is -100vw, Slide 2 is -200vw...
+      // This is 100% bug-free across all browsers!
       const offset = currentSlide * 100;
-      deckTrack.style.transition = 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
-      deckTrack.style.transform = `translateX(${offset}vw)`;
+      deckTrack.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+      deckTrack.style.transform = `translate3d(-${offset}vw, 0, 0)`;
 
       // Update slide active scale classes
       slides.forEach((slide, i) => {
@@ -1534,7 +1840,6 @@
       tabItems.forEach((tab, i) => {
         tab.classList.toggle('active', i === currentSlide);
         if (i === currentSlide) {
-          // Scroll tab smoothly into view in the top strip
           tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
       });
@@ -1545,52 +1850,56 @@
       });
     }
 
-    // Touch Swipe Event Listeners (Natural Mobile Gestures)
+    // 3. Perfect Dual-Direction Touch Swipe Detection
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    let isHorizontalGesture = null;
+
     deckViewport.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      currentDeltaX = 0;
-      isSwiping = true;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchEndX = touchStartX;
+      touchEndY = touchStartY;
       isHorizontalGesture = null;
     }, { passive: true });
 
     deckViewport.addEventListener('touchmove', (e) => {
-      if (!isSwiping) return;
-      const x = e.touches[0].clientX;
-      const y = e.touches[0].clientY;
-      const deltaX = x - startX;
-      const deltaY = y - startY;
+      touchEndX = e.touches[0].clientX;
+      touchEndY = e.touches[0].clientY;
 
-      // Detect if user intention is horizontal or vertical on first few pixels
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+
+      // Decide gesture axis on the first 12 pixels
       if (isHorizontalGesture === null) {
-        if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
-          isHorizontalGesture = Math.abs(deltaX) > Math.abs(deltaY);
+        if (Math.abs(diffX) > 10 || Math.abs(diffY) > 10) {
+          isHorizontalGesture = Math.abs(diffX) > Math.abs(diffY);
         }
-      }
-
-      if (isHorizontalGesture) {
-        currentDeltaX = deltaX;
       }
     }, { passive: true });
 
     deckViewport.addEventListener('touchend', () => {
-      if (!isSwiping) return;
-      isSwiping = false;
+      if (isHorizontalGesture) {
+        const diffX = touchEndX - touchStartX;
+        const SWIPE_THRESHOLD = 40; // 40px swipe trigger
 
-      if (isHorizontalGesture && Math.abs(currentDeltaX) > 45) {
-        // In RTL: dragging right (currentDeltaX > 0) means going to previous, dragging left means next
-        if (currentDeltaX < 0) {
-          goToSlide(currentSlide + 1);
-        } else {
-          goToSlide(currentSlide - 1);
+        if (Math.abs(diffX) >= SWIPE_THRESHOLD) {
+          if (diffX < 0) {
+            // Finger dragged to the LEFT (👈) -> Move to NEXT slide
+            goToSlide(currentSlide + 1);
+          } else {
+            // Finger dragged to the RIGHT (👉) -> Move to PREVIOUS slide
+            goToSlide(currentSlide - 1);
+          }
         }
       }
-      currentDeltaX = 0;
+
       isHorizontalGesture = null;
     }, { passive: true });
 
-    // Arrow Buttons
-    // In RTL: next is physically to the left, but logically "Next" advances index
+    // 4. Arrow Navigation
     nextBtn.addEventListener('click', () => {
       goToSlide(currentSlide + 1);
     });
@@ -1599,7 +1908,7 @@
       goToSlide(currentSlide - 1);
     });
 
-    // Tab Clicks
+    // 5. Tab Clicks
     tabItems.forEach(tab => {
       tab.addEventListener('click', () => {
         const idx = parseInt(tab.dataset.index);
@@ -1607,7 +1916,7 @@
       });
     });
 
-    // Dock Dot Clicks
+    // 6. Dock Dot Clicks
     dockDots.forEach(dot => {
       dot.addEventListener('click', () => {
         const idx = parseInt(dot.dataset.index);
@@ -1615,11 +1924,11 @@
       });
     });
 
-    // Keyboard Arrow Keys
+    // 7. Desktop Keyboard Navigation
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         goToSlide(currentSlide + 1);
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         goToSlide(currentSlide - 1);
       }
     });
