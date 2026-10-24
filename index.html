@@ -2,1936 +2,1157 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Ahmed Saber | AI Systems & Automation Architect</title>
-  <meta name="description" content="Ahmed Saber - مهندس أنظمة ووكلاء الذكاء الاصطناعي والأتمتة الشاملة للشركات.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#EDF1F0">
+  <title>أحمد صابر | أنظمة ووكلاء الذكاء الاصطناعي</title>
+  <meta name="description" content="أبني وكلاء ذكاء اصطناعي وأتمتة تربط واتساب بنظامك التشغيلي وتسجل طلبات عملائك بدقة دون تدخل يدوي.">
+  <meta property="og:title" content="أحمد صابر | أنظمة ووكلاء الذكاء الاصطناعي">
+  <meta property="og:description" content="وكلاء يردّون على عملائك في واتساب ويسجّلون الطلب في نظامك.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_EG">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Reem Kufi & IBM Plex Sans Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Arabic:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ============================================================
+       STRICT 5-COLOR SYSTEM (NO 6TH COLOR)
+       ورق: #EDF1F0
+       حبر: #0F2A2C
+       بترول: #1F5C5E
+       زعفران: #F2B705 (زر واتساب فقط)
+       خط فاصل: #CBD3CF
+    ============================================================ */
     :root {
-      --bg-dark: #04060E;
-      --bg-card: #0A0F1F;
-      --bg-card-elevated: #101730;
-      --bg-diagram: #070B18;
-      --cyan: #00E5FF;
-      --cyan-glow: rgba(0, 229, 255, 0.35);
-      --indigo: #4F6EF7;
-      --indigo-glow: rgba(79, 110, 247, 0.3);
-      --emerald: #00F5A0;
-      --emerald-glow: rgba(0, 245, 160, 0.3);
-      --ruby: #FF4757;
-      --ruby-glow: rgba(255, 71, 87, 0.3);
-      --amber: #FFB300;
-      --text-main: #F4F6FC;
-      --text-muted: #8E9AB7;
-      --text-dim: #546080;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-highlight: rgba(0, 229, 255, 0.32);
-      
-      --font-ar: 'IBM Plex Arabic', -apple-system, sans-serif;
-      --font-en: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --color-paper: #EDF1F0;
+      --color-ink: #0F2A2C;
+      --color-petrol: #1F5C5E;
+      --color-saffron: #F2B705;
+      --color-divider: #CBD3CF;
 
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --font-display: 'Reem Kufi', sans-serif;
+      --font-body: 'IBM Plex Sans Arabic', -apple-system, sans-serif;
+
+      --header-h: 58px;
+      --bottom-bar-h: 68px;
     }
 
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      -webkit-tap-highlight-color: transparent;
     }
 
     html, body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: var(--font-ar);
-      width: 100%;
+      background-color: var(--color-paper);
+      color: var(--color-ink);
+      font-family: var(--font-body);
       height: 100%;
+      height: 100dvh;
       overflow: hidden;
-      position: fixed;
-      line-height: 1.6;
+      direction: rtl;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Accessibility Focus Visible */
+    :focus-visible {
+      outline: 2px solid var(--color-petrol);
+      outline-offset: 3px;
+    }
+
+    a {
+      color: var(--color-petrol);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    a:hover {
+      color: var(--color-ink);
     }
 
     /* ============================================================
-       PRELOADER & WELCOMING SCREEN
+       TOP BAR (STICKY)
     ============================================================ */
-    #preloader {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: #020307;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      transition: opacity 0.7s var(--ease), visibility 0.7s var(--ease);
-    }
-
-    #preloader.fade-out {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .preloader-glow-ring {
-      position: relative;
-      width: 86px;
-      height: 86px;
-      margin-bottom: 1.5rem;
-    }
-
-    .loader-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      border-top-color: var(--cyan);
-      border-right-color: var(--indigo);
-      animation: spin 1.2s linear infinite;
-    }
-
-    .loader-ring-inner {
-      position: absolute;
-      inset: 10px;
-      border-radius: 50%;
-      border: 2px dashed rgba(0, 229, 255, 0.35);
-      animation: spin-reverse 2s linear infinite;
-    }
-
-    .loader-core {
-      position: absolute;
-      inset: 22px;
-      background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
-      border-radius: 50%;
-      opacity: 0.8;
-      filter: blur(4px);
-      animation: pulse-core 1.4s ease-in-out infinite alternate;
-    }
-
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
-    @keyframes pulse-core { from { transform: scale(0.85); opacity: 0.5; } to { transform: scale(1.25); opacity: 1; } }
-
-    .loader-terminal-line {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--cyan);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.05em;
-      text-align: center;
-    }
-
-    .loader-welcome-title {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 0.35rem;
-      text-align: center;
-    }
-
-    .loader-welcome-sub {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      text-align: center;
-      max-width: 310px;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .loader-progress-track {
-      width: 170px;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 99px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .loader-progress-bar {
-      position: absolute;
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--cyan), var(--indigo));
-      box-shadow: 0 0 12px var(--cyan);
-      border-radius: 99px;
-      transition: width 0.25s ease;
-    }
-
-    /* Ambient Glow Background */
-    .ambient-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .ambient-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.16;
-    }
-
-    .orb-1 {
-      width: 380px;
-      height: 380px;
-      background: var(--cyan);
-      top: -120px;
-      right: -80px;
-    }
-
-    .orb-2 {
-      width: 420px;
-      height: 420px;
-      background: var(--indigo);
-      bottom: -120px;
-      left: -80px;
-    }
-
-    .ambient-grid {
-      position: fixed;
-      inset: 0;
-      background-size: 36px 36px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ============================================================
-       TOP HEADER & INTERACTIVE TABS STRIP
-    ============================================================ */
-    .top-header {
+    .top-bar {
       position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
-      z-index: 500;
-      background: rgba(4, 6, 14, 0.9);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .header-main-bar {
-      padding: 0.7rem 1.25rem;
+      inset-inline: 0;
+      height: var(--header-h);
+      padding-block-start: env(safe-area-inset-top, 0);
+      background-color: var(--color-paper);
+      border-block-end: 1px solid var(--color-divider);
+      z-index: 100;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: space-between;
     }
 
-    .nav-brand {
+    .top-bar-content {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      justify-content: space-between;
+      padding-inline: 1.25rem;
+      height: 100%;
     }
 
-    .brand-title {
-      font-family: var(--font-en);
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #FFFFFF;
+    .brand-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-ink);
       letter-spacing: -0.01em;
     }
 
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.68rem;
-      font-family: var(--font-mono);
+    .panel-indicator {
+      font-size: 0.85rem;
       font-weight: 600;
-      color: var(--emerald);
-      background: rgba(0, 245, 160, 0.08);
-      border: 1px solid rgba(0, 245, 160, 0.25);
-      padding: 0.18rem 0.55rem;
-      border-radius: 99px;
-    }
-
-    .status-dot {
-      width: 5px;
-      height: 5px;
-      background: var(--emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--emerald);
-    }
-
-    .header-cta-btn {
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.42rem 0.95rem;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo) 100%);
-      color: #03050A;
-      text-decoration: none;
-      font-family: var(--font-ar);
-      box-shadow: 0 2px 14px rgba(0, 229, 255, 0.28);
-      white-space: nowrap;
-    }
-
-    /* Tabs Strip */
-    .tabs-strip-container {
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding: 0.4rem 0.85rem 0.6rem 0.85rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .tabs-strip-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .tabs-strip {
+      color: var(--color-petrol);
       display: flex;
       align-items: center;
-      gap: 0.45rem;
-      width: max-content;
-      margin: 0 auto;
+      gap: 0.5rem;
     }
 
-    .tab-item {
-      padding: 0.32rem 0.78rem;
-      border-radius: 99px;
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.25s var(--ease);
-      user-select: none;
+    /* 6-Segment Progress Indicator */
+    .progress-track {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 3px;
+      height: 3px;
+      width: 100%;
+      background-color: var(--color-paper);
+      padding-inline: 1.25rem;
+      padding-block-end: 1px;
     }
 
-    .tab-item.active {
-      background: linear-gradient(135deg, rgba(0, 229, 255, 0.16) 0%, rgba(79, 110, 247, 0.16) 100%);
-      border-color: var(--cyan);
-      color: #FFFFFF;
-      box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
+    .progress-segment {
+      height: 2px;
+      background-color: var(--color-divider);
+      transition: background-color 0.25s ease;
+    }
+
+    .progress-segment.active {
+      background-color: var(--color-petrol);
     }
 
     /* ============================================================
-       FAIL-SAFE HORIZONTAL VIEWPORT (DIRECTION LTR TO AVOID RTL GLITCH)
+       HORIZONTAL SCROLL-SNAP DECK
     ============================================================ */
     .deck-viewport {
-      position: absolute;
-      top: 98px;
-      bottom: 54px;
-      left: 0;
-      right: 0;
-      overflow: hidden;
-      touch-action: pan-y pinch-zoom;
-      direction: ltr !important; /* LTR container gives mathematically consistent coordinates */
-    }
-
-    .deck-track {
+      position: fixed;
+      top: var(--header-h);
+      bottom: var(--bottom-bar-h);
+      inset-inline: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
       display: flex;
       flex-direction: row;
-      height: 100%;
-      width: 600vw; /* 6 slides */
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-      direction: ltr !important;
-    }
-
-    .deck-slide {
-      width: 100vw;
-      height: 100%;
-      padding: 0.65rem 0.85rem;
-      box-sizing: border-box;
-      flex-shrink: 0;
-      transition: transform 0.5s var(--ease), opacity 0.5s var(--ease), filter 0.5s var(--ease);
-      opacity: 0.35;
-      transform: scale(0.94);
-      filter: blur(2px);
-      user-select: none;
-      direction: rtl !important; /* Content stays native Arabic RTL */
-    }
-
-    .deck-slide.active {
-      opacity: 1;
-      transform: scale(1);
-      filter: blur(0);
-    }
-
-    .slide-card-glass {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      height: 100%;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding: 1.35rem 1.15rem;
-      position: relative;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      gap: 12px;
+      padding-inline: 1rem 2rem;
+      padding-block: 0.75rem;
+      scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
     }
 
-    .slide-card-glass::-webkit-scrollbar {
-      width: 4px;
+    .deck-viewport::-webkit-scrollbar {
+      display: none;
     }
-    .slide-card-glass::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.15);
+
+    /* Each Panel fills screen with small peek of the next panel */
+    .panel {
+      flex: 0 0 calc(100vw - 38px);
+      max-width: 640px;
+      height: 100%;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      background-color: var(--color-paper);
+      border: 1px solid var(--color-divider);
       border-radius: 4px;
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+      padding-inline: 1.25rem;
+      padding-block: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Badges & Titles */
-    .slide-badge {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
+    @media (min-width: 860px) {
+      .deck-viewport {
+        padding-inline: 2rem 4rem;
+        gap: 24px;
+      }
+      .panel {
+        flex: 0 0 580px;
+        max-width: 580px;
+        padding-inline: 2rem;
+        padding-block: 2rem;
+      }
+    }
+
+    /* Typography Hierarchy (By size and weight, never by color gimmick) */
+    .panel-label {
+      font-size: 0.85rem;
       font-weight: 600;
-      color: var(--cyan);
-      background: rgba(0, 229, 255, 0.08);
-      border: 1px solid rgba(0, 229, 255, 0.22);
-      padding: 0.22rem 0.65rem;
-      border-radius: 99px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-bottom: 0.65rem;
+      color: var(--color-petrol);
+      margin-block-end: 0.75rem;
     }
 
-    .slide-heading {
+    .panel-heading {
+      font-family: var(--font-display);
+      font-size: 2.15rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-ink);
+      margin-block-end: 1rem;
+      letter-spacing: -0.01em;
+      max-width: 24ch;
+    }
+
+    .panel-lead {
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.7;
+      color: var(--color-ink);
+      margin-block-end: 1.5rem;
+      max-width: 56ch;
+    }
+
+    .panel-body-text {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--color-ink);
+      max-width: 60ch;
+    }
+
+    /* Thin Divider */
+    .rule {
+      height: 1px;
+      background-color: var(--color-divider);
+      border: none;
+      margin-block: 1.25rem;
+    }
+
+    /* ============================================================
+       PANEL 1: THE CORE PROOF (WHATSAPP CONVERSATION)
+    ============================================================ */
+    .chat-mockup-wrapper {
+      margin-block: 1.25rem;
+      background-color: #E6EAE8;
+      border: 1px solid var(--color-divider);
+      border-radius: 6px;
+      padding: 1.15rem 1rem;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .chat-bubble {
+      padding: 0.65rem 0.95rem;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      max-width: 88%;
+      color: var(--color-ink);
+      position: relative;
+    }
+
+    .chat-client {
+      align-self: flex-start;
+      background-color: #FFFFFF;
+      border: 1px solid var(--color-divider);
+      border-start-start-radius: 1px;
+    }
+
+    .chat-agent {
+      align-self: flex-end;
+      background-color: #DCE5E2;
+      border: 1px solid #CAD5D1;
+      border-start-end-radius: 1px;
+    }
+
+    .chat-sender {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-petrol);
+      margin-block-end: 0.2rem;
+      display: block;
+    }
+
+    .chat-time {
+      font-size: 0.68rem;
+      color: var(--color-petrol);
+      opacity: 0.75;
+      margin-inline-start: 0.5rem;
+      float: inline-end;
+      margin-block-start: 0.35rem;
+    }
+
+    /* Single Motion Moment: Initial Load Staggered Entrance */
+    @media (prefers-reduced-motion: no-preference) {
+      .chat-client-1 {
+        animation: chatFade 0.4s ease-out 0.15s both;
+      }
+      .chat-agent-1 {
+        animation: chatFade 0.4s ease-out 0.6s both;
+      }
+      .chat-client-2 {
+        animation: chatFade 0.4s ease-out 1.1s both;
+      }
+      .chat-agent-2 {
+        animation: chatFade 0.4s ease-out 1.55s both;
+      }
+    }
+
+    @keyframes chatFade {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-caption {
+      font-size: 0.78rem;
+      color: var(--color-petrol);
+      margin-block-start: 0.5rem;
+      text-align: center;
+    }
+
+    /* ============================================================
+       PANEL 2: CHALLENGES (TEXT WEIGHTS ONLY, NO CARDS)
+    ============================================================ */
+    .challenges-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-block-start: 0.5rem;
+    }
+
+    .challenge-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding-block-end: 1.25rem;
+      border-block-end: 1px solid var(--color-divider);
+    }
+    .challenge-row:last-child {
+      border-block-end: none;
+    }
+
+    .challenge-statement {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--color-ink);
+    }
+
+    .challenge-detail {
+      font-size: 0.92rem;
+      color: var(--color-petrol);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       PANEL 3: SOLUTIONS (4 SERVICES, FIRST IS PROMINENT)
+    ============================================================ */
+    .solutions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .solution-item {
+      padding-block: 1.25rem;
+      border-block-end: 1px solid var(--color-divider);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .solution-item:first-child {
+      padding-block-start: 0.25rem;
+    }
+    .solution-item:last-child {
+      border-block-end: none;
+    }
+
+    .solution-item-prominent .solution-title {
+      font-family: var(--font-display);
       font-size: 1.55rem;
       font-weight: 700;
-      color: #FFFFFF;
-      line-height: 1.3;
-      margin-bottom: 0.4rem;
+      color: var(--color-ink);
+      line-height: 1.35;
+      margin-block-end: 0.25rem;
     }
 
-    .slide-sub {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
+    .solution-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-ink);
+      line-height: 1.4;
+    }
+
+    .solution-desc {
+      font-size: 0.92rem;
+      color: var(--color-ink);
+      line-height: 1.7;
+    }
+
+    .solution-tools {
+      font-size: 0.82rem;
+      color: var(--color-petrol);
+      margin-block-start: 0.25rem;
     }
 
     /* ============================================================
-       CORPORATE INFOGRAPHICS & DIAGRAM STYLES
+       PANEL 4: WORKFLOW (4 NUMBERED STEPS ONLY)
     ============================================================ */
-    .infographic-box {
-      background: var(--bg-diagram);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 1rem;
-      margin-bottom: 1.25rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .infographic-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.85rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .infographic-title {
-      font-size: 0.8rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      color: var(--cyan);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .infographic-tag {
-      font-size: 0.68rem;
-      font-family: var(--font-mono);
-      color: var(--emerald);
-      background: rgba(0, 245, 160, 0.08);
-      padding: 0.15rem 0.45rem;
-      border-radius: 4px;
-      border: 1px solid rgba(0, 245, 160, 0.2);
-    }
-
-    /* Diagram 1: Architecture Core (Hero Slide) */
-    .diagram-architecture {
+    .workflow-steps {
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
-      align-items: center;
-      position: relative;
+      gap: 1.25rem;
+      margin-block-start: 0.5rem;
     }
 
-    .arch-flow-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      gap: 0.4rem;
-    }
-
-    .arch-node {
-      background: var(--bg-card-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 0.5rem 0.6rem;
-      text-align: center;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.2rem;
-    }
-
-    .arch-node-icon {
-      font-size: 1.1rem;
-    }
-
-    .arch-node-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #FFFFFF;
-    }
-
-    .arch-node-sub {
-      font-size: 0.64rem;
-      color: var(--text-dim);
-      font-family: var(--font-mono);
-    }
-
-    .arch-core-brain {
-      background: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, rgba(79, 110, 247, 0.2) 100%);
-      border: 1px solid var(--cyan);
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
-      border-radius: 12px;
-      padding: 0.75rem 1rem;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .core-brain-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .core-brain-pulse {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 8px var(--cyan);
-      animation: pulse-core 1.2s infinite alternate;
-    }
-
-    .arch-arrow-down {
-      color: var(--cyan);
-      font-size: 0.85rem;
-      font-weight: 800;
-      margin: -0.2rem 0;
-    }
-
-    /* Diagram 2: Problem Bottleneck vs Solution (Slide 1 & 2) */
-    .diagram-comparison-split {
+    .step-entry {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.65rem;
-      margin-bottom: 0.5rem;
+      grid-template-columns: 36px 1fr;
+      gap: 1rem;
+      padding-block-end: 1.15rem;
+      border-block-end: 1px solid var(--color-divider);
+    }
+    .step-entry:last-child {
+      border-block-end: none;
     }
 
-    .comparison-card {
-      padding: 0.65rem;
-      border-radius: 10px;
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-petrol);
+      line-height: 1;
+      padding-block-start: 0.2rem;
+    }
+
+    .step-content h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-ink);
+      margin-block-end: 0.35rem;
+    }
+
+    .step-content p {
+      font-size: 0.92rem;
+      color: var(--color-ink);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       PANEL 5: PROJECTS (3 PROJECTS, CLEAR CRITERIA, PLACEHOLDERS)
+    ============================================================ */
+    .projects-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding-block-end: 1.75rem;
+      border-block-end: 1px solid var(--color-divider);
+    }
+    .project-card:last-child {
+      border-block-end: none;
+      padding-block-end: 0;
+    }
+
+    .project-header-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--color-ink);
+      line-height: 1.35;
+    }
+
+    .project-meta-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-block: 0.5rem;
+    }
+
+    .meta-line {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--color-ink);
+    }
+
+    .meta-term {
+      font-weight: 700;
+      color: var(--color-petrol);
+      display: inline-block;
+      min-width: 90px;
+    }
+
+    .meta-unverified {
+      background-color: #E2E8E6;
+      padding-inline: 0.35rem;
+      padding-block: 0.1rem;
+      border-radius: 2px;
+      font-size: 0.88rem;
+    }
+
+    .project-screenshot-placeholder {
+      border: 1px dashed var(--color-petrol);
+      background-color: #E7ECEB;
+      padding: 1.25rem 1rem;
+      border-radius: 4px;
+      text-align: center;
+      margin-block-start: 0.35rem;
+    }
+
+    .placeholder-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-petrol);
+      display: block;
+      margin-block-end: 0.25rem;
+    }
+
+    .placeholder-hint {
+      font-size: 0.75rem;
+      color: var(--color-ink);
+      opacity: 0.75;
+    }
+
+    /* ============================================================
+       PANEL 6: CONTACT & CERTIFICATIONS LIST
+    ============================================================ */
+    .contact-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-block: 1rem 1.75rem;
+    }
+
+    .contact-row {
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
     }
 
-    .comparison-card.bad {
-      background: rgba(255, 71, 87, 0.08);
-      border: 1px solid rgba(255, 71, 87, 0.25);
-    }
-
-    .comparison-card.good {
-      background: rgba(0, 245, 160, 0.08);
-      border: 1px solid rgba(0, 245, 160, 0.25);
-    }
-
-    .comp-title {
-      font-size: 0.74rem;
+    .contact-type {
+      font-size: 0.8rem;
       font-weight: 700;
+      color: var(--color-petrol);
+    }
+
+    .email-copy-box {
       display: flex;
       align-items: center;
-      gap: 0.3rem;
-    }
-
-    .comparison-card.bad .comp-title { color: var(--ruby); }
-    .comparison-card.good .comp-title { color: var(--emerald); }
-
-    .comp-metric {
-      font-family: var(--font-mono);
-      font-size: 1.1rem;
-      font-weight: 800;
-    }
-
-    .comparison-card.bad .comp-metric { color: #FFA8B3; }
-    .comparison-card.good .comp-metric { color: #A7F3D0; }
-
-    .comp-desc {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    /* Diagram 3: 4-Step Process Infographic (Slide 3) */
-    .diagram-process-roadmap {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      position: relative;
-    }
-
-    .diagram-process-roadmap::before {
-      content: '';
-      position: absolute;
-      top: 14px;
-      bottom: 14px;
-      right: 17px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--cyan), var(--indigo), var(--emerald));
-      z-index: 0;
-    }
-
-    .roadmap-node-row {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      gap: 0.85rem;
-      align-items: flex-start;
-    }
-
-    .roadmap-bullet {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      border-radius: 50%;
-      background: var(--bg-dark);
-      border: 2px solid var(--cyan);
-      color: var(--cyan);
-      font-family: var(--font-en);
-      font-weight: 800;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
-    }
-
-    .roadmap-card-content {
-      background: var(--bg-card-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 0.75rem 0.95rem;
-      flex: 1;
-    }
-
-    .roadmap-step-name {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 0.2rem;
-      display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    .roadmap-pill {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--cyan);
-      background: rgba(0, 229, 255, 0.1);
-      padding: 0.1rem 0.4rem;
+      gap: 0.75rem;
+      background-color: #E4EAE8;
+      border: 1px solid var(--color-divider);
+      padding: 0.65rem 0.85rem;
       border-radius: 4px;
     }
 
-    .roadmap-step-info {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* ============================================================
-       HERO PORTRAIT & TITLE
-    ============================================================ */
-    .hero-portrait-stage {
-      display: flex;
-      justify-content: center;
-      margin: 0.5rem 0 1rem 0;
-    }
-
-    .portrait-halo-wrap {
-      position: relative;
-      width: 125px;
-      height: 125px;
-    }
-
-    .portrait-conic-ring {
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: conic-gradient(from 180deg, var(--cyan) 0deg, var(--indigo) 140deg, var(--cyan) 360deg);
-      animation: spin 8s linear infinite;
-      box-shadow: 0 0 35px rgba(0, 229, 255, 0.35);
-    }
-
-    .portrait-photo-box {
-      position: absolute;
-      inset: 3px;
-      border-radius: 50%;
-      background: var(--bg-dark);
-      padding: 3px;
-      overflow: hidden;
-    }
-
-    .portrait-photo-box img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-main-title {
-      font-family: var(--font-en);
-      font-size: 2.1rem;
-      font-weight: 800;
-      line-height: 1.1;
-      text-align: center;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #FFFFFF 0%, #B8C8FF 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-role-desc {
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-align: center;
-      color: #FFFFFF;
-      margin-bottom: 0.65rem;
-      line-height: 1.4;
-    }
-
-    .hero-role-desc .cyan-highlight {
-      background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-paragraph {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      text-align: center;
-      line-height: 1.65;
-      margin-bottom: 1.15rem;
-    }
-
-    .hero-cta-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      width: 100%;
-      margin-bottom: 1.35rem;
-    }
-
-    .btn-action {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.4rem;
-      font-family: var(--font-ar);
+    .email-selectable {
+      font-size: 0.95rem;
       font-weight: 600;
-      font-size: 0.92rem;
-      border-radius: 12px;
-      text-decoration: none;
-      border: none;
+      color: var(--color-ink);
+      user-select: all;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .copy-btn {
+      background: none;
+      border: 1px solid var(--color-petrol);
+      color: var(--color-petrol);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 3px;
       cursor: pointer;
-      transition: all 0.25s var(--ease);
-    }
-
-    .btn-action:active {
-      transform: scale(0.97);
-    }
-
-    .btn-action-primary {
-      background: linear-gradient(135deg, var(--cyan) 0%, var(--indigo) 100%);
-      color: #03050A;
-      font-weight: 700;
-      box-shadow: 0 4px 18px rgba(0, 229, 255, 0.35);
-    }
-
-    .btn-action-outline {
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text-main);
-      border: 1px solid var(--border-subtle);
-    }
-
-    /* --------------------------------------------------------
-       100% SEAMLESS CONTINUOUS CREDENTIALS MARQUEE (NO JUMP)
-    -------------------------------------------------------- */
-    .infinite-marquee-section {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      background: rgba(9, 13, 26, 0.85);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 0.75rem 0;
-      direction: ltr !important;
-    }
-
-    .marquee-inner-flex {
-      display: flex;
-      width: max-content;
-      user-select: none;
-    }
-
-    .marquee-group {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      padding-right: 0.65rem;
-      flex-shrink: 0;
-      animation: continuousScroll 26s linear infinite;
-      will-change: transform;
-    }
-
-    @keyframes continuousScroll {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        transform: translate3d(-100%, 0, 0);
-      }
-    }
-
-    .infinite-marquee-section:hover .marquee-group {
-      animation-play-state: paused;
-    }
-
-    .chip-capsule {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.75rem;
-      background: rgba(19, 27, 54, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 99px;
-      font-size: 0.74rem;
-      font-family: var(--font-mono);
-      color: var(--text-main);
+      transition: all 0.15s ease;
       white-space: nowrap;
     }
-
-    .chip-capsule .chk {
-      color: var(--cyan);
-      font-weight: 700;
+    .copy-btn:hover {
+      background-color: var(--color-petrol);
+      color: var(--color-paper);
     }
 
-    /* Cards Lists */
-    .problem-item-card {
-      background: var(--bg-card-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 1rem;
-      position: relative;
-      display: flex;
-      gap: 0.85rem;
-      align-items: flex-start;
-      margin-bottom: 0.75rem;
-    }
-
-    .problem-item-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--ruby);
-      border-radius: 0 14px 14px 0;
-    }
-
-    .prob-icon-pill {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      border-radius: 9px;
-      background: rgba(255, 71, 87, 0.12);
-      color: var(--ruby);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-
-    .prob-card-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 0.2rem;
-    }
-
-    .prob-card-text {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    /* Services List */
-    .service-item-card {
-      background: var(--bg-card-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 1.1rem;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 0.75rem;
-    }
-
-    .svc-index-mono {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--cyan);
-      margin-bottom: 0.35rem;
-    }
-
-    .svc-head-title {
+    .contact-direct-link {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 0.35rem;
+      color: var(--color-ink);
+      direction: ltr;
+      text-align: right;
+      display: inline-block;
+    }
+    .contact-direct-link:hover {
+      color: var(--color-petrol);
     }
 
-    .svc-body-text {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-    }
-
-    .svc-tag-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-
-    .tag-badge {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      padding: 0.18rem 0.5rem;
-      border-radius: 5px;
-      background: rgba(0, 229, 255, 0.08);
-      color: var(--cyan);
-      border: 1px solid rgba(0, 229, 255, 0.2);
-    }
-
-    /* Projects Showcase */
-    .project-showcase-card {
-      background: var(--bg-card-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 1.15rem;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 0.9rem;
-    }
-
-    .mockup-display-box {
-      height: 125px;
-      border-radius: 10px;
-      background: #060914;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 0.75rem;
-      margin-bottom: 0.85rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .chat-bubble-row {
-      font-size: 0.72rem;
-      padding: 0.35rem 0.65rem;
-      border-radius: 8px;
-      margin-bottom: 0.35rem;
-      max-width: 88%;
-      line-height: 1.35;
-    }
-
-    .chat-user-msg {
-      background: #182236;
-      color: #E2E8F0;
-      align-self: flex-start;
-    }
-
-    .chat-agent-msg {
-      background: #064E3B;
-      color: #A7F3D0;
-      align-self: flex-end;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .nodes-flow-row {
-      display: flex;
+    .whatsapp-direct-btn {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 0.3rem;
-    }
-
-    .node-block {
-      background: #131B36;
-      border: 1px solid rgba(79, 110, 247, 0.4);
-      padding: 0.35rem 0.45rem;
-      border-radius: 6px;
-      font-size: 0.65rem;
-      color: #93C5FD;
+      justify-content: center;
+      background-color: var(--color-saffron);
+      color: var(--color-ink);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 4px;
+      margin-block-start: 0.5rem;
+      border: none;
+      cursor: pointer;
       text-align: center;
-      flex: 1;
+      width: 100%;
     }
 
-    .node-flow-arrow {
-      color: var(--cyan);
-      font-weight: 800;
-      font-size: 0.75rem;
+    /* Certifications Honest Text List */
+    .cert-section {
+      margin-block-start: 1rem;
+      padding-block-start: 1.5rem;
+      border-block-start: 1px solid var(--color-divider);
     }
 
-    .analytics-kpi-row {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--emerald);
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.3rem;
-    }
-
-    .analytics-bar-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 0.45rem;
-      height: 50px;
-    }
-
-    .chart-bar-unit {
-      flex: 1;
-      background: linear-gradient(to top, var(--indigo), var(--cyan));
-      border-radius: 3px 3px 0 0;
-    }
-
-    .proj-title-txt {
-      font-size: 1.1rem;
+    .cert-heading {
+      font-size: 1rem;
       font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 0.65rem;
+      color: var(--color-ink);
+      margin-block-end: 0.5rem;
     }
 
-    .proj-detail-line {
-      margin-bottom: 0.45rem;
-    }
-
-    .detail-tag {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--text-dim);
-      display: block;
-      margin-bottom: 0.1rem;
-    }
-
-    .detail-content {
-      font-size: 0.84rem;
-      color: var(--text-muted);
+    .cert-disclaimer {
+      font-size: 0.82rem;
+      color: var(--color-petrol);
       line-height: 1.5;
+      margin-block-end: 0.85rem;
     }
 
-    .roi-highlight-strip {
-      margin-top: 0.65rem;
-      background: rgba(0, 229, 255, 0.08);
-      border: 1px solid rgba(0, 229, 255, 0.22);
-      border-radius: 8px;
-      padding: 0.55rem 0.75rem;
+    .cert-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
-    .roi-highlight-strip .detail-tag {
-      color: var(--cyan);
-    }
-
-    .roi-highlight-strip .detail-content {
-      color: #FFFFFF;
-      font-weight: 700;
-    }
-
-    /* Slide 6: Contact & Footer */
-    .cta-glass-card {
-      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(79, 110, 247, 0.15) 50%, rgba(13, 19, 38, 0.95) 100%);
-      border: 1px solid var(--border-highlight);
-      border-radius: 18px;
-      padding: 1.75rem 1.15rem;
-      text-align: center;
-      margin-bottom: 1.25rem;
-    }
-
-    .cta-card-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      line-height: 1.35;
-      margin-bottom: 0.55rem;
-    }
-
-    .cta-card-sub {
+    .cert-list li {
       font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1.35rem;
+      color: var(--color-ink);
+      padding-block: 0.25rem;
+      border-block-end: 1px dashed var(--color-divider);
     }
 
-    .contact-btn-stack {
-      display: flex;
+    .cert-hidden-group {
+      display: none;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 0.5rem;
+      margin-block-start: 0.5rem;
     }
 
-    .btn-contact-wa {
-      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-      color: #FFFFFF;
-      font-weight: 700;
-      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
-    }
-
-    .btn-contact-email {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-    }
-
-    .btn-contact-tg {
-      background: linear-gradient(135deg, #0088CC 0%, #229ED9 100%);
-      color: #FFFFFF;
-      font-weight: 700;
-      box-shadow: 0 4px 18px rgba(34, 158, 217, 0.35);
-    }
-
-    .deck-footer-wrap {
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 1.15rem;
-      text-align: center;
-    }
-
-    .deck-footer-title {
-      font-family: var(--font-en);
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 0.3rem;
-    }
-
-    .deck-footer-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-
-    .deck-footer-info {
-      font-size: 0.76rem;
-      color: var(--text-dim);
+    .cert-hidden-group.show {
       display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      margin-bottom: 0.75rem;
     }
 
-    .deck-footer-copy {
-      font-size: 0.7rem;
-      color: var(--text-dim);
+    .toggle-certs-btn {
+      background: none;
+      border: none;
+      color: var(--color-petrol);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding-block: 0.65rem;
+      text-align: right;
+      text-decoration: underline;
     }
 
     /* ============================================================
-       BOTTOM DOCK CONTROLS & ARROWS
+       FIXED BOTTOM BAR (WHATSAPP SAFFRON BUTTON)
     ============================================================ */
-    .bottom-nav-dock {
+    .bottom-bar {
       position: fixed;
       bottom: 0;
-      left: 0;
-      right: 0;
-      height: 54px;
-      z-index: 500;
-      background: rgba(4, 6, 14, 0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1.15rem;
-    }
-
-    .nav-arrow-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      color: var(--cyan);
+      inset-inline: 0;
+      height: var(--bottom-bar-h);
+      padding-block-end: env(safe-area-inset-bottom, 0);
+      background-color: var(--color-paper);
+      border-block-start: 1px solid var(--color-divider);
+      z-index: 100;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.2s var(--ease);
+      padding-inline: 1.25rem;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
-    .nav-arrow-btn:active {
-      transform: scale(0.9);
-      background: rgba(0, 229, 255, 0.15);
+    .bottom-bar.hide-bar {
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
     }
 
-    .dock-dots-track {
-      display: flex;
+    .btn-saffron-action {
+      display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-    }
-
-    .dock-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 99px;
-      background: rgba(255, 255, 255, 0.2);
-      transition: all 0.3s var(--ease);
+      justify-content: center;
+      background-color: var(--color-saffron);
+      color: var(--color-ink);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.98rem;
+      height: 46px;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 4px;
+      border: none;
       cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.15s ease;
     }
 
-    .dock-dot.active {
-      width: 22px;
-      background: linear-gradient(90deg, var(--cyan), var(--indigo));
-      box-shadow: 0 0 10px var(--cyan);
+    .btn-saffron-action:hover {
+      background-color: #E2AA04;
+      color: var(--color-ink);
     }
 
-    .swipe-hint-pill {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
+    /* Small Screen Heights */
+    @media (max-height: 640px) {
+      .panel-heading {
+        font-size: 1.75rem;
+      }
+      .panel {
+        padding-block: 1rem 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ============================================================
-       PRELOADER & WELCOMING SCREEN
-  ============================================================ -->
-  <div id="preloader">
-    <div class="preloader-glow-ring">
-      <div class="loader-ring"></div>
-      <div class="loader-ring-inner"></div>
-      <div class="loader-core"></div>
+  <!-- Top Bar with Active Panel Indicator & Progress -->
+  <header class="top-bar">
+    <div class="top-bar-content">
+      <span class="brand-name">أحمد صابر</span>
+      <span class="panel-indicator" id="panelIndicator">الرئيسية</span>
     </div>
-    <div class="loader-terminal-line">// SYSTEMS ONLINE · VERIFIED</div>
-    <h2 class="loader-welcome-title">أهلاً بك في منصة Ahmed Saber</h2>
-    <p class="loader-welcome-sub">أبني أنظمة ذكاء اصطناعي وأتمتة مخصصة تعمل بدلاً عن فريقك وتضاعف أرباح شركتك.</p>
-    <div class="loader-progress-track">
-      <div class="loader-progress-bar" id="loadBar"></div>
-    </div>
-  </div>
-
-  <!-- Ambient Glow & Grid -->
-  <div class="ambient-bg">
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-  </div>
-  <div class="ambient-grid"></div>
-
-  <!-- ============================================================
-       FIXED TOP HEADER & INTERACTIVE TABS STRIP
-  ============================================================ -->
-  <header class="top-header">
-    <div class="header-main-bar">
-      <div class="nav-brand">
-        <span class="brand-title">Ahmed Saber</span>
-        <div class="status-pill">
-          <span class="status-dot"></span>
-          <span>ONLINE</span>
-        </div>
-      </div>
-      <a href="https://wa.me/201283279337" target="_blank" class="header-cta-btn">استشارة مجانية</a>
-    </div>
-
-    <!-- Active Reactive Category Tabs -->
-    <div class="tabs-strip-container">
-      <div class="tabs-strip" id="tabsStrip">
-        <div class="tab-item active" data-index="0">الرئيسية</div>
-        <div class="tab-item" data-index="1">التحديات</div>
-        <div class="tab-item" data-index="2">الحلول الهندسية</div>
-        <div class="tab-item" data-index="3">آلية العمل</div>
-        <div class="tab-item" data-index="4">المشاريع المنجزة</div>
-        <div class="tab-item" data-index="5">تواصل معي</div>
-      </div>
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-segment active" data-index="0"></div>
+      <div class="progress-segment" data-index="1"></div>
+      <div class="progress-segment" data-index="2"></div>
+      <div class="progress-segment" data-index="3"></div>
+      <div class="progress-segment" data-index="4"></div>
+      <div class="progress-segment" data-index="5"></div>
     </div>
   </header>
 
-  <!-- ============================================================
-       MOBILE APP HORIZONTAL DECK VIEWPORT
-  ============================================================ -->
+  <!-- Horizontal Scroll-Snap Deck (6 Panels) -->
   <main class="deck-viewport" id="deckViewport">
-    <div class="deck-track" id="deckTrack">
 
-      <!-- ================= SLIDE 0: HERO & ARCHITECTURE ================= -->
-      <section class="deck-slide active" id="slide-0">
-        <div class="slide-card-glass">
-          <div class="hero-portrait-stage">
-            <div class="portrait-halo-wrap">
-              <div class="portrait-conic-ring"></div>
-              <div class="portrait-photo-box">
-                <img src="data:image/jpeg;base64,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" alt="Ahmed Saber">
-              </div>
-            </div>
+    <!-- ========================================================
+         PANEL 1: الرئيسية
+    ======================================================== -->
+    <section class="panel" id="home" aria-label="الرئيسية">
+      <span class="panel-label">أحمد صابر</span>
+      <h1 class="panel-heading">وكلاء يردّون على عملائك في واتساب ويسجّلون الطلب في نظامك</h1>
+      <p class="panel-lead">أبني أنظمة ذكاء اصطناعي وأتمتة مخصصة تنفذ العمليات المتكررة بدلاً عن فريقك وتتصل مباشرة بقواعد بياناتك.</p>
+
+      <!-- The Core Proof: Live WhatsApp Conversation Simulation -->
+      <div class="chat-mockup-wrapper">
+        <div class="chat-container">
+          <div class="chat-bubble chat-client chat-client-1">
+            <span class="chat-sender">عميل</span>
+            مساء الخير، محتاج 3 قطع من الموديل الأسود مقاس L، هل متاح شحن لإسكندرية؟
+            <span class="chat-time">10:41 ص</span>
           </div>
 
-          <div class="slide-badge" style="margin: 0 auto 0.65rem auto; display: table;">
-            AI ARCHITECT & AUTOMATION SPECIALIST
+          <div class="chat-bubble chat-agent chat-agent-1">
+            <span class="chat-sender">وكيلي الآلي</span>
+            مساء النور يا فندم. فحصت المخزون: متاح 3 قطع باللون الأسود مقاس L. الشحن لإسكندرية يستغرق 24 إلى 48 ساعة. إجمالي القيمة 840 ج.م شامل التوصيل. هل نعتمد العنوان المسجل لديكم؟
+            <span class="chat-time">10:41 ص</span>
           </div>
 
-          <h1 class="hero-main-title">Ahmed Saber</h1>
-          <h2 class="hero-role-desc">
-            أبني أنظمة <span class="cyan-highlight">ذكاء اصطناعي وأتمتة</span> تحل أزمات التشغيل وتضاعف أرباح شركتك
-          </h2>
-          <p class="hero-paragraph">
-            وكلاء ذكاء اصطناعي وأنظمة أتمتة مخصصة تلغي المهام اليدوية المكررة، ترد على عملائك فورياً على مدار 24 ساعة، وتربط جميع أدوات شركتك في منظومة واحدة تعمل وحدها.
-          </p>
-
-          <!-- Presentation Infographic 1: Architecture Core Blueprint -->
-          <div class="infographic-box">
-            <div class="infographic-header">
-              <span class="infographic-title">⚡ مخطط معمارية النظام (System Architecture)</span>
-              <span class="infographic-tag">تشغيل آلي 24/7</span>
-            </div>
-            <div class="diagram-architecture">
-              <div class="arch-flow-row">
-                <div class="arch-node">
-                  <span class="arch-node-icon">💬</span>
-                  <span class="arch-node-label">قنوات العملاء</span>
-                  <span class="arch-node-sub">WhatsApp / Web</span>
-                </div>
-                <span style="color: var(--cyan); font-weight: 800;">➔</span>
-                <div class="arch-node" style="border-color: rgba(79, 110, 247, 0.4);">
-                  <span class="arch-node-icon">⚙️</span>
-                  <span class="arch-node-label">محرك الربط</span>
-                  <span class="arch-node-sub">N8N / APIs</span>
-                </div>
-              </div>
-
-              <span class="arch-arrow-down">⬇</span>
-
-              <div class="arch-core-brain">
-                <div class="core-brain-title">
-                  <div class="core-brain-pulse"></div>
-                  <span>عقل الوكيل الذكي (AI Agent Core)</span>
-                </div>
-                <span class="infographic-tag" style="background: rgba(0, 229, 255, 0.1); color: var(--cyan); border-color: rgba(0, 229, 255, 0.3);">فهم السياق واتخاذ القرار</span>
-              </div>
-
-              <span class="arch-arrow-down">⬇</span>
-
-              <div class="arch-flow-row">
-                <div class="arch-node">
-                  <span class="arch-node-icon">📊</span>
-                  <span class="arch-node-label">نظام الـ CRM</span>
-                  <span class="arch-node-sub">تحديث لحظي</span>
-                </div>
-                <span style="color: var(--emerald); font-weight: 800;">✔</span>
-                <div class="arch-node">
-                  <span class="arch-node-icon">💰</span>
-                  <span class="arch-node-label">إتمام الصفقات</span>
-                  <span class="arch-node-sub">تحصيل وأوردرات</span>
-                </div>
-              </div>
-            </div>
+          <div class="chat-bubble chat-client chat-client-2">
+            <span class="chat-sender">عميل</span>
+            أيوه تمام، نفس العنوان ورقم التليفون.
+            <span class="chat-time">10:42 ص</span>
           </div>
 
-          <div class="hero-cta-stack">
-            <a href="https://wa.me/201283279337" target="_blank" class="btn-action btn-action-primary">
-              <span>تحدث معي عبر واتساب</span>
-              <span>←</span>
-            </a>
-            <button class="btn-action btn-action-outline" onclick="goToSlide(4)">استعرض المشاريع المنجزة</button>
-          </div>
-
-          <!-- 100% Seamless Continuous Credentials Stream -->
-          <div class="infinite-marquee-section">
-            <div class="marquee-inner-flex">
-              <div class="marquee-group">
-                <div class="chip-capsule"><span class="chk">✓</span> Google AI Professional (7 Courses)</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Claude 101</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Claude Code 101 & Action</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Model Context Protocol (MCP)</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Subagents & Skills</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Claude Cowork</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: AI Fluency Framework</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Dubai Future: 1M Prompters</div>
-              </div>
-              <div class="marquee-group" aria-hidden="true">
-                <div class="chip-capsule"><span class="chk">✓</span> Google AI Professional (7 Courses)</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Claude 101</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Claude Code 101 & Action</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Model Context Protocol (MCP)</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Subagents & Skills</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: Claude Cowork</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Anthropic: AI Fluency Framework</div>
-                <div class="chip-capsule"><span class="chk">✓</span> Dubai Future: 1M Prompters</div>
-              </div>
-            </div>
+          <div class="chat-bubble chat-agent chat-agent-2">
+            <span class="chat-sender">وكيلي الآلي</span>
+            تم تسجيل طلبك برقم #4082 في النظام وخصم الكمية من المخزون، وأرسلت إشعاراً لفريق التجهيز الآن. ستصلك رسالة شركة الشحن فور الاستلام.
+            <span class="chat-time">10:42 ص</span>
           </div>
         </div>
-      </section>
+      </div>
+      <p class="chat-caption">مثال توضيحي لرد الوكيل وربطه بقاعدة البيانات</p>
+    </section>
 
-      <!-- ================= SLIDE 1: PROBLEMS ================= -->
-      <section class="deck-slide" id="slide-1">
-        <div class="slide-card-glass">
-          <div class="slide-badge">التحديات الشائعة</div>
-          <h2 class="slide-heading">أين يضيع وقت وأرباح شركتك؟</h2>
-          <p class="slide-sub">معظم الشركات وأصحاب الأنشطة التجارية يعانون من هذه المشكلات الأربع بشكل يومي:</p>
+    <!-- ========================================================
+         PANEL 2: التحديات
+    ======================================================== -->
+    <section class="panel" id="problems" aria-label="التحديات">
+      <span class="panel-label">التحديات</span>
+      <h2 class="panel-heading">أين يضيع وقت شركتك كل يوم؟</h2>
+      <p class="panel-lead">هذه هي المشكلات الأربع التي أراها تتكرر في معظم الشركات والصفحات التجارية:</p>
 
-          <!-- Presentation Infographic 2: Operational Waste vs Savings -->
-          <div class="infographic-box">
-            <div class="infographic-header">
-              <span class="infographic-title">📉 مقارنة بيانية: العمل اليدوي vs الأتمتة</span>
-              <span class="infographic-tag" style="color: var(--ruby); border-color: rgba(255, 71, 87, 0.3);">فارق الأداء</span>
-            </div>
-            <div class="diagram-comparison-split">
-              <div class="comparison-card bad">
-                <span class="comp-title">❌ بالطريقة اليدوية</span>
-                <span class="comp-metric">4+ ساعات</span>
-                <span class="comp-desc">ضياع يومي في الرد ونقل البيانات يدوياً بين البرامج.</span>
-              </div>
-              <div class="comparison-card good">
-                <span class="comp-title">✔ بالوكلاء الأذكياء</span>
-                <span class="comp-metric">&lt; 15 ثانية</span>
-                <span class="comp-desc">استجابة فورية للعملاء ومزامنة آلية 100% دون أخطاء.</span>
-              </div>
-            </div>
-          </div>
+      <div class="challenges-list">
+        <div class="challenge-row">
+          <h3 class="challenge-statement">فريقك يقضي نصف يومه في تكرار نفس الإجابات ونقل البيانات يدوياً.</h3>
+          <p class="challenge-detail">كتابة نفس الأسعار وتأكيد العناوين يدوياً يهدر طاقة موظفيك في أعمال روتينية بدلاً من التركيز على إغلاق الصفقات.</p>
+        </div>
 
-          <div class="problems-v-list">
-            <div class="problem-item-card">
-              <div class="prob-icon-pill">⏱</div>
-              <div>
-                <h3 class="prob-card-title">فريقك يضيع ساعات يومية في مهام مكررة</h3>
-                <p class="prob-card-text">إدخال البيانات يدوياً، نسخ الرسائل، ومتابعة الطلبات يستهلك مئات الساعات بدلاً من التركيز على المبيعات والنمو.</p>
-              </div>
-            </div>
+        <div class="challenge-row">
+          <h3 class="challenge-statement">برامجك لا تتحدث مع بعضها: طلب من واتساب، فاتورة في برنامج، وملف في شيت منفصل.</h3>
+          <p class="challenge-detail">انفصال الأدوات يسبب سقوط الطلبات، تكرار الأخطاء الحسابية، وتضارب أرقام المخزون باستمرار.</p>
+        </div>
 
-            <div class="problem-item-card">
-              <div class="prob-icon-pill">🔗</div>
-              <div>
-                <h3 class="prob-card-title">أدواتك المختلفة منفصلة ولا تتحدث مع بعضها</h3>
-                <p class="prob-card-text">استخدام برامج متعددة للمبيعات والمخزون بدون ربط تلقائي يسبب أخطاء بشرية وتشتت مستمر للبيانات.</p>
-              </div>
-            </div>
+        <div class="challenge-row">
+          <h3 class="challenge-statement">العميل الذي ينتظر نصف ساعة يشتري من غيرك وأنت لا تدري.</h3>
+          <p class="challenge-detail">المشتري على الهاتف يتوقع رداً في دقيقة واحدة. كل دقيقة تأخير إضافية ترفع احتمالية خروجه لمنافسك.</p>
+        </div>
 
-            <div class="problem-item-card">
-              <div class="prob-icon-pill">💬</div>
-              <div>
-                <h3 class="prob-card-title">الرد على العملاء بطيء ويكلفك صفقات حاسمة</h3>
-                <p class="prob-card-text">العميل يتوقع إجابة فورية؛ والتأخر في الرد لساعات يدفع المشتري للتوجه فوراً للشراء من منافسيك.</p>
-              </div>
-            </div>
+        <div class="challenge-row">
+          <h3 class="challenge-statement">لا تعرف أرقام اليوم الحقيقية إلا بنهاية الشهر بعد فوات الأوان.</h3>
+          <p class="challenge-detail">غياب تقرير يومي موحد يجعل قراراتك الإدارية تعتمد على التخمين بدلاً من الأرقام المؤكدة.</p>
+        </div>
+      </div>
+    </section>
 
-            <div class="problem-item-card">
-              <div class="prob-icon-pill">📊</div>
-              <div>
-                <h3 class="prob-card-title">لا توجد صورة واضحة ولحظية عن عمليات شركتك</h3>
-                <p class="prob-card-text">صعوبة استخراج تقارير أداء ومبيعات حية تجعل قراراتك الإدارية متأخرة وتعتمد على التخمين.</p>
-              </div>
-            </div>
+    <!-- ========================================================
+         PANEL 3: الحلول
+    ======================================================== -->
+    <section class="panel" id="solutions" aria-label="الحلول">
+      <span class="panel-label">الحلول</span>
+      <h2 class="panel-heading">ما أبنيه لشركتك</h2>
+      <p class="panel-lead">أركز على أربع خدمات عملية تحل مشكلات التشغيل مباشرة:</p>
+
+      <div class="solutions-list">
+        <div class="solution-item solution-item-prominent">
+          <h3 class="solution-title">بناء وكلاء الذكاء الاصطناعي المخصصين</h3>
+          <p class="solution-desc">أبني وكيلاً ذكياً يفهم كتالوج منتجاتك وسياساتك بدقة، يستقبل استفسارات العملاء على مدار 24 ساعة، يتحقق من المخزون، ويسجل الأوردر في نظامك فوراً دون تدخل يدوي.</p>
+          <span class="solution-tools">الأدوات: نماذج لغوية، بروتوكول MCP، قواعد بيانات موجهة</span>
+        </div>
+
+        <div class="solution-item">
+          <h3 class="solution-title">أتمتة العمليات وسير العمل</h3>
+          <p class="solution-desc">أربط أدواتك المنفصلة في مسار واحد: من أول رسالة أو فورم تسجيل حتى تحديث الـ CRM وإصدار الفاتورة وإرسال الإشعار لفريقك تلقائياً.</p>
+          <span class="solution-tools">الأدوات: مسارات N8N، خطافات الويب (Webhooks)، وواجهات البرمجة (APIs)</span>
+        </div>
+
+        <div class="solution-item">
+          <h3 class="solution-title">أنظمة خدمة العملاء الذكية</h3>
+          <p class="solution-desc">ردود فورية على واتساب، إنستغرام، والبريد الإلكتروني بلهجة تناسب علامتك التجارية، مع تحويل الحالات المعقدة فقط لموظفك البشري بسياقها الكامل.</p>
+          <span class="solution-tools">الأدوات: WhatsApp Business API، وبوابات المحادثة</span>
+        </div>
+
+        <div class="solution-item">
+          <h3 class="solution-title">استشارات وتدريب الفرق</h3>
+          <p class="solution-desc">جلسات عملية لفحص عملياتك وتحديد مواضع الهدر، وتدريب فريقك على تشغيل وتعديل الأنظمة المؤتمتة بنفسه بثقة واستقلالية.</p>
+          <span class="solution-tools">الأدوات: توثيق تشغيلي، وورش تدريبية مخصصة</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PANEL 4: آلية العمل
+    ======================================================== -->
+    <section class="panel" id="process" aria-label="آلية العمل">
+      <span class="panel-label">آلية العمل</span>
+      <h2 class="panel-heading">كيف نعمل معاً خطوة بخطوة</h2>
+      <p class="panel-lead">تسلسل هندسي واضح ومحدد دون غموض أو وعود مبهمة:</p>
+
+      <div class="workflow-steps">
+        <div class="step-entry">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>تشخيص</h3>
+            <p>جلسة عمل نفحص فيها مسار طلباتك اليومي، ونحدد بدقة أين يضيع الوقت وأي العمليات هي الأجدى بالبدء في أتمتتها.</p>
           </div>
         </div>
-      </section>
 
-      <!-- ================= SLIDE 2: SOLUTIONS ================= -->
-      <section class="deck-slide" id="slide-2">
-        <div class="slide-card-glass">
-          <div class="slide-badge">الحلول الهندسية</div>
-          <h2 class="slide-heading">كيف أحل هذه المشاكل في شركتك؟</h2>
-          <p class="slide-sub">حلول مصممة خصيصاً لتحويل نقاط الهدر إلى محركات نمو أوتوماتيكية:</p>
-
-          <!-- Presentation Infographic 3: 4 Pillars Matrix -->
-          <div class="infographic-box">
-            <div class="infographic-header">
-              <span class="infographic-title">🧩 ركائز الحل الهندسي المتكامل</span>
-              <span class="infographic-tag">منظومة موحدة</span>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 8px; text-align: center;">
-                <span style="font-size: 1rem;">🤖</span>
-                <div style="font-size: 0.74rem; font-weight: 700; color: var(--cyan);">وكلاء أذكياء</div>
-                <div style="font-size: 0.65rem; color: var(--text-muted);">فهم وتصنيف</div>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 8px; text-align: center;">
-                <span style="font-size: 1rem;">⚡</span>
-                <div style="font-size: 0.74rem; font-weight: 700; color: var(--indigo);">أتمتة العمليات</div>
-                <div style="font-size: 0.65rem; color: var(--text-muted);">N8N & APIs</div>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 8px; text-align: center;">
-                <span style="font-size: 1rem;">📱</span>
-                <div style="font-size: 0.74rem; font-weight: 700; color: var(--emerald);">خدمة عملاء</div>
-                <div style="font-size: 0.65rem; color: var(--text-muted);">واتساب 24/7</div>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.5rem; border-radius: 8px; text-align: center;">
-                <span style="font-size: 1rem;">🎯</span>
-                <div style="font-size: 0.74rem; font-weight: 700; color: var(--amber);">استراتيجية الفرق</div>
-                <div style="font-size: 0.65rem; color: var(--text-muted);">تدريب وتطوير</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="services-v-list">
-            <div class="service-item-card">
-              <div class="svc-index-mono">01 // وكلاء أذكياء</div>
-              <h3 class="svc-head-title">بناء وكلاء الذكاء الاصطناعي</h3>
-              <p class="svc-body-text">وكيل ذكي مخصص لشركتك يعمل 24 ساعة — يفهم منتجاتك وسياساتك بدقة، يرد على العملاء بسياق حقيقي، ويصنف الطلبات ويتخذ قرارات منطقية بناءً على مستنداتك.</p>
-              <div class="svc-tag-pills">
-                <span class="tag-badge">وكلاء مستقلين</span>
-                <span class="tag-badge">سياق الشركات</span>
-                <span class="tag-badge">خدمة العملاء</span>
-              </div>
-            </div>
-
-            <div class="service-item-card">
-              <div class="svc-index-mono">02 // أتمتة العمليات</div>
-              <h3 class="svc-head-title">أتمتة العمليات وسير العمل</h3>
-              <p class="svc-body-text">ربط جميع أدواتك ومنصاتك في نظام واحد يسير وحده — من أول إشعار أو تسجيل عميل حتى آخر خطوة تسليم بدون أي تدخل يدوي مكرر.</p>
-              <div class="svc-tag-pills">
-                <span class="tag-badge">مسارات N8N</span>
-                <span class="tag-badge">ربط APIs</span>
-                <span class="tag-badge">Webhooks</span>
-              </div>
-            </div>
-
-            <div class="service-item-card">
-              <div class="svc-index-mono">03 // استجابة فورية</div>
-              <h3 class="svc-head-title">أنظمة خدمة العملاء الذكية</h3>
-              <p class="svc-body-text">وكيل متخصص يعرف تفاصيل نشاطك، يرد على كل قناة (واتساب، البريد، إنستغرام) بشكل متناسق وفوري، ويحول الحالات المعقدة للفريق البشري تلقائياً.</p>
-              <div class="svc-tag-pills">
-                <span class="tag-badge">واتساب للأعمال</span>
-                <span class="tag-badge">البريد الإلكتروني</span>
-                <span class="tag-badge">ردود 24/7</span>
-              </div>
-            </div>
-
-            <div class="service-item-card">
-              <div class="svc-index-mono">04 // استراتيجية وتدريب</div>
-              <h3 class="svc-head-title">استشارات وتدريب الفرق</h3>
-              <p class="svc-body-text">خارطة طريق واضحة لتبني الذكاء الاصطناعي في شركتك، مع تدريب فريقك على الاستخدام الفعال والمسؤول لأحدث النماذج والأدوات لرفع الإنتاجية.</p>
-              <div class="svc-tag-pills">
-                <span class="tag-badge">استراتيجية AI</span>
-                <span class="tag-badge">تدريب الفرق</span>
-                <span class="tag-badge">تحليل الكفاءة</span>
-              </div>
-            </div>
+        <div class="step-entry">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>تصميم</h3>
+            <p>أكتب لك مقترحاً فنياً يوضح بنية النظام، الأدوات المطلوبة، والجدول الزمني المحدد للتسليم قبل أي التزام مالي من طرفك.</p>
           </div>
         </div>
-      </section>
 
-      <!-- ================= SLIDE 3: WORKFLOW ================= -->
-      <section class="deck-slide" id="slide-3">
-        <div class="slide-card-glass">
-          <div class="slide-badge">منهجية العمل</div>
-          <h2 class="slide-heading">من المشكلة إلى الحل في 4 خطوات</h2>
-          <p class="slide-sub">مسار هندسي واضح وشفاف يوضح كيفية التعامل معك خطوة بخطوة:</p>
-
-          <!-- Presentation Infographic 4: Step-by-Step Corporate Roadmap -->
-          <div class="infographic-box">
-            <div class="infographic-header">
-              <span class="infographic-title">🗺️ خارطة الطريق التنفيذية (Delivery Roadmap)</span>
-              <span class="infographic-tag">منهجية هندسية</span>
-            </div>
-            <div class="diagram-process-roadmap">
-              <div class="roadmap-node-row">
-                <div class="roadmap-bullet">01</div>
-                <div class="roadmap-card-content">
-                  <div class="roadmap-step-name">
-                    <span>1. جلسة تشخيص مجانية</span>
-                    <span class="roadmap-pill">تحليل الهدر</span>
-                  </div>
-                  <p class="roadmap-step-info">فهم عميق لعملياتك الحالية وتحديد أكبر المهام التي تستنزف الوقت والمال.</p>
-                </div>
-              </div>
-
-              <div class="roadmap-node-row">
-                <div class="roadmap-bullet">02</div>
-                <div class="roadmap-card-content">
-                  <div class="roadmap-step-name">
-                    <span>2. التصميم المعماري</span>
-                    <span class="roadmap-pill">خطة واضحة</span>
-                  </div>
-                  <p class="roadmap-step-info">تقديم مقترح هندسي يشمل مخطط الأدوات والجدول الزمني والتكلفة قبل أي التزام.</p>
-                </div>
-              </div>
-
-              <div class="roadmap-node-row">
-                <div class="roadmap-bullet">03</div>
-                <div class="roadmap-card-content">
-                  <div class="roadmap-step-name">
-                    <span>3. البناء والاختبار الحي</span>
-                    <span class="roadmap-pill">بيانات حقيقية</span>
-                  </div>
-                  <p class="roadmap-step-info">تطوير النظام وربطه ببيانات نشاطك الفعلية واختبار كافة سيناريوهات الاستخدام.</p>
-                </div>
-              </div>
-
-              <div class="roadmap-node-row">
-                <div class="roadmap-bullet">04</div>
-                <div class="roadmap-card-content">
-                  <div class="roadmap-step-name">
-                    <span>4. التسليم والدعم المستمر</span>
-                    <span class="roadmap-pill">توثيق + متابعة</span>
-                  </div>
-                  <p class="roadmap-step-info">تسليم النظام موثقاً بالكامل لضمان استقلالية فريقك مع توفير الدعم الفني المباشر.</p>
-                </div>
-              </div>
-            </div>
+        <div class="step-entry">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>بناء واختبار</h3>
+            <p>أبني الوكيل وأربط مساراته وأختبره على بيانات وسيناريوهات حقيقية من عملك حتى نتأكد من دقة الإجابات وعدم وجود أي أخطاء.</p>
           </div>
         </div>
-      </section>
 
-      <!-- ================= SLIDE 4: PROJECTS ================= -->
-      <section class="deck-slide" id="slide-4">
-        <div class="slide-card-glass">
-          <div class="slide-badge">المشاريع المنجزة</div>
-          <h2 class="slide-heading">دراسات حالة واقعية</h2>
-          <p class="slide-sub">أمثلة عملية على تحويل المشكلات المعقدة إلى أنظمة أتمتة تعمل بكفاءة:</p>
-
-          <div class="projects-v-stack">
-            <!-- Project 1 -->
-            <div class="project-showcase-card">
-              <div class="mockup-display-box">
-                <div class="chat-bubble-row chat-user-msg">هل متوفر شحن سريع للقاهرة اليوم؟</div>
-                <div class="chat-bubble-row chat-agent-msg">أهلاً بك! نعم الشحن متاح وسيصلك خلال 24 ساعة. هل تحب تأكيد الطلب الآن؟</div>
-              </div>
-              <h3 class="proj-title-txt">وكيل خدمة عملاء متكامل</h3>
-              <div class="proj-detail-line">
-                <span class="detail-tag">المشكلة:</span>
-                <p class="detail-content">متجر إلكتروني يضيع 4 ساعات يومياً في الرد اليدوي على نفس الأسئلة المتكررة.</p>
-              </div>
-              <div class="proj-detail-line">
-                <span class="detail-tag">الحل:</span>
-                <p class="detail-content">وكيل ذكاء اصطناعي مخصص يرد تلقائياً على 90% من الاستفسارات عبر واتساب بسياق كامل ولحظي.</p>
-              </div>
-              <div class="roi-highlight-strip">
-                <span class="detail-tag">النتيجة بالأرقام:</span>
-                <p class="detail-content">توفير 4 ساعات يومياً وصفر أسئلة بدون رد فوري 24/7.</p>
-              </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-showcase-card">
-              <div class="mockup-display-box">
-                <div class="nodes-flow-row">
-                  <div class="node-block">مصدر العميل</div>
-                  <span class="node-flow-arrow">➔</span>
-                  <div class="node-block">N8N Hub</div>
-                  <span class="node-flow-arrow">➔</span>
-                  <div class="node-block">CRM Sync</div>
-                </div>
-              </div>
-              <h3 class="proj-title-txt">أتمتة سير عمل المبيعات</h3>
-              <div class="proj-detail-line">
-                <span class="detail-tag">المشكلة:</span>
-                <p class="detail-content">فريق مبيعات يدخل البيانات يدوياً في 3 أنظمة مختلفة مما يسبب أخطاء وتأخيراً متكرراً.</p>
-              </div>
-              <div class="proj-detail-line">
-                <span class="detail-tag">الحل:</span>
-                <p class="detail-content">مسار Workflow يجمع البيانات تلقائياً من كل المصادر ويوحدها في الـ CRM لحظياً.</p>
-              </div>
-              <div class="roi-highlight-strip">
-                <span class="detail-tag">النتيجة بالأرقام:</span>
-                <p class="detail-content">إلغاء الإدخال اليدوي وتوفير 10 ساعات أسبوعياً للفريق.</p>
-              </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-showcase-card">
-              <div class="mockup-display-box">
-                <div class="analytics-kpi-row">
-                  <span>تقرير اليوم الحي:</span>
-                  <span>+38% نمو الأداء ↑</span>
-                </div>
-                <div class="analytics-bar-chart">
-                  <div class="chart-bar-unit" style="height: 35%;"></div>
-                  <div class="chart-bar-unit" style="height: 55%;"></div>
-                  <div class="chart-bar-unit" style="height: 85%;"></div>
-                  <div class="chart-bar-unit" style="height: 65%;"></div>
-                  <div class="chart-bar-unit" style="height: 100%;"></div>
-                </div>
-              </div>
-              <h3 class="proj-title-txt">نظام تقارير ذكي</h3>
-              <div class="proj-detail-line">
-                <span class="detail-tag">المشكلة:</span>
-                <p class="detail-content">مدير الشركة لا يعرف أرقام الأداء والعمليات إلا بنهاية الشهر بصورة متأخرة تعيق القرار.</p>
-              </div>
-              <div class="proj-detail-line">
-                <span class="detail-tag">الحل:</span>
-                <p class="detail-content">نظام يجمع البيانات من المنصات ويرسل تقريراً ملخصاً على واتساب كل صباح تلقائياً.</p>
-              </div>
-              <div class="roi-highlight-strip">
-                <span class="detail-tag">النتيجة بالأرقام:</span>
-                <p class="detail-content">قرارات أسرع ومبنية على بيانات حقيقية ولحظية كل صباح.</p>
-              </div>
-            </div>
+        <div class="step-entry">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>تسليم ودعم</h3>
+            <p>أسلمك النظام موثقاً بالكامل مع دليل تشغيل، وأبقى معك لمراقبة الأداء وضمان عمل كل أجزاء المنظومة بكفاءة مستمرة.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ================= SLIDE 5: CONTACT & FOOTER ================= -->
-      <section class="deck-slide" id="slide-5">
-        <div class="slide-card-glass">
-          <!-- Presentation Infographic 5: ROI Impact Metrics -->
-          <div class="infographic-box" style="margin-bottom: 1.5rem;">
-            <div class="infographic-header">
-              <span class="infographic-title">💎 العائد الاستثماري المتوقع لشركتك (Projected ROI)</span>
-              <span class="infographic-tag">نتائج مؤكدة</span>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center;">
-              <div style="background: rgba(0, 229, 255, 0.06); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 8px; padding: 0.5rem 0.3rem;">
-                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--cyan);">+90%</div>
-                <div style="font-size: 0.64rem; color: var(--text-muted);">سرعة الاستجابة</div>
-              </div>
-              <div style="background: rgba(0, 245, 160, 0.06); border: 1px solid rgba(0, 245, 160, 0.2); border-radius: 8px; padding: 0.5rem 0.3rem;">
-                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--emerald);">-80%</div>
-                <div style="font-size: 0.64rem; color: var(--text-muted);">أخطاء إدخال البيانات</div>
-              </div>
-              <div style="background: rgba(79, 110, 247, 0.06); border: 1px solid rgba(79, 110, 247, 0.2); border-radius: 8px; padding: 0.5rem 0.3rem;">
-                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: #B8C8FF;">24/7</div>
-                <div style="font-size: 0.64rem; color: var(--text-muted);">تشغيل متواصل</div>
-              </div>
-            </div>
+    <!-- ========================================================
+         PANEL 5: المشاريع
+    ======================================================== -->
+    <section class="panel" id="projects" aria-label="المشاريع">
+      <span class="panel-label">المشاريع</span>
+      <h2 class="panel-heading">أنظمة بنيتها ونفذتها</h2>
+      <p class="panel-lead">نماذج لأعمال سابقة توضح نوع التحديات والقيود الهندسية والنتائج:</p>
+
+      <div class="projects-stack">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <h3 class="project-header-title">وكيل مبيعات وخدمة عملاء لمتجر إلكتروني</h3>
+          <div class="project-meta-grid">
+            <div class="meta-line"><span class="meta-term">نوع العميل:</span> متجر تجارة إلكترونية لبيع الأزياء بالتجزئة</div>
+            <div class="meta-line"><span class="meta-term">ما بنيته:</span> وكيل ذكاء اصطناعي مرتبط بواتساب يراجع المخزون لحظياً، يجيب عن استفسارات المقاسات، ويسجل الأوردر مباشرة في قاعدة البيانات</div>
+            <div class="meta-line"><span class="meta-term">الأدوات:</span> نماذج لغوية، N8N، WhatsApp Business API، Google Sheets</div>
+            <div class="meta-line"><span class="meta-term">القيد:</span> ضرورة فهم العامية المصرية ومصطلحات المقاسات المحلية، وتفادي بيع قطع غير متوفرة في المخزن</div>
+            <div class="meta-line"><span class="meta-term">النتيجة:</span> الرد في أقل من 15 ثانية على مدار 24 ساعة، وتوفير <span class="meta-unverified">[تحقق: 4 ساعات عمل يومياً كانت تضيع في الرد اليدوي]</span></div>
           </div>
-
-          <div class="cta-glass-card">
-            <h2 class="cta-card-title">هل لديك تحدٍ في شركتك تريد حله بالأتمتة والذكاء الاصطناعي؟</h2>
-            <p class="cta-card-sub">احجز جلسة تشخيص مجانية — نفهم وضعك التشغيلي الحالي ونقترح الحل الأنسب بدون أي التزام مسبق.</p>
-            <div class="contact-btn-stack">
-              <a href="https://wa.me/201283279337" target="_blank" class="btn-action btn-contact-wa">💬 تواصل عبر واتساب</a>
-              <a href="mailto:Ahmedmo.otX@gmail.com" class="btn-action btn-contact-email">✉️ راسلني على الإيميل</a>
-              <a href="https://t.me/+201096792586" target="_blank" class="btn-action btn-contact-tg">✈️ تواصل عبر تيليجرام</a>
-            </div>
+          <div class="project-screenshot-placeholder">
+            <span class="placeholder-tag">[ضع هنا لقطة حقيقية: محادثة الوكيل في واتساب وسجل الطلبات]</span>
+            <span class="placeholder-hint">أبعاد مستحسنة: 600×360 بكسل</span>
           </div>
+        </article>
 
-          <div class="deck-footer-wrap">
-            <div class="deck-footer-title">Ahmed Saber</div>
-            <p class="deck-footer-desc">متخصص بناء وكلاء الذكاء الاصطناعي وأنظمة الأتمتة المتقدمة للشركات والأنشطة التجارية لرفع كفاءة العمليات وزيادة الأرباح.</p>
-            <div class="deck-footer-info">
-              <span>📱 واتساب: 01283279337 / 01038805435</span>
-              <span>✉️ الإيميل: Ahmedmo.otX@gmail.com</span>
-              <span>✈️ تيليجرام: @01096792586</span>
-            </div>
-            <div class="deck-footer-copy">© 2025 Ahmed Saber — جميع الحقوق محفوظة</div>
+        <!-- Project 2 -->
+        <article class="project-card">
+          <h3 class="project-header-title">أتمتة دورة المبيعات وتحديث نظام إدارة العملاء</h3>
+          <div class="project-meta-grid">
+            <div class="meta-line"><span class="meta-term">نوع العميل:</span> شركة خدمات تعليمية وتدريب</div>
+            <div class="meta-line"><span class="meta-term">ما بنيته:</span> مسار أتمتة يسحب بيانات المسجلين الجدد من إعلانات فيسبوك، يتحقق من صحة أرقام الهواتف، يرسل التفاصيل عبر واتساب، ويحدث بطاقة العميل في الـ CRM</div>
+            <div class="meta-line"><span class="meta-term">الأدوات:</span> N8N، Webhooks، CRM API، WhatsApp Cloud API</div>
+            <div class="meta-line"><span class="meta-term">القيد:</span> منع تكرار تسجيل نفس العميل عند الضغط المتعدد، والتأكد من توافق توقيت الرسائل الآلية</div>
+            <div class="meta-line"><span class="meta-term">النتيجة:</span> تصفير زمن انتظار العميل المحتمل، وتوفير <span class="meta-unverified">[تحقق: 10 ساعات أسبوعياً من الإدخال اليدوي لفريق المبيعات]</span></div>
+          </div>
+          <div class="project-screenshot-placeholder">
+            <span class="placeholder-tag">[ضع هنا لقطة حقيقية: مخطط مسار N8N وسجل مزامنة البيانات]</span>
+            <span class="placeholder-hint">أبعاد مستحسنة: 600×360 بكسل</span>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <h3 class="project-header-title">نظام تقارير تشغيلية يومية للإدارة التنفيذية</h3>
+          <div class="project-meta-grid">
+            <div class="meta-line"><span class="meta-term">نوع العميل:</span> إدارة شركة توزيع وشحن محلي</div>
+            <div class="meta-line"><span class="meta-term">ما بنيته:</span> نظام يجمع بيانات المبيعات والشحنات المنفذة والمرتجعات كل صباح في السابعة، ويولد ملخصاً تنفيذياً مختصراً يُرسل لإدارة الشركة على واتساب وتيليجرام</div>
+            <div class="meta-line"><span class="meta-term">الأدوات:</span> N8N، PostgreSQL، Telegram Bot API، WhatsApp API</div>
+            <div class="meta-line"><span class="meta-term">القيد:</span> معالجة وتنظيف بيانات من جدولين منفصلين وحساب صافي التحصيلات بدقة دون أي خطأ رقمي</div>
+            <div class="meta-line"><span class="meta-term">النتيجة:</span> اطلاع الإدارة صباح كل يوم على مؤشرات الأداء الفعلية، وقرارات مبنية على أرقام دقيقة بدلاً من الانتظار لنهاية الشهر <span class="meta-unverified">[تحقق: نسبة تحسن المتابعة التشغيلية]</span></div>
+          </div>
+          <div class="project-screenshot-placeholder">
+            <span class="placeholder-tag">[ضع هنا لقطة حقيقية: نموذج التقرير اليومي على واتساب وتيليجرام]</span>
+            <span class="placeholder-hint">أبعاد مستحسنة: 600×360 بكسل</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PANEL 6: تواصل
+    ======================================================== -->
+    <section class="panel" id="contact" aria-label="تواصل">
+      <span class="panel-label">تواصل</span>
+      <h2 class="panel-heading">لنبدأ من فحص وضعك الحالي</h2>
+      <p class="panel-lead">راسلني عبر أي قناة تفضلها لنحدد موعد جلسة تشخيص مجانية نفهم فيها عملياتك ونقترح الحل الأنسب:</p>
+
+      <div class="contact-channels">
+        <!-- Email with Copy Button -->
+        <div class="contact-row">
+          <span class="contact-type">البريد الإلكتروني</span>
+          <div class="email-copy-box">
+            <span class="email-selectable" id="emailText">Ahmedmo.otX@gmail.com</span>
+            <button class="copy-btn" id="copyEmailBtn" type="button">نسخ</button>
           </div>
         </div>
-      </section>
 
-    </div>
+        <!-- WhatsApp -->
+        <div class="contact-row">
+          <span class="contact-type">واتساب</span>
+          <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="contact-direct-link">01283279337 / 01038805435</a>
+          <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="whatsapp-direct-btn">راسلني على واتساب</a>
+        </div>
+
+        <!-- Telegram -->
+        <div class="contact-row">
+          <span class="contact-type">تيليجرام</span>
+          <a href="https://t.me/+201096792586" target="_blank" rel="noopener" class="contact-direct-link">@01096792586</a>
+        </div>
+      </div>
+
+      <!-- Honest Certifications List -->
+      <div class="cert-section">
+        <h3 class="cert-heading">دورات وبرامج تدريبية أكملتها</h3>
+        <p class="cert-disclaimer">شهادات دورات متخصصة أتممتها لاختبار وممارسة هندسة الوكلاء ونماذج الذكاء الاصطناعي:</p>
+
+        <ul class="cert-list">
+          <li>Google AI Professional Certificate (برنامج من 7 دورات تخصصية)</li>
+          <li>Anthropic: Model Context Protocol (MCP) & MCP Advanced Topics</li>
+          <li>Dubai Future Foundation: 1 Million Prompters</li>
+        </ul>
+
+        <div class="cert-hidden-group" id="hiddenCerts">
+          <ul class="cert-list">
+            <li>Anthropic: Claude 101</li>
+            <li>Anthropic: Claude Code 101 & Claude Code in Action</li>
+            <li>Anthropic: Introduction to Subagents</li>
+            <li>Anthropic: Introduction to Agent Skills</li>
+            <li>Anthropic: Introduction to Claude Cowork</li>
+            <li>Anthropic: AI Fluency Framework & Foundations</li>
+            <li>Anthropic: AI Fluency for Students & Educators</li>
+            <li>Anthropic: Teaching the AI Fluency Framework</li>
+            <li>Anthropic: AI Capabilities & Limitations</li>
+          </ul>
+        </div>
+
+        <button type="button" class="toggle-certs-btn" id="toggleCertsBtn">عرض باقي الدورات (9 دورات)</button>
+      </div>
+    </section>
+
   </main>
 
-  <!-- ============================================================
-       BOTTOM DOCK CONTROLS & ARROWS
-  ============================================================ */
-  <footer class="bottom-nav-dock">
-    <button class="nav-arrow-btn" id="prevBtn" aria-label="السابق">
-      ›
-    </button>
-
-    <div class="dock-dots-track" id="dockDots">
-      <div class="dock-dot active" data-index="0"></div>
-      <div class="dock-dot" data-index="1"></div>
-      <div class="dock-dot" data-index="2"></div>
-      <div class="dock-dot" data-index="3"></div>
-      <div class="dock-dot" data-index="4"></div>
-      <div class="dock-dot" data-index="5"></div>
-    </div>
-
-    <div class="swipe-hint-pill">
-      <span>اسحب للتنقل</span>
-      <span>⇄</span>
-    </div>
-
-    <button class="nav-arrow-btn" id="nextBtn" aria-label="التالي">
-      ‹
-    </button>
+  <!-- Fixed Bottom Bar with Saffron Action Button (Hidden on Contact Panel) -->
+  <footer class="bottom-bar" id="bottomBar">
+    <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="btn-saffron-action">راسلني على واتساب</a>
   </footer>
 
   <!-- ============================================================
-       FAIL-SAFE DUAL-DIRECTION SWIPE & CAROUSEL JAVASCRIPT
+       NATIVE SCROLL-SNAP SYNC & LOGIC
   ============================================================ -->
   <script>
-    // 1. High Performance Preloader Animation
-    const preloader = document.getElementById('preloader');
-    const loadBar = document.getElementById('loadBar');
-    
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.floor(Math.random() * 22) + 16;
-      if (progress >= 100) {
-        progress = 100;
-        loadBar.style.width = '100%';
-        clearInterval(interval);
-        setTimeout(() => {
-          preloader.classList.add('fade-out');
-        }, 300);
-      } else {
-        loadBar.style.width = progress + '%';
-      }
-    }, 75);
+    (function() {
+      const deck = document.getElementById('deckViewport');
+      const panels = Array.from(document.querySelectorAll('.panel'));
+      const indicator = document.getElementById('panelIndicator');
+      const segments = document.querySelectorAll('.progress-segment');
+      const bottomBar = document.getElementById('bottomBar');
+      const copyBtn = document.getElementById('copyEmailBtn');
+      const emailText = document.getElementById('emailText');
+      const toggleCertsBtn = document.getElementById('toggleCertsBtn');
+      const hiddenCerts = document.getElementById('hiddenCerts');
 
-    // 2. Fail-Safe Dual-Direction Slide Navigation
-    const deckViewport = document.getElementById('deckViewport');
-    const deckTrack = document.getElementById('deckTrack');
-    const slides = document.querySelectorAll('.deck-slide');
-    const tabItems = document.querySelectorAll('.tab-item');
-    const dockDots = document.querySelectorAll('.dock-dot');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+      const panelNames = [
+        'الرئيسية',
+        'التحديات',
+        'الحلول',
+        'آلية العمل',
+        'المشاريع',
+        'تواصل'
+      ];
 
-    const totalSlides = slides.length;
-    let currentSlide = 0;
+      // Update Top Indicator and Progress Track based on scroll position
+      function updateActivePanel() {
+        if (!deck || panels.length === 0) return;
 
-    function goToSlide(index) {
-      if (index < 0) index = 0;
-      if (index >= totalSlides) index = totalSlides - 1;
-      currentSlide = index;
+        // In native RTL scroll-snap, calculate index by offset
+        const scrollLeft = Math.abs(deck.scrollLeft);
+        const panelWidth = panels[0].offsetWidth + 12; // gap is 12px
+        let activeIdx = Math.round(scrollLeft / panelWidth);
+        if (activeIdx < 0) activeIdx = 0;
+        if (activeIdx >= panels.length) activeIdx = panels.length - 1;
 
-      // Because the container is direction: ltr, Slide 0 is 0vw, Slide 1 is -100vw, Slide 2 is -200vw...
-      // This is 100% bug-free across all browsers!
-      const offset = currentSlide * 100;
-      deckTrack.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-      deckTrack.style.transform = `translate3d(-${offset}vw, 0, 0)`;
-
-      // Update slide active scale classes
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === currentSlide);
-      });
-
-      // Update top tabs
-      tabItems.forEach((tab, i) => {
-        tab.classList.toggle('active', i === currentSlide);
-        if (i === currentSlide) {
-          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        // Update text
+        if (indicator && panelNames[activeIdx]) {
+          indicator.textContent = panelNames[activeIdx];
         }
-      });
 
-      // Update bottom dock dots
-      dockDots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-      });
-    }
+        // Update progress bar
+        segments.forEach((seg, i) => {
+          seg.classList.toggle('active', i <= activeIdx);
+        });
 
-    // 3. Perfect Dual-Direction Touch Swipe Detection
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchEndX = 0;
-    let touchEndY = 0;
-    let isHorizontalGesture = null;
-
-    deckViewport.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      touchEndX = touchStartX;
-      touchEndY = touchStartY;
-      isHorizontalGesture = null;
-    }, { passive: true });
-
-    deckViewport.addEventListener('touchmove', (e) => {
-      touchEndX = e.touches[0].clientX;
-      touchEndY = e.touches[0].clientY;
-
-      const diffX = touchEndX - touchStartX;
-      const diffY = touchEndY - touchStartY;
-
-      // Decide gesture axis on the first 12 pixels
-      if (isHorizontalGesture === null) {
-        if (Math.abs(diffX) > 10 || Math.abs(diffY) > 10) {
-          isHorizontalGesture = Math.abs(diffX) > Math.abs(diffY);
-        }
-      }
-    }, { passive: true });
-
-    deckViewport.addEventListener('touchend', () => {
-      if (isHorizontalGesture) {
-        const diffX = touchEndX - touchStartX;
-        const SWIPE_THRESHOLD = 40; // 40px swipe trigger
-
-        if (Math.abs(diffX) >= SWIPE_THRESHOLD) {
-          if (diffX < 0) {
-            // Finger dragged to the LEFT (👈) -> Move to NEXT slide
-            goToSlide(currentSlide + 1);
+        // Hide fixed bottom bar on Contact panel (index 5)
+        if (bottomBar) {
+          if (activeIdx === 5) {
+            bottomBar.classList.add('hide-bar');
           } else {
-            // Finger dragged to the RIGHT (👉) -> Move to PREVIOUS slide
-            goToSlide(currentSlide - 1);
+            bottomBar.classList.remove('hide-bar');
           }
         }
       }
 
-      isHorizontalGesture = null;
-    }, { passive: true });
+      deck.addEventListener('scroll', updateActivePanel, { passive: true });
+      window.addEventListener('resize', updateActivePanel, { passive: true });
+      updateActivePanel();
 
-    // 4. Arrow Navigation
-    nextBtn.addEventListener('click', () => {
-      goToSlide(currentSlide + 1);
-    });
+      // Keyboard Left/Right Arrow Support
+      window.addEventListener('keydown', (e) => {
+        const scrollLeft = Math.abs(deck.scrollLeft);
+        const panelWidth = panels[0].offsetWidth + 12;
+        let activeIdx = Math.round(scrollLeft / panelWidth);
 
-    prevBtn.addEventListener('click', () => {
-      goToSlide(currentSlide - 1);
-    });
-
-    // 5. Tab Clicks
-    tabItems.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const idx = parseInt(tab.dataset.index);
-        goToSlide(idx);
+        if (e.key === 'ArrowLeft') {
+          // In RTL, left arrow goes forward to next panel
+          if (activeIdx < panels.length - 1) {
+            panels[activeIdx + 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+          }
+        } else if (e.key === 'ArrowRight') {
+          // In RTL, right arrow goes backward to previous panel
+          if (activeIdx > 0) {
+            panels[activeIdx - 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
+          }
+        }
       });
-    });
 
-    // 6. Dock Dot Clicks
-    dockDots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const idx = parseInt(dot.dataset.index);
-        goToSlide(idx);
-      });
-    });
-
-    // 7. Desktop Keyboard Navigation
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        goToSlide(currentSlide + 1);
-      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        goToSlide(currentSlide - 1);
+      // Handle Direct Hash Linking on Load (e.g. #projects)
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+          }, 150);
+        }
       }
-    });
+
+      // Copy Email functionality
+      if (copyBtn && emailText) {
+        copyBtn.addEventListener('click', () => {
+          const email = emailText.textContent.trim();
+          navigator.clipboard.writeText(email).then(() => {
+            const original = copyBtn.textContent;
+            copyBtn.textContent = 'تم النسخ';
+            setTimeout(() => {
+              copyBtn.textContent = original;
+            }, 1800);
+          }).catch(() => {
+            window.location.href = 'mailto:' + email;
+          });
+        });
+      }
+
+      // Toggle Hidden Certifications
+      if (toggleCertsBtn && hiddenCerts) {
+        let isExpanded = false;
+        toggleCertsBtn.addEventListener('click', () => {
+          isExpanded = !isExpanded;
+          hiddenCerts.classList.toggle('show', isExpanded);
+          toggleCertsBtn.textContent = isExpanded ? 'إخفاء باقي الدورات' : 'عرض باقي الدورات (9 دورات)';
+        });
+      }
+    })();
   </script>
 </body>
 </html>
