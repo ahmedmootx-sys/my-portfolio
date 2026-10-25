@@ -2,1157 +2,2536 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#EDF1F0">
-  <title>أحمد صابر | أنظمة ووكلاء الذكاء الاصطناعي</title>
-  <meta name="description" content="أبني وكلاء ذكاء اصطناعي وأتمتة تربط واتساب بنظامك التشغيلي وتسجل طلبات عملائك بدقة دون تدخل يدوي.">
-  <meta property="og:title" content="أحمد صابر | أنظمة ووكلاء الذكاء الاصطناعي">
-  <meta property="og:description" content="وكلاء يردّون على عملائك في واتساب ويسجّلون الطلب في نظامك.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmed Saber — أنظمة ذكاء اصطناعي وأتمتة مخصصة لشركتك</title>
+  <meta name="description" content="مهندس أتمتة وذكاء اصطناعي يبني وكلاء أذكياء لخدمة العملاء ومسارات تشغيل آلية تتصل مباشرة بقواعد بياناتك وتوفر مئات ساعات العمل اليدوي.">
+  <meta name="author" content="Ahmed Saber">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ahmed Saber — أنظمة أتمتة ووكلاء ذكاء اصطناعي لخدمة العملاء">
+  <meta property="og:description" content="وكلاء يردّون على عملائك في واتساب ويسجّلون الطلب في نظامك. شروحات بصرية تفاعلية تفهمها في 5 ثوانٍ.">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="ar_EG">
+  <meta property="og:image" content="profile.jpg">
 
-  <!-- Google Fonts: Reem Kufi & IBM Plex Sans Arabic -->
+  <!-- Google Fonts: Readex Pro (400, 600, 700) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ============================================================
-       STRICT 5-COLOR SYSTEM (NO 6TH COLOR)
-       ورق: #EDF1F0
-       حبر: #0F2A2C
-       بترول: #1F5C5E
-       زعفران: #F2B705 (زر واتساب فقط)
-       خط فاصل: #CBD3CF
-    ============================================================ */
+    /* ==========================================================================
+       DESIGN TOKENS & SYSTEM VARIABLES (DERIVED FROM PROFILE IDENTITY)
+       ========================================================================== */
     :root {
-      --color-paper: #EDF1F0;
-      --color-ink: #0F2A2C;
-      --color-petrol: #1F5C5E;
-      --color-saffron: #F2B705;
-      --color-divider: #CBD3CF;
+      /* Identity Palette */
+      --color-sky: #7BD3E7;
+      --color-mist: #F0F8FA;
+      --color-ink: #0A141B;
+      --color-deep-blue: #1E415A;
+      --color-frost: #E6F7FA;
+      --color-gold: #E8B22E;
+      --color-gold-hover: #D8A020;
 
-      --font-display: 'Reem Kufi', sans-serif;
-      --font-body: 'IBM Plex Sans Arabic', -apple-system, sans-serif;
+      /* Semantic Borders & Surfaces */
+      --border-dark: rgba(123, 211, 231, 0.22);
+      --border-light: rgba(30, 65, 90, 0.16);
+      --card-bg-dark: #12222E;
+      --card-bg-light: #FFFFFF;
+      --text-muted-dark: #A5C2CC;
+      --text-muted-light: #4A6372;
+      
+      /* Typography & Metrics */
+      --font-family: 'Readex Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --line-height-body: 1.75;
+      --container-max-w: 1060px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
 
-      --header-h: 58px;
-      --bottom-bar-h: 68px;
+      /* Motion Easings */
+      --ease-out-cubic: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-standard: 350ms var(--ease-out-cubic);
     }
 
+    /* ==========================================================================
+       RESET & BASE FOUNDATION
+       ========================================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html, body {
-      background-color: var(--color-paper);
-      color: var(--color-ink);
-      font-family: var(--font-body);
-      height: 100%;
-      height: 100dvh;
-      overflow: hidden;
-      direction: rtl;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-rendering: optimizeLegibility;
+      font-size: 16px;
     }
 
-    /* Accessibility Focus Visible */
-    :focus-visible {
-      outline: 2px solid var(--color-petrol);
-      outline-offset: 3px;
+    body {
+      font-family: var(--font-family);
+      line-height: var(--line-height-body);
+      color: var(--color-ink);
+      background-color: var(--color-mist);
+      direction: rtl;
+      text-align: right;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
     }
 
     a {
-      color: var(--color-petrol);
+      color: inherit;
       text-decoration: none;
-      transition: color 0.15s ease;
-    }
-    a:hover {
-      color: var(--color-ink);
     }
 
-    /* ============================================================
-       TOP BAR (STICKY)
-    ============================================================ */
-    .top-bar {
-      position: fixed;
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-sky);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max-w);
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-inline: 2rem;
+      }
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== */
+    .site-header {
+      position: sticky;
       top: 0;
-      inset-inline: 0;
-      height: var(--header-h);
-      padding-block-start: env(safe-area-inset-top, 0);
-      background-color: var(--color-paper);
-      border-block-end: 1px solid var(--color-divider);
       z-index: 100;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background-color: rgba(10, 20, 27, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-block-end: 1px solid var(--border-dark);
+      transition: background-color var(--transition-standard);
     }
 
-    .top-bar-content {
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-inline: 1.25rem;
-      height: 100%;
+      height: 64px;
     }
 
-    .brand-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--color-ink);
-      letter-spacing: -0.01em;
-    }
-
-    .panel-indicator {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-petrol);
+    .brand-link {
       display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      user-select: none;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      padding: 2px;
+      background: linear-gradient(135deg, var(--color-sky), var(--color-deep-blue));
+      flex-shrink: 0;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+      display: block;
+      background-color: var(--color-deep-blue);
+    }
+
+    .brand-name-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .brand-status {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--color-sky);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-sky);
+      display: inline-block;
+      animation: pulse-dot 2.5s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-item a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted-dark);
+      transition: color 200ms ease;
+    }
+
+    .nav-item a:hover {
+      color: #FFFFFF;
+    }
+
+    .header-cta-btn {
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      background-color: var(--color-gold);
+      color: var(--color-ink);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-md);
+      transition: background-color 200ms ease, transform 150ms ease;
+      user-select: none;
     }
 
-    /* 6-Segment Progress Indicator */
-    .progress-track {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 3px;
-      height: 3px;
-      width: 100%;
-      background-color: var(--color-paper);
-      padding-inline: 1.25rem;
-      padding-block-end: 1px;
-    }
-
-    .progress-segment {
-      height: 2px;
-      background-color: var(--color-divider);
-      transition: background-color 0.25s ease;
-    }
-
-    .progress-segment.active {
-      background-color: var(--color-petrol);
-    }
-
-    /* ============================================================
-       HORIZONTAL SCROLL-SNAP DECK
-    ============================================================ */
-    .deck-viewport {
-      position: fixed;
-      top: var(--header-h);
-      bottom: var(--bottom-bar-h);
-      inset-inline: 0;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      display: flex;
-      flex-direction: row;
-      gap: 12px;
-      padding-inline: 1rem 2rem;
-      padding-block: 0.75rem;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .deck-viewport::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Each Panel fills screen with small peek of the next panel */
-    .panel {
-      flex: 0 0 calc(100vw - 38px);
-      max-width: 640px;
-      height: 100%;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      background-color: var(--color-paper);
-      border: 1px solid var(--color-divider);
-      border-radius: 4px;
-      overflow-y: auto;
-      overscroll-behavior-y: contain;
-      padding-inline: 1.25rem;
-      padding-block: 1.5rem 2rem;
-      display: flex;
-      flex-direction: column;
+    .header-cta-btn:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-1px);
     }
 
     @media (min-width: 860px) {
-      .deck-viewport {
-        padding-inline: 2rem 4rem;
-        gap: 24px;
-      }
-      .panel {
-        flex: 0 0 580px;
-        max-width: 580px;
-        padding-inline: 2rem;
-        padding-block: 2rem;
+      .nav-links {
+        display: flex;
       }
     }
 
-    /* Typography Hierarchy (By size and weight, never by color gimmick) */
-    .panel-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-petrol);
-      margin-block-end: 0.75rem;
-    }
-
-    .panel-heading {
-      font-family: var(--font-display);
-      font-size: 2.15rem;
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--color-ink);
-      margin-block-end: 1rem;
-      letter-spacing: -0.01em;
-      max-width: 24ch;
-    }
-
-    .panel-lead {
-      font-size: 1.05rem;
-      font-weight: 500;
-      line-height: 1.7;
-      color: var(--color-ink);
-      margin-block-end: 1.5rem;
-      max-width: 56ch;
-    }
-
-    .panel-body-text {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--color-ink);
-      max-width: 60ch;
-    }
-
-    /* Thin Divider */
-    .rule {
-      height: 1px;
-      background-color: var(--color-divider);
-      border: none;
-      margin-block: 1.25rem;
-    }
-
-    /* ============================================================
-       PANEL 1: THE CORE PROOF (WHATSAPP CONVERSATION)
-    ============================================================ */
-    .chat-mockup-wrapper {
-      margin-block: 1.25rem;
-      background-color: #E6EAE8;
-      border: 1px solid var(--color-divider);
-      border-radius: 6px;
-      padding: 1.15rem 1rem;
-    }
-
-    .chat-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .chat-bubble {
-      padding: 0.65rem 0.95rem;
-      border-radius: 6px;
-      font-size: 0.92rem;
-      line-height: 1.55;
-      max-width: 88%;
-      color: var(--color-ink);
+    /* ==========================================================================
+       SECTION COMMON PATTERNS & THEMES
+       ========================================================================== */
+    .section-block {
+      padding-block: 4.5rem;
       position: relative;
     }
 
-    .chat-client {
-      align-self: flex-start;
-      background-color: #FFFFFF;
-      border: 1px solid var(--color-divider);
-      border-start-start-radius: 1px;
-    }
-
-    .chat-agent {
-      align-self: flex-end;
-      background-color: #DCE5E2;
-      border: 1px solid #CAD5D1;
-      border-start-end-radius: 1px;
-    }
-
-    .chat-sender {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--color-petrol);
-      margin-block-end: 0.2rem;
-      display: block;
-    }
-
-    .chat-time {
-      font-size: 0.68rem;
-      color: var(--color-petrol);
-      opacity: 0.75;
-      margin-inline-start: 0.5rem;
-      float: inline-end;
-      margin-block-start: 0.35rem;
-    }
-
-    /* Single Motion Moment: Initial Load Staggered Entrance */
-    @media (prefers-reduced-motion: no-preference) {
-      .chat-client-1 {
-        animation: chatFade 0.4s ease-out 0.15s both;
-      }
-      .chat-agent-1 {
-        animation: chatFade 0.4s ease-out 0.6s both;
-      }
-      .chat-client-2 {
-        animation: chatFade 0.4s ease-out 1.1s both;
-      }
-      .chat-agent-2 {
-        animation: chatFade 0.4s ease-out 1.55s both;
+    @media (min-width: 768px) {
+      .section-block {
+        padding-block: 6rem;
       }
     }
 
-    @keyframes chatFade {
-      from {
-        opacity: 0;
-        transform: translateY(6px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .chat-caption {
-      font-size: 0.78rem;
-      color: var(--color-petrol);
-      margin-block-start: 0.5rem;
-      text-align: center;
-    }
-
-    /* ============================================================
-       PANEL 2: CHALLENGES (TEXT WEIGHTS ONLY, NO CARDS)
-    ============================================================ */
-    .challenges-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-block-start: 0.5rem;
-    }
-
-    .challenge-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      padding-block-end: 1.25rem;
-      border-block-end: 1px solid var(--color-divider);
-    }
-    .challenge-row:last-child {
-      border-block-end: none;
-    }
-
-    .challenge-statement {
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.45;
-      color: var(--color-ink);
-    }
-
-    .challenge-detail {
-      font-size: 0.92rem;
-      color: var(--color-petrol);
-      line-height: 1.65;
-    }
-
-    /* ============================================================
-       PANEL 3: SOLUTIONS (4 SERVICES, FIRST IS PROMINENT)
-    ============================================================ */
-    .solutions-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .solution-item {
-      padding-block: 1.25rem;
-      border-block-end: 1px solid var(--color-divider);
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .solution-item:first-child {
-      padding-block-start: 0.25rem;
-    }
-    .solution-item:last-child {
-      border-block-end: none;
-    }
-
-    .solution-item-prominent .solution-title {
-      font-family: var(--font-display);
-      font-size: 1.55rem;
-      font-weight: 700;
-      color: var(--color-ink);
-      line-height: 1.35;
-      margin-block-end: 0.25rem;
-    }
-
-    .solution-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--color-ink);
-      line-height: 1.4;
-    }
-
-    .solution-desc {
-      font-size: 0.92rem;
-      color: var(--color-ink);
-      line-height: 1.7;
-    }
-
-    .solution-tools {
+    .section-tag {
+      display: inline-block;
       font-size: 0.82rem;
-      color: var(--color-petrol);
-      margin-block-start: 0.25rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      margin-block-end: 0.85rem;
+      letter-spacing: 0.02em;
     }
 
-    /* ============================================================
-       PANEL 4: WORKFLOW (4 NUMBERED STEPS ONLY)
-    ============================================================ */
-    .workflow-steps {
+    .section-heading {
+      font-size: 1.85rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-block-end: 1rem;
+      max-width: 38ch;
+    }
+
+    @media (min-width: 768px) {
+      .section-heading {
+        font-size: 2.35rem;
+      }
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 62ch;
+      margin-block-end: 2.25rem;
+    }
+
+    /* Visual Explanation Punchline under animation */
+    .visual-punchline {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-block-start: 1.25rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .punchline-badge {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Section Theme Alternation */
+    .theme-dark {
+      background-color: var(--color-ink);
+      color: #FFFFFF;
+    }
+
+    .theme-dark .section-tag {
+      background-color: rgba(123, 211, 231, 0.12);
+      color: var(--color-sky);
+      border: 1px solid var(--border-dark);
+    }
+
+    .theme-dark .section-lead {
+      color: var(--text-muted-dark);
+    }
+
+    .theme-dark .visual-punchline {
+      background-color: rgba(30, 65, 90, 0.4);
+      border: 1px solid var(--border-dark);
+      color: #FFFFFF;
+    }
+
+    .theme-dark .punchline-badge {
+      background-color: var(--color-sky);
+      color: var(--color-ink);
+    }
+
+    .theme-mist {
+      background-color: var(--color-mist);
+      color: var(--color-ink);
+    }
+
+    .theme-mist .section-tag {
+      background-color: rgba(30, 65, 90, 0.08);
+      color: var(--color-deep-blue);
+      border: 1px solid var(--border-light);
+    }
+
+    .theme-mist .section-lead {
+      color: var(--text-muted-light);
+    }
+
+    .theme-mist .visual-punchline {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-light);
+      color: var(--color-deep-blue);
+    }
+
+    .theme-mist .punchline-badge {
+      background-color: var(--color-deep-blue);
+      color: #FFFFFF;
+    }
+
+    .theme-frost {
+      background-color: var(--color-frost);
+      color: var(--color-ink);
+    }
+
+    .theme-frost .section-tag {
+      background-color: rgba(30, 65, 90, 0.08);
+      color: var(--color-deep-blue);
+      border: 1px solid var(--border-light);
+    }
+
+    .theme-frost .section-lead {
+      color: var(--text-muted-light);
+    }
+
+    .theme-frost .visual-punchline {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-light);
+      color: var(--color-deep-blue);
+    }
+
+    .theme-frost .punchline-badge {
+      background-color: var(--color-deep-blue);
+      color: #FFFFFF;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background-color: var(--color-gold);
+      color: var(--color-ink);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-md);
+      transition: background-color 200ms ease, transform 150ms ease;
+      text-align: center;
+      user-select: none;
+    }
+
+    .btn-gold:hover {
+      background-color: var(--color-gold-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background-color: rgba(30, 65, 90, 0.35);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-dark);
+      transition: background-color 200ms ease, border-color 200ms ease;
+      user-select: none;
+    }
+
+    .btn-secondary-dark:hover {
+      background-color: rgba(30, 65, 90, 0.6);
+      border-color: var(--color-sky);
+    }
+
+    .tech-term-note {
+      font-size: 0.82rem;
+      color: var(--color-deep-blue);
+      background-color: rgba(123, 211, 231, 0.25);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      font-weight: 600;
+      margin-inline-start: 0.35rem;
+    }
+
+    /* ==========================================================================
+       SECTION 1: HERO (THE MIDNIGHT ORDER MINI-STORY)
+       ========================================================================== */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 920px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr 1fr;
+        gap: 3.5rem;
+      }
+    }
+
+    .hero-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-block-start: 1.5rem;
+    }
+
+    .motion-engine-hero {
+      position: relative;
+      background-color: var(--card-bg-dark);
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+      user-select: none;
+    }
+
+    .motion-badge-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-block-end: 1px solid var(--border-dark);
+      padding-block-end: 0.75rem;
+      margin-block-end: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted-dark);
+    }
+
+    .replay-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--color-sky);
+      font-size: 0.72rem;
+    }
+
+    .simulated-chat {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      margin-block-start: 0.5rem;
+      gap: 0.85rem;
     }
 
-    .step-entry {
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 1rem;
-      padding-block-end: 1.15rem;
-      border-block-end: 1px solid var(--color-divider);
-    }
-    .step-entry:last-child {
-      border-block-end: none;
+    .chat-bubble {
+      max-width: 88%;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      position: relative;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 400ms var(--ease-out-cubic), transform 400ms var(--ease-out-cubic);
     }
 
-    .step-num {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
+    .chat-bubble-client {
+      align-self: flex-start;
+      background-color: #1A3242;
+      color: #FFFFFF;
+      border: 1px solid rgba(123, 211, 231, 0.2);
+      border-bottom-right-radius: 2px;
+    }
+
+    .chat-bubble-agent {
+      align-self: flex-end;
+      background-color: var(--color-deep-blue);
+      color: #FFFFFF;
+      border: 1px solid var(--color-sky);
+      border-bottom-left-radius: 2px;
+    }
+
+    .bubble-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      margin-block-end: 0.3rem;
+      color: var(--color-sky);
+      font-weight: 600;
+    }
+
+    .bubble-time {
+      font-size: 0.7rem;
+      color: var(--text-muted-dark);
+      font-weight: 400;
+      direction: ltr;
+    }
+
+    .typing-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0.5rem 0.85rem;
+      background-color: var(--color-deep-blue);
+      border-radius: var(--radius-md);
+      align-self: flex-end;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 300ms ease, transform 300ms ease;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-sky);
+      animation: typingBounce 1s infinite alternate;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      0% { transform: translateY(0); opacity: 0.4; }
+      100% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    .hero-pipeline-bridge {
+      margin-block: 0.85rem;
+      position: relative;
+    }
+
+    .pipeline-line-svg {
+      width: 100%;
+      height: 38px;
+    }
+
+    .pipeline-wire {
+      stroke: var(--border-dark);
+      stroke-width: 2px;
+      fill: none;
+    }
+
+    .pipeline-pulse {
+      stroke: var(--color-sky);
+      stroke-width: 3px;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 20 180;
+      stroke-dashoffset: 200;
+    }
+
+    .simulated-crm-card {
+      background-color: #0E1A22;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 450ms var(--ease-out-cubic), transform 450ms var(--ease-out-cubic);
+    }
+
+    .crm-tag {
+      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--color-petrol);
-      line-height: 1;
-      padding-block-start: 0.2rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      background-color: rgba(30, 180, 100, 0.18);
+      color: #38E088;
+      border: 1px solid rgba(56, 224, 136, 0.3);
     }
 
-    .step-content h3 {
+    .crm-info {
+      font-size: 0.82rem;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .simulated-alert-pill {
+      background-color: rgba(123, 211, 231, 0.15);
+      border: 1px solid var(--color-sky);
+      border-radius: var(--radius-full);
+      padding: 0.4rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.76rem;
+      color: var(--color-sky);
+      margin-block-start: 0.75rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 400ms var(--ease-out-cubic), transform 400ms var(--ease-out-cubic);
+    }
+
+    /* Active Animation Timeline for Hero */
+    .motion-engine-hero.is-active .chat-bubble-1 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 150ms;
+    }
+
+    .motion-engine-hero.is-active .typing-indicator {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 1000ms;
+    }
+
+    .motion-engine-hero.is-active .chat-bubble-2 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 2200ms;
+    }
+
+    .motion-engine-hero.is-active .pipeline-pulse {
+      animation: pulsePathHero 2s linear infinite;
+      animation-delay: 2700ms;
+    }
+
+    @keyframes pulsePathHero {
+      0% { stroke-dashoffset: 200; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .motion-engine-hero.is-active .simulated-crm-card {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 3400ms;
+    }
+
+    .motion-engine-hero.is-active .simulated-alert-pill {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 4200ms;
+    }
+
+    /* ==========================================================================
+       SECTION 2: PROBLEMS (THE 4 VIGNETTES)
+       ========================================================================== */
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-block-end: 2rem;
+    }
+
+    @media (min-width: 680px) {
+      .problems-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .problem-card {
+      background-color: var(--card-bg-light);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      box-shadow: 0 4px 14px rgba(10, 20, 27, 0.04);
+      transition: transform var(--transition-standard), border-color var(--transition-standard);
+    }
+
+    .problem-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-deep-blue);
+    }
+
+    .vignette-canvas {
+      height: 120px;
+      background-color: var(--color-mist);
+      border: 1px dashed var(--border-light);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-title {
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--color-ink);
-      margin-block-end: 0.35rem;
+      line-height: 1.45;
     }
 
-    .step-content p {
+    .problem-desc {
       font-size: 0.92rem;
-      color: var(--color-ink);
+      color: var(--text-muted-light);
       line-height: 1.65;
     }
 
-    /* ============================================================
-       PANEL 5: PROJECTS (3 PROJECTS, CLEAR CRITERIA, PLACEHOLDERS)
-    ============================================================ */
-    .projects-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+    .vignette-clock-hand {
+      transform-origin: 40px 50px;
+      animation: spinClock 4s linear infinite;
     }
 
-    .project-card {
+    @keyframes spinClock {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .vignette-loop-doc {
+      animation: bounceLoopDoc 2.5s ease-in-out infinite;
+    }
+
+    @keyframes bounceLoopDoc {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .broken-wire-dot {
+      animation: packetDrop 2s ease-in-out infinite;
+    }
+
+    @keyframes packetDrop {
+      0% { transform: translateX(0); opacity: 1; }
+      50% { transform: translateX(25px); opacity: 0; }
+      51% { transform: translateX(0); opacity: 0; }
+      70% { opacity: 1; }
+      100% { transform: translateX(25px); opacity: 0; }
+    }
+
+    .waiting-pulse-circle {
+      animation: pulseWait 2s infinite;
+      transform-origin: center;
+    }
+
+    @keyframes pulseWait {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.2; }
+      100% { transform: scale(0.9); opacity: 0.8; }
+    }
+
+    .leaving-customer-arrow {
+      animation: shiftCompetitor 3s ease-in-out infinite;
+    }
+
+    @keyframes shiftCompetitor {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(-16px); }
+    }
+
+    .chart-zero-line {
+      stroke-dasharray: 6 6;
+      animation: pulseZeroLine 2s linear infinite;
+    }
+
+    @keyframes pulseZeroLine {
+      0% { stroke-dashoffset: 12; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    /* ==========================================================================
+       SECTION 3: SOLUTIONS & SERVICES (BEFORE & AFTER INTERACTIVE)
+       ========================================================================== */
+    .solutions-tabs-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-block-end: 2rem;
+    }
+
+    .solution-tab-btn {
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.92rem;
+      background-color: #FFFFFF;
+      color: var(--color-deep-blue);
+      border: 1px solid var(--border-light);
+      transition: all 200ms ease;
+      user-select: none;
+    }
+
+    .solution-tab-btn.active, .solution-tab-btn:hover {
+      background-color: var(--color-deep-blue);
+      color: #FFFFFF;
+      border-color: var(--color-deep-blue);
+    }
+
+    .solution-panel-card {
+      display: none;
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(10, 20, 27, 0.05);
+      animation: fadeInPanel 350ms var(--ease-out-cubic);
+    }
+
+    .solution-panel-card.active {
+      display: block;
+    }
+
+    @keyframes fadeInPanel {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .before-after-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-block: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .before-after-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .state-box {
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      padding-block-end: 1.75rem;
-      border-block-end: 1px solid var(--color-divider);
-    }
-    .project-card:last-child {
-      border-block-end: none;
-      padding-block-end: 0;
     }
 
-    .project-header-title {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
+    .state-before {
+      background-color: #FBF1F1;
+      border: 1px solid #ECCACA;
+    }
+
+    .state-after {
+      background-color: #F0FAF5;
+      border: 1px solid #B8EAD0;
+    }
+
+    .state-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .state-badge-before {
+      background-color: #D94848;
+      color: #FFFFFF;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .state-badge-after {
+      background-color: #278C56;
+      color: #FFFFFF;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .state-illustration {
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .state-text {
+      font-size: 0.92rem;
+      line-height: 1.6;
       color: var(--color-ink);
-      line-height: 1.35;
+    }
+
+    /* ==========================================================================
+       SECTION 4: CASE STUDIES & REAL PROJECTS (3 VERIFIED SYSTEMS)
+       ========================================================================== */
+    .projects-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .project-card {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: 0 8px 24px rgba(10, 20, 27, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .project-header-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-block-end: 1px solid var(--border-light);
+      padding-block-end: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-deep-blue);
+    }
+
+    .project-client-badge {
+      font-size: 0.82rem;
+      background-color: var(--color-mist);
+      color: var(--color-deep-blue);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
+      font-weight: 600;
+    }
+
+    /* Before & After Direct Impact Strip */
+    .project-impact-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      background-color: var(--color-mist);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+
+    @media (min-width: 600px) {
+      .project-impact-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .impact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+    }
+
+    .impact-badge-red {
+      background-color: #D94848;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+
+    .impact-badge-green {
+      background-color: #278C56;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+
+    .project-flow-canvas {
+      background-color: #0A141B;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      color: #FFFFFF;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    .flow-steps-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 580px;
+      gap: 0.75rem;
+    }
+
+    .flow-node {
+      background-color: #12222E;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      width: 140px;
+      flex-shrink: 0;
+      text-align: center;
+      transition: border-color 200ms ease;
+    }
+
+    .flow-node:hover {
+      border-color: var(--color-sky);
+    }
+
+    .flow-node-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-sky);
+    }
+
+    .flow-node-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted-dark);
+      line-height: 1.3;
+    }
+
+    .flow-arrow-svg {
+      width: 32px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .flow-wire {
+      stroke: var(--color-sky);
+      stroke-width: 2px;
+      stroke-dasharray: 4 4;
+      animation: pulseDash 1.2s linear infinite;
+    }
+
+    @keyframes pulseDash {
+      to { stroke-dashoffset: -8; }
     }
 
     .project-meta-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-      margin-block: 0.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
     }
 
-    .meta-line {
-      font-size: 0.92rem;
-      line-height: 1.65;
-      color: var(--color-ink);
+    @media (min-width: 768px) {
+      .project-meta-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .meta-item {
+      background-color: var(--color-mist);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-light);
     }
 
     .meta-term {
       font-weight: 700;
-      color: var(--color-petrol);
-      display: inline-block;
-      min-width: 90px;
-    }
-
-    .meta-unverified {
-      background-color: #E2E8E6;
-      padding-inline: 0.35rem;
-      padding-block: 0.1rem;
-      border-radius: 2px;
-      font-size: 0.88rem;
-    }
-
-    .project-screenshot-placeholder {
-      border: 1px dashed var(--color-petrol);
-      background-color: #E7ECEB;
-      padding: 1.25rem 1rem;
-      border-radius: 4px;
-      text-align: center;
-      margin-block-start: 0.35rem;
-    }
-
-    .placeholder-tag {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--color-petrol);
+      color: var(--color-deep-blue);
       display: block;
       margin-block-end: 0.25rem;
     }
 
-    .placeholder-hint {
-      font-size: 0.75rem;
-      color: var(--color-ink);
-      opacity: 0.75;
+    .screenshot-slot {
+      border: 2px dashed var(--color-deep-blue);
+      background-color: var(--color-frost);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      color: var(--color-deep-blue);
+      font-weight: 600;
+      font-size: 0.88rem;
     }
 
-    /* ============================================================
-       PANEL 6: CONTACT & CERTIFICATIONS LIST
-    ============================================================ */
-    .contact-channels {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      margin-block: 1rem 1.75rem;
+    .screenshot-slot span {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-muted-light);
+      margin-block-start: 0.25rem;
     }
 
-    .contact-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
+    /* ==========================================================================
+       SECTION 5: WORKFLOW (4-STEP BLUEPRINT WITH CONNECTED SPINE)
+       ========================================================================== */
+    .timeline-container {
+      position: relative;
+      margin-block-start: 2rem;
     }
 
-    .contact-type {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--color-petrol);
+    /* The Continuous Engineering Spine */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      bottom: 25px;
+      right: 25px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--color-deep-blue), var(--color-sky));
+      z-index: 1;
     }
 
-    .email-copy-box {
+    @media (min-width: 768px) {
+      .timeline-container::before {
+        right: 25px;
+      }
+    }
+
+    .timeline-step-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-block-end: 2.75rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-step-row {
+        grid-template-columns: 80px 1.2fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .step-number-box {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 0.75rem;
-      background-color: #E4EAE8;
-      border: 1px solid var(--color-divider);
-      padding: 0.65rem 0.85rem;
-      border-radius: 4px;
-    }
-
-    .email-selectable {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--color-ink);
-      user-select: all;
-      direction: ltr;
-      text-align: right;
-    }
-
-    .copy-btn {
-      background: none;
-      border: 1px solid var(--color-petrol);
-      color: var(--color-petrol);
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.35rem 0.75rem;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-    .copy-btn:hover {
-      background-color: var(--color-petrol);
-      color: var(--color-paper);
-    }
-
-    .contact-direct-link {
-      font-size: 1.05rem;
+      font-size: 1.75rem;
       font-weight: 700;
-      color: var(--color-ink);
-      direction: ltr;
-      text-align: right;
-      display: inline-block;
-    }
-    .contact-direct-link:hover {
-      color: var(--color-petrol);
+      color: var(--color-deep-blue);
     }
 
-    .whatsapp-direct-btn {
-      display: inline-flex;
+    .step-number-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-deep-blue);
+      color: #FFFFFF;
+      display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--color-saffron);
-      color: var(--color-ink);
-      font-family: var(--font-body);
+      font-size: 1.25rem;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 0.85rem 1.5rem;
-      border-radius: 4px;
-      margin-block-start: 0.5rem;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      width: 100%;
+      flex-shrink: 0;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 10px rgba(10, 20, 27, 0.12);
     }
 
-    /* Certifications Honest Text List */
-    .cert-section {
-      margin-block-start: 1rem;
-      padding-block-start: 1.5rem;
-      border-block-start: 1px solid var(--color-divider);
-    }
-
-    .cert-heading {
-      font-size: 1rem;
+    .step-info-col h3 {
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--color-ink);
       margin-block-end: 0.5rem;
     }
 
-    .cert-disclaimer {
+    .step-info-col p {
+      font-size: 0.95rem;
+      color: var(--text-muted-light);
+      line-height: 1.65;
+    }
+
+    .deliverable-preview-box {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 4px 12px rgba(10, 20, 27, 0.03);
+    }
+
+    .deliverable-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-frost);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid var(--border-light);
+    }
+
+    .deliverable-details h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--color-deep-blue);
+    }
+
+    .deliverable-details p {
+      font-size: 0.8rem;
+      color: var(--text-muted-light);
+      margin-block-start: 0.2rem;
+    }
+
+    /* ==========================================================================
+       SECTION 6: CONTACT & CERTIFICATIONS (WITH ANIMATED WHATSAPP SENDER)
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (min-width: 880px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+      }
+    }
+
+    .contact-card-box {
+      background-color: var(--card-bg-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Animated WhatsApp Direct Message Sandbox */
+    .whatsapp-interactive-widget {
+      background-color: #0E1A22;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .wa-widget-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-block-end: 1px solid var(--border-dark);
+      padding-block-end: 0.6rem;
       font-size: 0.82rem;
-      color: var(--color-petrol);
+      color: #FFFFFF;
+    }
+
+    .wa-online-status {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--color-sky);
+      font-size: 0.72rem;
+    }
+
+    .wa-chat-preview {
+      background-color: #0A141B;
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid rgba(123, 211, 231, 0.1);
+    }
+
+    .wa-simulated-msg {
+      font-size: 0.84rem;
+      color: #FFFFFF;
       line-height: 1.5;
-      margin-block-end: 0.85rem;
+    }
+
+    .wa-typing-live {
+      display: inline-block;
+      border-left: 2px solid var(--color-sky);
+      animation: blinkCursor 0.8s infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .contact-channel-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      border-block-end: 1px solid var(--border-dark);
+      padding-block-end: 1.25rem;
+    }
+
+    .contact-channel-row:last-child {
+      border-block-end: none;
+      padding-block-end: 0;
+    }
+
+    .channel-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-sky);
+    }
+
+    .channel-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .channel-link {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .btn-copy {
+      background-color: var(--color-deep-blue);
+      color: var(--color-sky);
+      border: 1px solid var(--border-dark);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 150ms ease;
+      user-select: none;
+    }
+
+    .btn-copy:hover {
+      background-color: var(--color-sky);
+      color: var(--color-ink);
+    }
+
+    /* Certifications Section */
+    .cert-container {
+      background-color: #0E1A22;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .cert-heading {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-block-end: 0.5rem;
+    }
+
+    .cert-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted-dark);
+      margin-block-end: 1rem;
+      line-height: 1.6;
     }
 
     .cert-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
-    .cert-list li {
-      font-size: 0.88rem;
-      color: var(--color-ink);
-      padding-block: 0.25rem;
-      border-block-end: 1px dashed var(--color-divider);
-    }
-
-    .cert-hidden-group {
-      display: none;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-block-start: 0.5rem;
-    }
-
-    .cert-hidden-group.show {
+    .cert-item {
       display: flex;
-    }
-
-    .toggle-certs-btn {
-      background: none;
-      border: none;
-      color: var(--color-petrol);
-      font-family: var(--font-body);
+      align-items: center;
+      gap: 0.6rem;
       font-size: 0.85rem;
+      color: #FFFFFF;
+      padding: 0.45rem 0.65rem;
+      background-color: var(--card-bg-dark);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-dark);
+    }
+
+    .cert-check {
+      color: var(--color-sky);
       font-weight: 700;
-      cursor: pointer;
-      padding-block: 0.65rem;
-      text-align: right;
+    }
+
+    .cert-more-group {
+      display: none;
+      margin-block-start: 0.6rem;
+    }
+
+    .cert-more-group.open {
+      display: block;
+    }
+
+    .btn-toggle-certs {
+      margin-block-start: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-sky);
       text-decoration: underline;
-    }
-
-    /* ============================================================
-       FIXED BOTTOM BAR (WHATSAPP SAFFRON BUTTON)
-    ============================================================ */
-    .bottom-bar {
-      position: fixed;
-      bottom: 0;
-      inset-inline: 0;
-      height: var(--bottom-bar-h);
-      padding-block-end: env(safe-area-inset-bottom, 0);
-      background-color: var(--color-paper);
-      border-block-start: 1px solid var(--color-divider);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-inline: 1.25rem;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .bottom-bar.hide-bar {
-      transform: translateY(100%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .btn-saffron-action {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--color-saffron);
-      color: var(--color-ink);
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 0.98rem;
-      height: 46px;
-      width: 100%;
-      max-width: 480px;
-      border-radius: 4px;
-      border: none;
       cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.15s ease;
     }
 
-    .btn-saffron-action:hover {
-      background-color: #E2AA04;
-      color: var(--color-ink);
+    /* ==========================================================================
+       FOOTER
+       ======================================================================== */
+    .site-footer {
+      background-color: #050B0F;
+      border-block-start: 1px solid var(--border-dark);
+      padding-block: 2.5rem;
+      color: var(--text-muted-dark);
+      font-size: 0.85rem;
+      text-align: center;
     }
 
-    /* Small Screen Heights */
-    @media (max-height: 640px) {
-      .panel-heading {
-        font-size: 1.75rem;
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 600px) {
+      .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
       }
-      .panel {
-        padding-block: 1rem 1.5rem;
+    }
+
+    .footer-copy {
+      font-weight: 400;
+    }
+
+    .footer-name {
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       ACCESSIBILITY & REDUCED MOTION OVERRIDES
+       ========================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .chat-bubble, .typing-indicator, .simulated-crm-card, .simulated-alert-pill {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .pipeline-pulse, .flow-wire, .broken-wire-dot, .vignette-clock-hand {
+        animation: none !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar with Active Panel Indicator & Progress -->
-  <header class="top-bar">
-    <div class="top-bar-content">
-      <span class="brand-name">أحمد صابر</span>
-      <span class="panel-indicator" id="panelIndicator">الرئيسية</span>
-    </div>
-    <div class="progress-track" aria-hidden="true">
-      <div class="progress-segment active" data-index="0"></div>
-      <div class="progress-segment" data-index="1"></div>
-      <div class="progress-segment" data-index="2"></div>
-      <div class="progress-segment" data-index="3"></div>
-      <div class="progress-segment" data-index="4"></div>
-      <div class="progress-segment" data-index="5"></div>
+  <!-- ========================================================================
+       TOP GLOBAL HEADER
+       ======================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#home" class="brand-link" aria-label="الصفحة الرئيسية — Ahmed Saber">
+        <div class="avatar-wrapper">
+          <img src="profile.jpg" alt="Ahmed Saber" class="avatar-img" width="38" height="38" loading="eager">
+        </div>
+        <div class="brand-name-group">
+          <span class="brand-title">Ahmed Saber</span>
+          <span class="brand-status">
+            <span class="status-dot"></span>
+            متاح لمشاريع الأتمتة
+          </span>
+        </div>
+      </a>
+
+      <nav aria-label="روابط الأقسام" class="nav-links">
+        <li class="nav-item"><a href="#problems">المشكلات</a></li>
+        <li class="nav-item"><a href="#solutions">الحلول</a></li>
+        <li class="nav-item"><a href="#projects">المشاريع</a></li>
+        <li class="nav-item"><a href="#process">آلية العمل</a></li>
+        <li class="nav-item"><a href="#contact">تواصل</a></li>
+      </nav>
+
+      <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="header-cta-btn" aria-label="راسلني على واتساب مباشرة">
+        <span>واتساب المباشر</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17L17 7M17 7H7M17 7V17"/>
+        </svg>
+      </a>
     </div>
   </header>
 
-  <!-- Horizontal Scroll-Snap Deck (6 Panels) -->
-  <main class="deck-viewport" id="deckViewport">
+  <main id="main-content">
 
-    <!-- ========================================================
-         PANEL 1: الرئيسية
-    ======================================================== -->
-    <section class="panel" id="home" aria-label="الرئيسية">
-      <span class="panel-label">أحمد صابر</span>
-      <h1 class="panel-heading">وكلاء يردّون على عملائك في واتساب ويسجّلون الطلب في نظامك</h1>
-      <p class="panel-lead">أبني أنظمة ذكاء اصطناعي وأتمتة مخصصة تنفذ العمليات المتكررة بدلاً عن فريقك وتتصل مباشرة بقواعد بياناتك.</p>
+    <!-- ======================================================================
+         SECTION 1: HERO (THE MIDNIGHT ORDER MINI-STORY)
+         ====================================================================== -->
+    <section class="section-block theme-dark" id="home" aria-label="الرئيسية">
+      <div class="container hero-grid">
+        
+        <!-- Text Column -->
+        <div class="hero-text-col">
+          <span class="section-tag">وكلاء ذكاء اصطناعي وأتمتة</span>
+          <h1 class="section-heading">وكلاء يردّون على عملائك في واتساب ويسجّلون الطلب في نظامك</h1>
+          <p class="section-lead">
+            أبني أنظمة ذكاء اصطناعي وأتمتة مخصصة تنفذ العمليات المتكررة بدلاً عن فريقك وتتصل مباشرة بقواعد بياناتك، لتعمل شركتك على مدار الساعة دون توقف أو أخطاء يدوية.
+          </p>
 
-      <!-- The Core Proof: Live WhatsApp Conversation Simulation -->
-      <div class="chat-mockup-wrapper">
-        <div class="chat-container">
-          <div class="chat-bubble chat-client chat-client-1">
-            <span class="chat-sender">عميل</span>
-            مساء الخير، محتاج 3 قطع من الموديل الأسود مقاس L، هل متاح شحن لإسكندرية؟
-            <span class="chat-time">10:41 ص</span>
-          </div>
-
-          <div class="chat-bubble chat-agent chat-agent-1">
-            <span class="chat-sender">وكيلي الآلي</span>
-            مساء النور يا فندم. فحصت المخزون: متاح 3 قطع باللون الأسود مقاس L. الشحن لإسكندرية يستغرق 24 إلى 48 ساعة. إجمالي القيمة 840 ج.م شامل التوصيل. هل نعتمد العنوان المسجل لديكم؟
-            <span class="chat-time">10:41 ص</span>
-          </div>
-
-          <div class="chat-bubble chat-client chat-client-2">
-            <span class="chat-sender">عميل</span>
-            أيوه تمام، نفس العنوان ورقم التليفون.
-            <span class="chat-time">10:42 ص</span>
-          </div>
-
-          <div class="chat-bubble chat-agent chat-agent-2">
-            <span class="chat-sender">وكيلي الآلي</span>
-            تم تسجيل طلبك برقم #4082 في النظام وخصم الكمية من المخزون، وأرسلت إشعاراً لفريق التجهيز الآن. ستصلك رسالة شركة الشحن فور الاستلام.
-            <span class="chat-time">10:42 ص</span>
+          <div class="hero-btn-row">
+            <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="btn-gold" aria-label="ابدأ المحادثة عبر واتساب">
+              <span>راسلني على واتساب</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            </a>
+            <a href="#projects" class="btn-secondary-dark">شاهد الأنظمة المنفذة</a>
           </div>
         </div>
-      </div>
-      <p class="chat-caption">مثال توضيحي لرد الوكيل وربطه بقاعدة البيانات</p>
-    </section>
 
-    <!-- ========================================================
-         PANEL 2: التحديات
-    ======================================================== -->
-    <section class="panel" id="problems" aria-label="التحديات">
-      <span class="panel-label">التحديات</span>
-      <h2 class="panel-heading">أين يضيع وقت شركتك كل يوم؟</h2>
-      <p class="panel-lead">هذه هي المشكلات الأربع التي أراها تتكرر في معظم الشركات والصفحات التجارية:</p>
+        <!-- Visual Motion Engine Column -->
+        <div class="hero-motion-col">
+          <div class="motion-engine-hero is-active" id="heroMotion" role="img" aria-label="محاكاة حية لمحادثة واتساب منتصف الليل والرد الآلي الفوري وتسجيل الطلب في قاعدة البيانات">
+            
+            <div class="motion-badge-top">
+              <span>مثال توضيحي حي • تدفق الأتمتة</span>
+              <span class="replay-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                انقر للإعادة
+              </span>
+            </div>
 
-      <div class="challenges-list">
-        <div class="challenge-row">
-          <h3 class="challenge-statement">فريقك يقضي نصف يومه في تكرار نفس الإجابات ونقل البيانات يدوياً.</h3>
-          <p class="challenge-detail">كتابة نفس الأسعار وتأكيد العناوين يدوياً يهدر طاقة موظفيك في أعمال روتينية بدلاً من التركيز على إغلاق الصفقات.</p>
+            <!-- Simulated WhatsApp Box -->
+            <div class="simulated-chat">
+              <!-- Customer Message (1:42 AM) -->
+              <div class="chat-bubble chat-bubble-client chat-bubble-1">
+                <div class="bubble-meta">
+                  <span>عميل المتجر</span>
+                  <span class="bubble-time">1:42 ص</span>
+                </div>
+                مساء الخير، محتاج 3 قطع من الموديل الأسود مقاس L، هل متاح شحن لإسكندرية؟
+              </div>
+
+              <!-- Typing Indicator -->
+              <div class="typing-indicator" aria-hidden="true">
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+              </div>
+
+              <!-- AI Agent Message -->
+              <div class="chat-bubble chat-bubble-agent chat-bubble-2">
+                <div class="bubble-meta">
+                  <span>الوكيـل الذكي ✓✓</span>
+                  <span class="bubble-time">1:42 ص</span>
+                </div>
+                مساء النور! متاح 3 قطع بالمخزن. الشحن لإسكندرية خلال 48 ساعة بإجمالي 840 ج.م. هل نعتمد طلبك الآن؟
+              </div>
+            </div>
+
+            <!-- SVG Bridge Pipeline -->
+            <div class="hero-pipeline-bridge" aria-hidden="true">
+              <svg class="pipeline-line-svg" viewBox="0 0 400 38" preserveAspectRatio="none">
+                <path d="M 320 0 C 320 25, 80 15, 80 38" class="pipeline-wire" />
+                <path d="M 320 0 C 320 25, 80 15, 80 38" class="pipeline-pulse" />
+              </svg>
+            </div>
+
+            <!-- CRM Auto-Sync Row -->
+            <div class="simulated-crm-card">
+              <div style="display:flex; align-items:center; gap:0.6rem;">
+                <span class="crm-tag">مؤكد تلقائياً</span>
+                <span class="crm-info">طلب #4082 • خصم من المخزون وتعيين الشاحن</span>
+              </div>
+              <span style="font-size:0.75rem; color:var(--color-sky); font-weight:700;">Database Sync</span>
+            </div>
+
+            <!-- Notification Ping -->
+            <div class="simulated-alert-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span>إشعار في هاتفك: طلب جديد مسجل بدون أي تدخل بشري</span>
+            </div>
+
+          </div>
+
+          <!-- The Under-Animation Punchline -->
+          <div class="visual-punchline">
+            <span class="punchline-badge">النتيجة المباشرة</span>
+            <span>عميلك يتلقى رده ويُسجل طلبه فوراً في منتصف الليل أثناء نومك.</span>
+          </div>
         </div>
 
-        <div class="challenge-row">
-          <h3 class="challenge-statement">برامجك لا تتحدث مع بعضها: طلب من واتساب، فاتورة في برنامج، وملف في شيت منفصل.</h3>
-          <p class="challenge-detail">انفصال الأدوات يسبب سقوط الطلبات، تكرار الأخطاء الحسابية، وتضارب أرقام المخزون باستمرار.</p>
-        </div>
-
-        <div class="challenge-row">
-          <h3 class="challenge-statement">العميل الذي ينتظر نصف ساعة يشتري من غيرك وأنت لا تدري.</h3>
-          <p class="challenge-detail">المشتري على الهاتف يتوقع رداً في دقيقة واحدة. كل دقيقة تأخير إضافية ترفع احتمالية خروجه لمنافسك.</p>
-        </div>
-
-        <div class="challenge-row">
-          <h3 class="challenge-statement">لا تعرف أرقام اليوم الحقيقية إلا بنهاية الشهر بعد فوات الأوان.</h3>
-          <p class="challenge-detail">غياب تقرير يومي موحد يجعل قراراتك الإدارية تعتمد على التخمين بدلاً من الأرقام المؤكدة.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================
-         PANEL 3: الحلول
-    ======================================================== -->
-    <section class="panel" id="solutions" aria-label="الحلول">
-      <span class="panel-label">الحلول</span>
-      <h2 class="panel-heading">ما أبنيه لشركتك</h2>
-      <p class="panel-lead">أركز على أربع خدمات عملية تحل مشكلات التشغيل مباشرة:</p>
-
-      <div class="solutions-list">
-        <div class="solution-item solution-item-prominent">
-          <h3 class="solution-title">بناء وكلاء الذكاء الاصطناعي المخصصين</h3>
-          <p class="solution-desc">أبني وكيلاً ذكياً يفهم كتالوج منتجاتك وسياساتك بدقة، يستقبل استفسارات العملاء على مدار 24 ساعة، يتحقق من المخزون، ويسجل الأوردر في نظامك فوراً دون تدخل يدوي.</p>
-          <span class="solution-tools">الأدوات: نماذج لغوية، بروتوكول MCP، قواعد بيانات موجهة</span>
-        </div>
-
-        <div class="solution-item">
-          <h3 class="solution-title">أتمتة العمليات وسير العمل</h3>
-          <p class="solution-desc">أربط أدواتك المنفصلة في مسار واحد: من أول رسالة أو فورم تسجيل حتى تحديث الـ CRM وإصدار الفاتورة وإرسال الإشعار لفريقك تلقائياً.</p>
-          <span class="solution-tools">الأدوات: مسارات N8N، خطافات الويب (Webhooks)، وواجهات البرمجة (APIs)</span>
-        </div>
-
-        <div class="solution-item">
-          <h3 class="solution-title">أنظمة خدمة العملاء الذكية</h3>
-          <p class="solution-desc">ردود فورية على واتساب، إنستغرام، والبريد الإلكتروني بلهجة تناسب علامتك التجارية، مع تحويل الحالات المعقدة فقط لموظفك البشري بسياقها الكامل.</p>
-          <span class="solution-tools">الأدوات: WhatsApp Business API، وبوابات المحادثة</span>
-        </div>
-
-        <div class="solution-item">
-          <h3 class="solution-title">استشارات وتدريب الفرق</h3>
-          <p class="solution-desc">جلسات عملية لفحص عملياتك وتحديد مواضع الهدر، وتدريب فريقك على تشغيل وتعديل الأنظمة المؤتمتة بنفسه بثقة واستقلالية.</p>
-          <span class="solution-tools">الأدوات: توثيق تشغيلي، وورش تدريبية مخصصة</span>
-        </div>
       </div>
     </section>
 
-    <!-- ========================================================
-         PANEL 4: آلية العمل
-    ======================================================== -->
-    <section class="panel" id="process" aria-label="آلية العمل">
-      <span class="panel-label">آلية العمل</span>
-      <h2 class="panel-heading">كيف نعمل معاً خطوة بخطوة</h2>
-      <p class="panel-lead">تسلسل هندسي واضح ومحدد دون غموض أو وعود مبهمة:</p>
+    <!-- ======================================================================
+         SECTION 2: PROBLEMS (THE 4 VIGNETTES)
+         ====================================================================== -->
+    <section class="section-block theme-mist" id="problems" aria-label="التحديات والمشكلات الشائعة">
+      <div class="container">
+        
+        <span class="section-tag">التحديات اليومية</span>
+        <h2 class="section-heading">أين يضيع وقت شركتك كل يوم؟</h2>
+        <p class="section-lead">
+          هذه هي المشكلات الأربع التي تتكرر باستمرار وتستنزف ساعات موظفيك وأرباحك دون أن تدري:
+        </p>
 
-      <div class="workflow-steps">
-        <div class="step-entry">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <h3>تشخيص</h3>
-            <p>جلسة عمل نفحص فيها مسار طلباتك اليومي، ونحدد بدقة أين يضيع الوقت وأي العمليات هي الأجدى بالبدء في أتمتتها.</p>
+        <div class="problems-grid">
+          
+          <!-- Vignette 1: Repetitive Tasks -->
+          <div class="problem-card">
+            <div class="vignette-canvas" role="img" aria-label="رسم لساعة تدور ومهمة تعود في حلقة مفرغة">
+              <svg width="100" height="90" viewBox="0 0 120 100" fill="none">
+                <circle cx="40" cy="50" r="28" stroke="var(--color-deep-blue)" stroke-width="2" />
+                <line x1="40" y1="50" x2="40" y2="32" stroke="var(--color-sky)" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="40" y1="50" x2="54" y2="50" stroke="var(--color-deep-blue)" stroke-width="2" stroke-linecap="round" class="vignette-clock-hand" />
+                <g class="vignette-loop-doc">
+                  <rect x="80" y="32" width="28" height="36" rx="4" fill="#FFFFFF" stroke="var(--color-deep-blue)" stroke-width="2" />
+                  <line x1="86" y1="42" x2="102" y2="42" stroke="var(--color-deep-blue)" stroke-width="1.5" />
+                  <line x1="86" y1="50" x2="98" y2="50" stroke="var(--color-sky)" stroke-width="1.5" />
+                  <line x1="86" y1="58" x2="94" y2="58" stroke="var(--color-deep-blue)" stroke-width="1.5" />
+                </g>
+                <path d="M 68 40 C 74 34, 76 34, 80 40" stroke="var(--color-sky)" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3" />
+              </svg>
+            </div>
+            <h3 class="problem-title">فريقك يقضي نصف يومه في تكرار نفس الإجابات ونقل البيانات</h3>
+            <p class="problem-desc">
+              كتابة نفس الأسعار وتأكيد العناوين يدوياً يهدر طاقة الموظفين في أعمال روتينية بدلاً من التركيز على المبيعات.
+            </p>
           </div>
+
+          <!-- Vignette 2: Disconnected Tools -->
+          <div class="problem-card">
+            <div class="vignette-canvas" role="img" aria-label="رسم لصناديق بينها أسلاك مقطوعة مع ضياع للبيانات">
+              <svg width="150" height="80" viewBox="0 0 180 80" fill="none">
+                <rect x="10" y="24" width="40" height="36" rx="6" fill="#FFFFFF" stroke="var(--color-deep-blue)" stroke-width="2" />
+                <text x="30" y="46" font-size="9" font-family="sans-serif" font-weight="700" fill="var(--color-deep-blue)" text-anchor="middle">شات</text>
+                <line x1="50" y1="42" x2="80" y2="42" stroke="#D94848" stroke-width="2" stroke-dasharray="4 4" />
+                <circle cx="65" cy="42" r="3.5" fill="#D94848" class="broken-wire-dot" />
+                <rect x="95" y="24" width="40" height="36" rx="6" fill="#FFFFFF" stroke="var(--color-deep-blue)" stroke-width="2" />
+                <text x="115" y="46" font-size="9" font-family="sans-serif" font-weight="700" fill="var(--color-deep-blue)" text-anchor="middle">شيت</text>
+                <path d="M 150 32 L 160 52 L 140 52 Z" fill="#FCEAEA" stroke="#D94848" stroke-width="1.5" />
+                <text x="150" y="49" font-size="10" font-weight="700" fill="#D94848" text-anchor="middle">!</text>
+              </svg>
+            </div>
+            <h3 class="problem-title">برامجك لا تتحدث مع بعضها: طلب في شات، وفاتورة في شيت</h3>
+            <p class="problem-desc">
+              انفصال الأدوات يسبب سقوط الطلبات، وتكرار الأخطاء الحسابية، وتضارب أرقام المخزون باستمرار بين الفريق.
+            </p>
+          </div>
+
+          <!-- Vignette 3: Abandoned Customer -->
+          <div class="problem-card">
+            <div class="vignette-canvas" role="img" aria-label="رسم لعميل ينتظر طويلاً ثم يغادر إلى متجر منافس">
+              <svg width="150" height="80" viewBox="0 0 180 80" fill="none">
+                <rect x="15" y="20" width="60" height="34" rx="6" fill="#FFFFFF" stroke="var(--color-deep-blue)" stroke-width="2" />
+                <circle cx="30" cy="37" r="6" stroke="#E8B22E" stroke-width="2" class="waiting-pulse-circle" />
+                <text x="50" y="40" font-size="8" font-family="sans-serif" fill="var(--text-muted-light)">انتظار..</text>
+                <g class="leaving-customer-arrow">
+                  <path d="M 90 37 L 125 37" stroke="#D94848" stroke-width="2" stroke-linecap="round" />
+                  <path d="M 120 31 L 128 37 L 120 43" stroke="#D94848" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <rect x="135" y="22" width="36" height="30" rx="4" fill="#FBF1F1" stroke="#D94848" stroke-width="1.5" />
+                  <text x="153" y="40" font-size="8" font-weight="700" fill="#D94848" text-anchor="middle">منافس</text>
+                </g>
+              </svg>
+            </div>
+            <h3 class="problem-title">العميل الذي ينتظر نصف ساعة يشتري من غيرك فوراً</h3>
+            <p class="problem-desc">
+              المشتري على الهاتف يتوقع رداً خلال دقيقة واحدة؛ وكل دقيقة تأخير إضافية ترفع احتمالية خروجه لمنافسك.
+            </p>
+          </div>
+
+          <!-- Vignette 4: Blank Metrics Board -->
+          <div class="problem-card">
+            <div class="vignette-canvas" role="img" aria-label="لوحة أرقام ومؤشرات أداء فارغة بدون رؤية واضحة">
+              <svg width="120" height="80" viewBox="0 0 140 80" fill="none">
+                <rect x="15" y="15" width="110" height="52" rx="6" fill="#FFFFFF" stroke="var(--color-deep-blue)" stroke-width="2" />
+                <line x1="25" y1="52" x2="115" y2="52" stroke="var(--color-sky)" stroke-width="2" class="chart-zero-line" />
+                <text x="70" y="38" font-size="12" font-weight="700" fill="var(--color-deep-blue)" text-anchor="middle">0 تقارير</text>
+                <text x="110" y="35" font-size="12" font-weight="700" fill="#E8B22E">؟</text>
+              </svg>
+            </div>
+            <h3 class="problem-title">لا تعرف أرقام اليوم الحقيقية إلا بنهاية الشهر بعد فوات الأوان</h3>
+            <p class="problem-desc">
+              غياب تقرير يومي موحد يجعل قراراتك الإدارية تعتمد على التخمين والشكوك بدلاً من الأرقام المؤكدة.
+            </p>
+          </div>
+
         </div>
 
-        <div class="step-entry">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <h3>تصميم</h3>
-            <p>أكتب لك مقترحاً فنياً يوضح بنية النظام، الأدوات المطلوبة، والجدول الزمني المحدد للتسليم قبل أي التزام مالي من طرفك.</p>
-          </div>
+        <div class="visual-punchline">
+          <span class="punchline-badge">المشكلة باختصار</span>
+          <span>كل خطوة يدوية زائدة هي عميل محتمل يضيع ووقت يُهدر من ميزانيتك.</span>
         </div>
 
-        <div class="step-entry">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <h3>بناء واختبار</h3>
-            <p>أبني الوكيل وأربط مساراته وأختبره على بيانات وسيناريوهات حقيقية من عملك حتى نتأكد من دقة الإجابات وعدم وجود أي أخطاء.</p>
-          </div>
-        </div>
-
-        <div class="step-entry">
-          <div class="step-num">4</div>
-          <div class="step-content">
-            <h3>تسليم ودعم</h3>
-            <p>أسلمك النظام موثقاً بالكامل مع دليل تشغيل، وأبقى معك لمراقبة الأداء وضمان عمل كل أجزاء المنظومة بكفاءة مستمرة.</p>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- ========================================================
-         PANEL 5: المشاريع
-    ======================================================== -->
-    <section class="panel" id="projects" aria-label="المشاريع">
-      <span class="panel-label">المشاريع</span>
-      <h2 class="panel-heading">أنظمة بنيتها ونفذتها</h2>
-      <p class="panel-lead">نماذج لأعمال سابقة توضح نوع التحديات والقيود الهندسية والنتائج:</p>
+    <!-- ======================================================================
+         SECTION 3: SOLUTIONS & SERVICES (BEFORE & AFTER)
+         ====================================================================== -->
+    <section class="section-block theme-frost" id="solutions" aria-label="الحلول والخدمات">
+      <div class="container">
+        
+        <span class="section-tag">الحلول المصممة لعملك</span>
+        <h2 class="section-heading">ما أبنيه لشركتك: تحول ملموس قبل وبعد</h2>
+        <p class="section-lead">
+          أركز على أربع خدمات أساسية تنقل عملياتك من العشوائية اليدوية إلى التدفق الذكي التلقائي:
+        </p>
 
-      <div class="projects-stack">
-        <!-- Project 1 -->
-        <article class="project-card">
-          <h3 class="project-header-title">وكيل مبيعات وخدمة عملاء لمتجر إلكتروني</h3>
-          <div class="project-meta-grid">
-            <div class="meta-line"><span class="meta-term">نوع العميل:</span> متجر تجارة إلكترونية لبيع الأزياء بالتجزئة</div>
-            <div class="meta-line"><span class="meta-term">ما بنيته:</span> وكيل ذكاء اصطناعي مرتبط بواتساب يراجع المخزون لحظياً، يجيب عن استفسارات المقاسات، ويسجل الأوردر مباشرة في قاعدة البيانات</div>
-            <div class="meta-line"><span class="meta-term">الأدوات:</span> نماذج لغوية، N8N، WhatsApp Business API، Google Sheets</div>
-            <div class="meta-line"><span class="meta-term">القيد:</span> ضرورة فهم العامية المصرية ومصطلحات المقاسات المحلية، وتفادي بيع قطع غير متوفرة في المخزن</div>
-            <div class="meta-line"><span class="meta-term">النتيجة:</span> الرد في أقل من 15 ثانية على مدار 24 ساعة، وتوفير <span class="meta-unverified">[تحقق: 4 ساعات عمل يومياً كانت تضيع في الرد اليدوي]</span></div>
-          </div>
-          <div class="project-screenshot-placeholder">
-            <span class="placeholder-tag">[ضع هنا لقطة حقيقية: محادثة الوكيل في واتساب وسجل الطلبات]</span>
-            <span class="placeholder-hint">أبعاد مستحسنة: 600×360 بكسل</span>
-          </div>
-        </article>
+        <!-- Solutions Interactive Tabs -->
+        <div class="solutions-tabs-nav" role="tablist">
+          <button class="solution-tab-btn active" role="tab" aria-selected="true" data-tab="tab-agent">1. الوكيل الذكي</button>
+          <button class="solution-tab-btn" role="tab" aria-selected="false" data-tab="tab-automation">2. ربط الأدوات والأتمتة</button>
+          <button class="solution-tab-btn" role="tab" aria-selected="false" data-tab="tab-support">3. خدمة العملاء الموحدة</button>
+          <button class="solution-tab-btn" role="tab" aria-selected="false" data-tab="tab-enablement">4. التمكين والتدريب</button>
+        </div>
 
-        <!-- Project 2 -->
-        <article class="project-card">
-          <h3 class="project-header-title">أتمتة دورة المبيعات وتحديث نظام إدارة العملاء</h3>
-          <div class="project-meta-grid">
-            <div class="meta-line"><span class="meta-term">نوع العميل:</span> شركة خدمات تعليمية وتدريب</div>
-            <div class="meta-line"><span class="meta-term">ما بنيته:</span> مسار أتمتة يسحب بيانات المسجلين الجدد من إعلانات فيسبوك، يتحقق من صحة أرقام الهواتف، يرسل التفاصيل عبر واتساب، ويحدث بطاقة العميل في الـ CRM</div>
-            <div class="meta-line"><span class="meta-term">الأدوات:</span> N8N، Webhooks، CRM API، WhatsApp Cloud API</div>
-            <div class="meta-line"><span class="meta-term">القيد:</span> منع تكرار تسجيل نفس العميل عند الضغط المتعدد، والتأكد من توافق توقيت الرسائل الآلية</div>
-            <div class="meta-line"><span class="meta-term">النتيجة:</span> تصفير زمن انتظار العميل المحتمل، وتوفير <span class="meta-unverified">[تحقق: 10 ساعات أسبوعياً من الإدخال اليدوي لفريق المبيعات]</span></div>
-          </div>
-          <div class="project-screenshot-placeholder">
-            <span class="placeholder-tag">[ضع هنا لقطة حقيقية: مخطط مسار N8N وسجل مزامنة البيانات]</span>
-            <span class="placeholder-hint">أبعاد مستحسنة: 600×360 بكسل</span>
-          </div>
-        </article>
+        <!-- Tab 1: The Agent -->
+        <div class="solution-panel-card active" id="tab-agent" role="tabpanel">
+          <h3 style="font-size:1.25rem; font-weight:700; color:var(--color-deep-blue); margin-bottom:0.4rem;">
+            وكلاء ذكاء اصطناعي لخدمة العملاء والمبيعات
+            <span class="tech-term-note">AI Agent: موظف رقمي مدرّب على سياساتك</span>
+          </h3>
+          <p style="font-size:0.95rem; color:var(--text-muted-light); margin-bottom:1rem;">
+            أبني وكيلاً مخصصاً يتحدث بلهجة متجرك، مدرّباً على قائمة منتجاتك وأسعارك وشروط شحنك بدقة تامة.
+          </p>
 
-        <!-- Project 3 -->
-        <article class="project-card">
-          <h3 class="project-header-title">نظام تقارير تشغيلية يومية للإدارة التنفيذية</h3>
-          <div class="project-meta-grid">
-            <div class="meta-line"><span class="meta-term">نوع العميل:</span> إدارة شركة توزيع وشحن محلي</div>
-            <div class="meta-line"><span class="meta-term">ما بنيته:</span> نظام يجمع بيانات المبيعات والشحنات المنفذة والمرتجعات كل صباح في السابعة، ويولد ملخصاً تنفيذياً مختصراً يُرسل لإدارة الشركة على واتساب وتيليجرام</div>
-            <div class="meta-line"><span class="meta-term">الأدوات:</span> N8N، PostgreSQL، Telegram Bot API، WhatsApp API</div>
-            <div class="meta-line"><span class="meta-term">القيد:</span> معالجة وتنظيف بيانات من جدولين منفصلين وحساب صافي التحصيلات بدقة دون أي خطأ رقمي</div>
-            <div class="meta-line"><span class="meta-term">النتيجة:</span> اطلاع الإدارة صباح كل يوم على مؤشرات الأداء الفعلية، وقرارات مبنية على أرقام دقيقة بدلاً من الانتظار لنهاية الشهر <span class="meta-unverified">[تحقق: نسبة تحسن المتابعة التشغيلية]</span></div>
+          <div class="before-after-grid">
+            <div class="state-box state-before">
+              <div class="state-header">
+                <span>قبل الأتمتة</span>
+                <span class="state-badge-before">يدوي وبطيء</span>
+              </div>
+              <div class="state-illustration">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                  <rect x="10" y="10" width="100" height="40" rx="6" fill="#FCEAEA" stroke="#D94848" stroke-width="2" />
+                  <text x="60" y="35" font-size="10" font-weight="700" fill="#D94848" text-anchor="middle">47 رسالة معلقة • رد بعد 4 ساعات</text>
+                </svg>
+              </div>
+              <p class="state-text">تراكم عشرات الاستفسارات في واتساب، وتأخر الرد بالساعات، وتشتت الموظف بين الأسعار والمقاسات.</p>
+            </div>
+
+            <div class="state-box state-after">
+              <div class="state-header">
+                <span>بعد النظام الذكي</span>
+                <span class="state-badge-after">فوري ومنضبط</span>
+              </div>
+              <div class="state-illustration">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                  <rect x="10" y="10" width="100" height="40" rx="6" fill="#E8F8EE" stroke="#278C56" stroke-width="2" />
+                  <text x="60" y="35" font-size="10" font-weight="700" fill="#278C56" text-anchor="middle">رد خلال 3 ثوانٍ • فحص مخزون حقيقي</text>
+                </svg>
+              </div>
+              <p class="state-text">قراءة فورية لسياساتك، إجابة دقيقة على المقاسات والأسعار، واستلام بيانات الشحن وتأكيدها آلياً.</p>
+            </div>
           </div>
-          <div class="project-screenshot-placeholder">
-            <span class="placeholder-tag">[ضع هنا لقطة حقيقية: نموذج التقرير اليومي على واتساب وتيليجرام]</span>
-            <span class="placeholder-hint">أبعاد مستحسنة: 600×360 بكسل</span>
+        </div>
+
+        <!-- Tab 2: Automation & Data Bridge -->
+        <div class="solution-panel-card" id="tab-automation" role="tabpanel">
+          <h3 style="font-size:1.25rem; font-weight:700; color:var(--color-deep-blue); margin-bottom:0.4rem;">
+            أتمتة العمليات وربط التطبيقات
+            <span class="tech-term-note">Webhook: جسر ينقل البيانات لحظياً</span>
+          </h3>
+          <p style="font-size:0.95rem; color:var(--text-muted-light); margin-bottom:1rem;">
+            أربط متجرك ونظام الفواتير وجداولك بقنوات التواصل، لتنتقل المعلومات بينها أوتوماتيكياً بدون أي إدخال يدوي.
+          </p>
+
+          <div class="before-after-grid">
+            <div class="state-box state-before">
+              <div class="state-header">
+                <span>قبل الأتمتة</span>
+                <span class="state-badge-before">تشتت يدوي</span>
+              </div>
+              <div class="state-illustration">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                  <circle cx="30" cy="30" r="16" fill="#FFFFFF" stroke="#D94848" stroke-width="2"/>
+                  <circle cx="90" cy="30" r="16" fill="#FFFFFF" stroke="#D94848" stroke-width="2"/>
+                  <path d="M 46 30 L 74 30" stroke="#D94848" stroke-width="2" stroke-dasharray="3 3"/>
+                  <text x="60" y="48" font-size="9" fill="#D94848" text-anchor="middle">انقطاع وتضارب</text>
+                </svg>
+              </div>
+              <p class="state-text">نسخ ولصق يدوي للأسماء وأرقام الهواتف، وأخطاء مستمرة في أرقام العناوين أو قيمة الفاتورة.</p>
+            </div>
+
+            <div class="state-box state-after">
+              <div class="state-header">
+                <span>بعد النظام الذكي</span>
+                <span class="state-badge-after">تزامن كامل</span>
+              </div>
+              <div class="state-illustration">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                  <rect x="15" y="16" width="30" height="28" rx="4" fill="#E8F8EE" stroke="#278C56" stroke-width="2"/>
+                  <rect x="75" y="16" width="30" height="28" rx="4" fill="#E8F8EE" stroke="#278C56" stroke-width="2"/>
+                  <line x1="45" y1="30" x2="75" y2="30" stroke="#278C56" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p class="state-text">تحديث تلقائي للمخزون فور إتمام الطلب، وإصدار الفاتورة، وإشعار الشاحن في أجزاء من الثانية.</p>
+            </div>
           </div>
-        </article>
+        </div>
+
+        <!-- Tab 3: Unified Customer Support -->
+        <div class="solution-panel-card" id="tab-support" role="tabpanel">
+          <h3 style="font-size:1.25rem; font-weight:700; color:var(--color-deep-blue); margin-bottom:0.4rem;">
+            صندوق وارد موحد وتوجيه الحالات الحساسة
+            <span class="tech-term-note">Routing: توجيه ذكي للفريق المناسب</span>
+          </h3>
+          <p style="font-size:0.95rem; color:var(--text-muted-light); margin-bottom:1rem;">
+            جمع كل محادثات واتساب، إنستغرام، وفيسبوك في شاشة واحدة، مع إحالة الشكاوى المعقدة للموظف البشري مع ملخص كامل.
+          </p>
+
+          <div class="before-after-grid">
+            <div class="state-box state-before">
+              <div class="state-header">
+                <span>قبل الأتمتة</span>
+                <span class="state-badge-before">هواتف مبعثرة</span>
+              </div>
+              <div class="state-illustration">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                  <rect x="10" y="20" width="24" height="32" rx="3" stroke="#D94848" stroke-width="1.5" />
+                  <rect x="48" y="12" width="24" height="32" rx="3" stroke="#D94848" stroke-width="1.5" />
+                  <rect x="86" y="22" width="24" height="32" rx="3" stroke="#D94848" stroke-width="1.5" />
+                </svg>
+              </div>
+              <p class="state-text">كل موظف يمسك هاتفاً مختلفاً، وعدم معرفة من رد على العميل وماذا تم الاتفاق عليه.</p>
+            </div>
+
+            <div class="state-box state-after">
+              <div class="state-header">
+                <span>بعد النظام الذكي</span>
+                <span class="state-badge-after">منصة موحدة</span>
+              </div>
+              <div class="state-illustration">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                  <rect x="25" y="12" width="70" height="36" rx="6" fill="#E8F8EE" stroke="#278C56" stroke-width="2" />
+                  <text x="60" y="34" font-size="9" font-weight="700" fill="#278C56" text-anchor="middle">صندوق مركزي موحد</text>
+                </svg>
+              </div>
+              <p class="state-text">تاريخ العميل وتفاصيل مشترياته واضحة أمام الموظف، مع تنبيه فوري عند حاجة العميل لتدخل بشري.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Enablement & Training -->
+        <div class="solution-panel-card" id="tab-enablement" role="tabpanel">
+          <h3 style="font-size:1.25rem; font-weight:700; color:var(--color-deep-blue); margin-bottom:0.4rem;">
+            التمكين ونقل المعرفة لفريقك
+            <span class="tech-term-note">Runbook: دليل تشغيل مبسط خطوة بخطوة</span>
+          </h3>
+          <p style="font-size:0.95rem; color:var(--text-muted-light); margin-bottom:1rem;">
+            لا أتركك مع نظام معقد؛ أسلّمك وثيقة تشغيل واضحة بالعربية وفيديوهات تدريبية تمكّن فريقك من الإدارة والتعديل بنفسه.
+          </p>
+
+          <div class="before-after-grid">
+            <div class="state-box state-before">
+              <div class="state-header">
+                <span>قبل التمكين</span>
+                <span class="state-badge-before">غموض واعتمادية</span>
+              </div>
+              <div class="state-illustration">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                  <rect x="35" y="15" width="50" height="32" rx="4" fill="#FCEAEA" stroke="#D94848" stroke-width="2" />
+                  <text x="60" y="34" font-size="14" font-weight="700" fill="#D94848" text-anchor="middle">🔒 كود مغلق</text>
+                </svg>
+              </div>
+              <p class="state-text">قلق دائم من توقف النظام وصعوبة إجراء أي تعديل دون دفع تكاليف إضافية لمطور خارجي.</p>
+            </div>
+
+            <div class="state-box state-after">
+              <div class="state-header">
+                <span>بعد التمكين</span>
+                <span class="state-badge-after">استقلالية كاملة</span>
+              </div>
+              <div class="state-illustration">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none">
+                  <rect x="25" y="12" width="70" height="36" rx="4" fill="#E8F8EE" stroke="#278C56" stroke-width="2" />
+                  <text x="60" y="34" font-size="10" font-weight="700" fill="#278C56" text-anchor="middle">📖 دليل + تدريب عملي</text>
+                </svg>
+              </div>
+              <p class="state-text">فريقك يتقن متابعة الوكلاء، وتحديث الأسعار بنفسه، ومراجعة سجلات المحادثات بكل ثقة وسهولة.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-punchline">
+          <span class="punchline-badge">القيمة المضافة</span>
+          <span>نظام أتمتة تملكه بالكامل ويفهمه فريقك، بدون أي تعقيد أو قيود تقنية.</span>
+        </div>
+
       </div>
     </section>
 
-    <!-- ========================================================
-         PANEL 6: تواصل
-    ======================================================== -->
-    <section class="panel" id="contact" aria-label="تواصل">
-      <span class="panel-label">تواصل</span>
-      <h2 class="panel-heading">لنبدأ من فحص وضعك الحالي</h2>
-      <p class="panel-lead">راسلني عبر أي قناة تفضلها لنحدد موعد جلسة تشخيص مجانية نفهم فيها عملياتك ونقترح الحل الأنسب:</p>
+    <!-- ======================================================================
+         SECTION 4: CASE STUDIES & REAL PROJECTS (3 VERIFIED SYSTEMS)
+         ====================================================================== -->
+    <section class="section-block theme-mist" id="projects" aria-label="المشاريع المنفذة">
+      <div class="container">
+        
+        <span class="section-tag">سجل الأعمال المنجزة</span>
+        <h2 class="section-heading">أنظمة حقيقية بنيتها ونفذتها</h2>
+        <p class="section-lead">
+          نماذج عملية لحلول أتمتة مخصصة تعمل بكفاءة في الميدان وتعالج مشاكل يومية قائمة:
+        </p>
 
-      <div class="contact-channels">
-        <!-- Email with Copy Button -->
-        <div class="contact-row">
-          <span class="contact-type">البريد الإلكتروني</span>
-          <div class="email-copy-box">
-            <span class="email-selectable" id="emailText">Ahmedmo.otX@gmail.com</span>
-            <button class="copy-btn" id="copyEmailBtn" type="button">نسخ</button>
-          </div>
+        <div class="projects-stack">
+          
+          <!-- Project 1: Store Chat Automation -->
+          <article class="project-card">
+            <div class="project-header-row">
+              <h3 class="project-title">١. وكيل أتمتة متجر تجارة إلكترونية على واتساب</h3>
+              <span class="project-client-badge">متجر ملابس ومستلزمات جاهزة</span>
+            </div>
+
+            <!-- Direct Impact Strip -->
+            <div class="project-impact-strip">
+              <div class="impact-item">
+                <span class="impact-badge-red">قبل</span>
+                <span>4 ساعات يومياً إهدار في الردود اليدوية وتأخر الرد ليلاً</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-badge-green">بعد</span>
+                <span>رد فوري خلال 3 ثوانٍ، وتأكيد الطلب آلياً 24/7 دون أي توقف</span>
+              </div>
+            </div>
+
+            <!-- Animated Flow Diagram -->
+            <div class="project-flow-canvas" role="img" aria-label="مخطط تدفق أتمتة المتجر من استفسار العميل حتى إشعار المخزن">
+              <div class="flow-steps-row">
+                <div class="flow-node">
+                  <span class="flow-node-title">رسالة العميل</span>
+                  <span class="flow-node-sub">استفسار مقاس/لون</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">فحص المخزن</span>
+                  <span class="flow-node-sub">تحقق لحظي من الكمية</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">اعتماد الطلب</span>
+                  <span class="flow-node-sub">تسجيل العنوان ورقم الهاتف</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">إشعار المخزن</span>
+                  <span class="flow-node-sub">بدء التجهيز والشحن</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-meta-grid">
+              <div class="meta-item">
+                <span class="meta-term">ما بنيته:</span>
+                وكيل متصل بقاعدة بيانات المتجر يجيب على أسئلة المقاسات والألوان، ويعتمد العنوان ويخصم القطعة مباشرة.
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">الأدوات المستخدمة:</span>
+                Node.js، WhatsApp Business Cloud API، PostgreSQL، Webhooks
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">التحدي الهندسي:</span>
+                منع بيع نفس القطعة المتبقية لعميلين يراسلان في نفس اللحظة عبر ميزة قفل المخزون التلقائي (Row Locking).
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">النتيجة المحققة:</span>
+                استمرار استقبال الطلبات وتأكيدها خلال الليل وساعات الذروة دون الحاجة لزيادة عدد موظفي الشات.
+              </div>
+            </div>
+
+            <div class="screenshot-slot">
+              [ضع هنا لقطة شاشة حقيقية: محادثة العميل واعتماد الطلب في النظام]
+              <span>المقاس المستحسن للعرض: 600×320 بكسل</span>
+            </div>
+          </article>
+
+          <!-- Project 2: CRM Lead Sync -->
+          <article class="project-card">
+            <div class="project-header-row">
+              <h3 class="project-title">٢. مسار تسجيل وتصفية العملاء المحتملين لشركة استشارات</h3>
+              <span class="project-client-badge">شركة خدمات استشارية وتعليمية</span>
+            </div>
+
+            <!-- Direct Impact Strip -->
+            <div class="project-impact-strip">
+              <div class="impact-item">
+                <span class="impact-badge-red">قبل</span>
+                <span>ضياع العملاء المهتمين بسبب بطء التواصل الذي يتجاوز 24 ساعة</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-badge-green">بعد</span>
+                <span>تواصل ومتابعة خلال 5 دقائق آلياً مع حجز موعد مباشر في التقويم</span>
+              </div>
+            </div>
+
+            <div class="project-flow-canvas" role="img" aria-label="مخطط مسار تصفية العملاء المحتملين ونقلهم تلقائياً لبرنامج إدارة العملاء">
+              <div class="flow-steps-row">
+                <div class="flow-node">
+                  <span class="flow-node-title">نموذج الموقع</span>
+                  <span class="flow-node-sub">تسجيل بيانات الاهتمام</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">تصفية الأهلية</span>
+                  <span class="flow-node-sub">تقييم الميزانية والجاهزية</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">إنشاء كارت CRM</span>
+                  <span class="flow-node-sub">إضافة العميل وتصنيفه</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">تنبيه المبيعات</span>
+                  <span class="flow-node-sub">رسالة لفريق المتابعة</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-meta-grid">
+              <div class="meta-item">
+                <span class="meta-term">ما بنيته:</span>
+                مسار يربط إعلانات وفيسبوك ليدز بـ CRM مباشرة، مع تصفية أوتوماتيكية للعميل الجاد وإرسال دعوة الموعد.
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">الأدوات المستخدمة:</span>
+                n8n Automation Engine، Google Sheets API، Calendly، Telegram Bot
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">التحدي الهندسي:</span>
+                معالجة الحالات المكررة (Deduplication) وتحديث بيانات العميل القائم بدلاً من تكرار كارت جديد.
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">النتيجة المحققة:</span>
+                التواصل مع العميل المهتم خلال 5 دقائق من تسجيله، مما رفع معدل حجز المكالمات المباشرة.
+              </div>
+            </div>
+
+            <div class="screenshot-slot">
+              [ضع هنا لقطة شاشة حقيقية: كارت العميل المنشأ آلياً في لوحة التحكم]
+              <span>المقاس المستحسن للعرض: 600×320 بكسل</span>
+            </div>
+          </article>
+
+          <!-- Project 3: Morning Executive Report -->
+          <article class="project-card">
+            <div class="project-header-row">
+              <h3 class="project-title">٣. نظام تقارير تشغيلية يومية للإدارة التنفيذية</h3>
+              <span class="project-client-badge">شركة توزيع وشحن محلي</span>
+            </div>
+
+            <!-- Direct Impact Strip -->
+            <div class="project-impact-strip">
+              <div class="impact-item">
+                <span class="impact-badge-red">قبل</span>
+                <span>انتظار حتى نهاية الشهر لمعرفة إجمالي الإيرادات ومشاكل الشحنات</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-badge-green">بعد</span>
+                <span>ملخص تنفيذي موحد على هاتف المدير يومياً في تمام 7:00 صباحاً</span>
+              </div>
+            </div>
+
+            <div class="project-flow-canvas" role="img" aria-label="مخطط جمع البيانات الصباحي وتوليد الملخص التنفيذي للإدارة">
+              <div class="flow-steps-row">
+                <div class="flow-node">
+                  <span class="flow-node-title">الساعة 7:00 ص</span>
+                  <span class="flow-node-sub">مشغّل زمني آلي</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">جمع البيانات</span>
+                  <span class="flow-node-sub">مبيعات، مرتجعات، تحصيلات</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">توليد الملخص</span>
+                  <span class="flow-node-sub">تنظيف الحسابات والأرقام</span>
+                </div>
+                <svg class="flow-arrow-svg" viewBox="0 0 32 20"><line x1="0" y1="10" x2="32" y2="10" class="flow-wire"/></svg>
+                <div class="flow-node">
+                  <span class="flow-node-title">إرسال للمدير</span>
+                  <span class="flow-node-sub">تقرير موجز على واتساب</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-meta-grid">
+              <div class="meta-item">
+                <span class="meta-term">ما بنيته:</span>
+                نظام يجمع بيانات المبيعات والشحنات المنفذة والمرتجعات كل صباح في السابعة، ويولد ملخصاً تنفيذياً مختصراً.
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">الأدوات المستخدمة:</span>
+                n8n، PostgreSQL، Telegram Bot API، WhatsApp Cloud API
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">التحدي الهندسي:</span>
+                مطابقة وتنظيف البيانات من جدولين ماليين منفصلين لحساب صافي التحصيلات بدقة متناهية دون أي خطأ رقمي.
+              </div>
+              <div class="meta-item">
+                <span class="meta-term">النتيجة المحققة:</span>
+                اطلاع الإدارة صباح كل يوم على مؤشرات الأداء الفعلية، واتخاذ قرارات مبنية على أرقام دقيقة بدلاً من الانتظار لنهاية الشهر.
+              </div>
+            </div>
+
+            <div class="screenshot-slot">
+              [ضع هنا لقطة شاشة حقيقية: نموذج رسالة التقرير الصباحي على الهاتف]
+              <span>المقاس المستحسن للعرض: 600×320 بكسل</span>
+            </div>
+          </article>
+
         </div>
 
-        <!-- WhatsApp -->
-        <div class="contact-row">
-          <span class="contact-type">واتساب</span>
-          <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="contact-direct-link">01283279337 / 01038805435</a>
-          <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="whatsapp-direct-btn">راسلني على واتساب</a>
-        </div>
-
-        <!-- Telegram -->
-        <div class="contact-row">
-          <span class="contact-type">تيليجرام</span>
-          <a href="https://t.me/+201096792586" target="_blank" rel="noopener" class="contact-direct-link">@01096792586</a>
-        </div>
       </div>
+    </section>
 
-      <!-- Honest Certifications List -->
-      <div class="cert-section">
-        <h3 class="cert-heading">دورات وبرامج تدريبية أكملتها</h3>
-        <p class="cert-disclaimer">شهادات دورات متخصصة أتممتها لاختبار وممارسة هندسة الوكلاء ونماذج الذكاء الاصطناعي:</p>
+    <!-- ======================================================================
+         SECTION 5: WORKFLOW (4-STEP BLUEPRINT)
+         ====================================================================== -->
+    <section class="section-block theme-frost" id="process" aria-label="آلية العمل والخطوات">
+      <div class="container">
+        
+        <span class="section-tag">منهجية هندسية واضحة</span>
+        <h2 class="section-heading">كيف نعمل معاً من الفكرة إلى التشغيل</h2>
+        <p class="section-lead">
+          أربع خطوات محددة تضمن تنفيذ نظام دقيق يطابق احتياجاتك تماماً وبدون أي مفاجآت:
+        </p>
 
-        <ul class="cert-list">
-          <li>Google AI Professional Certificate (برنامج من 7 دورات تخصصية)</li>
-          <li>Anthropic: Model Context Protocol (MCP) & MCP Advanced Topics</li>
-          <li>Dubai Future Foundation: 1 Million Prompters</li>
-        </ul>
+        <div class="timeline-container">
+          
+          <!-- Step 1 -->
+          <div class="timeline-step-row">
+            <div class="step-number-box">
+              <div class="step-number-circle">01</div>
+            </div>
+            <div class="step-info-col">
+              <h3>١. التشخيص وفحص العمليات الحالية</h3>
+              <p>جلسة مخصصة لفهم مسار طلباتك اليومية، وتحديد أين تضيع الساعات وما هي البرامج المطلوب ربطها.</p>
+            </div>
+            <div class="deliverable-preview-box">
+              <div class="deliverable-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-deep-blue)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div class="deliverable-details">
+                <h4>وثيقة التشخيص وتحديد الهدر</h4>
+                <p>مخرجات المرحلة: تقرير يوضح الوقت المستهدف توفيره ونقاط الاختناق.</p>
+              </div>
+            </div>
+          </div>
 
-        <div class="cert-hidden-group" id="hiddenCerts">
-          <ul class="cert-list">
-            <li>Anthropic: Claude 101</li>
-            <li>Anthropic: Claude Code 101 & Claude Code in Action</li>
-            <li>Anthropic: Introduction to Subagents</li>
-            <li>Anthropic: Introduction to Agent Skills</li>
-            <li>Anthropic: Introduction to Claude Cowork</li>
-            <li>Anthropic: AI Fluency Framework & Foundations</li>
-            <li>Anthropic: AI Fluency for Students & Educators</li>
-            <li>Anthropic: Teaching the AI Fluency Framework</li>
-            <li>Anthropic: AI Capabilities & Limitations</li>
-          </ul>
+          <!-- Step 2 -->
+          <div class="timeline-step-row">
+            <div class="step-number-box">
+              <div class="step-number-circle">02</div>
+            </div>
+            <div class="step-info-col">
+              <h3>٢. المخطط الهندسي والهيكلة</h3>
+              <p>رسم مسار تدفق البيانات، وتحديد قواعد ردود الوكيل وسيناريوهات التصعيد للموظف البشري قبل البدء في الكود.</p>
+            </div>
+            <div class="deliverable-preview-box">
+              <div class="deliverable-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-deep-blue)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M10 6.5h4M17.5 10v4M14 17.5h-4M6.5 14v-4"/></svg>
+              </div>
+              <div class="deliverable-details">
+                <h4>المخطط المعماري للنظام (Blueprint)</h4>
+                <p>مخرجات المرحلة: خريطة كاملة لمسار العميل والربط بين التطبيقات.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-step-row">
+            <div class="step-number-box">
+              <div class="step-number-circle">03</div>
+            </div>
+            <div class="step-info-col">
+              <h3>٣. التطوير والاختبار في بيئة تجريبية</h3>
+              <p>بناء الأتمتة وتغذية الوكيل بالسياسات، مع تجربة مئات السيناريوهات ومحاكاة رسائل العملاء المعقدة للتأكد من دقته.</p>
+            </div>
+            <div class="deliverable-preview-box">
+              <div class="deliverable-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-deep-blue)" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="deliverable-details">
+                <h4>سجل الفحص والتأكد (Staging Log)</h4>
+                <p>مخرجات المرحلة: محاكاة حية لتأكيد نسبة الدقة وتفادي أي خطأ.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-step-row">
+            <div class="step-number-box">
+              <div class="step-number-circle">04</div>
+            </div>
+            <div class="step-info-col">
+              <h3>٤. الإطلاق الرسمي وتسليم دليل التشغيل</h3>
+              <p>تشغيل النظام على حساباتك الحقيقية، وتسليمك وثيقة إرشادية وفيديو تدريبي لفريقك مع دعم ومتابعة تشغيلية مستمرة.</p>
+            </div>
+            <div class="deliverable-preview-box">
+              <div class="deliverable-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-deep-blue)" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <div class="deliverable-details">
+                <h4>دليل التشغيل الكامل (Runbook)</h4>
+                <p>مخرجات المرحلة: وثيقة تحكم كاملة تضمن استقلالية فريقك في الإدارة.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <button type="button" class="toggle-certs-btn" id="toggleCertsBtn">عرض باقي الدورات (9 دورات)</button>
+        <div class="visual-punchline">
+          <span class="punchline-badge">الالتزام</span>
+          <span>كل مرحلة لها مخرجات مكتوبة ومجربة تستلمها بنفسك قبل الانتقال للتالية.</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: CONTACT & CERTIFICATIONS (CLEAN & DIRECT)
+         ====================================================================== -->
+    <section class="section-block theme-dark" id="contact" aria-label="تواصل">
+      <div class="container">
+        
+        <span class="section-tag">ابدأ الآن</span>
+        <h2 class="section-heading">لنبدأ من فحص وضعك الحالي</h2>
+        <p class="section-lead">
+          راسلني عبر أي قناة تفضلها لنحدد موعد جلسة تشخيص مجانية نفهم فيها عملياتك ونقترح الحل الأنسب لطبيعة شركتك:
+        </p>
+
+        <div class="contact-grid">
+          
+          <!-- Channels Card with Live WhatsApp Typing Simulation -->
+          <div class="contact-card-box">
+            
+            <!-- Live Animated WhatsApp Sandbox -->
+            <div class="whatsapp-interactive-widget" role="img" aria-label="محاكاة لكتابة وإرسال رسالة واتساب إلى أحمد صابر">
+              <div class="wa-widget-header">
+                <span style="font-weight:700;">مراسلة فورية عبر واتساب</span>
+                <span class="wa-online-status">
+                  <span class="status-dot"></span>
+                  Ahmed Saber متصل الآن
+                </span>
+              </div>
+              <div class="wa-chat-preview">
+                <p class="wa-simulated-msg" id="waSimulatedText">
+                  أهلاً أحمد، أريد أتمتة الردود على عملائي في المتجر وربطها مع قاعدة البيانات..
+                  <span class="wa-typing-live"></span>
+                </p>
+              </div>
+              <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="btn-gold" style="font-size:0.92rem; padding:0.6rem 1.2rem; align-self:flex-start;">
+                <span>إرسال الرسالة الآن</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              </a>
+            </div>
+
+            <!-- WhatsApp Direct Phone Numbers -->
+            <div class="contact-channel-row">
+              <span class="channel-title">أرقام واتساب المباشرة</span>
+              <div class="channel-action-row">
+                <span class="channel-link">01283279337 / 01038805435</span>
+                <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="btn-copy" style="text-decoration:none;">
+                  فتح واتساب
+                </a>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-channel-row">
+              <span class="channel-title">البريد الإلكتروني</span>
+              <div class="channel-action-row">
+                <span class="channel-link" id="emailVal">Ahmedmo.otX@gmail.com</span>
+                <button type="button" class="btn-copy" id="copyEmailBtn" aria-label="نسخ البريد الإلكتروني">
+                  نسخ البريد
+                </button>
+              </div>
+            </div>
+
+            <!-- Telegram -->
+            <div class="contact-channel-row">
+              <span class="channel-title">تيليجرام</span>
+              <div class="channel-action-row">
+                <span class="channel-link">@01096792586</span>
+                <a href="https://t.me/+201096792586" target="_blank" rel="noopener" class="btn-copy" style="text-decoration:none;">
+                  مراسلة على تيليجرام
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Honest Certifications List -->
+          <div class="cert-container">
+            <h3 class="cert-heading">برامج تدريبية واعتمادات أكملتها</h3>
+            <p class="cert-sub">
+              دورات تخصصية رسمية أتممتها لاختبار وممارسة هندسة الوكلاء ونماذج الذكاء الاصطناعي:
+            </p>
+
+            <ul class="cert-list">
+              <li class="cert-item">
+                <span class="cert-check">✓</span>
+                <span>Google AI Professional Certificate (برنامج من 7 دورات تخصصية)</span>
+              </li>
+              <li class="cert-item">
+                <span class="cert-check">✓</span>
+                <span>Anthropic: Model Context Protocol (MCP) & MCP Advanced Topics</span>
+              </li>
+              <li class="cert-item">
+                <span class="cert-check">✓</span>
+                <span>Dubai Future Foundation: 1 Million Prompters</span>
+              </li>
+            </ul>
+
+            <!-- Hidden Expanded Group -->
+            <div class="cert-more-group" id="moreCerts">
+              <ul class="cert-list" style="margin-top:0.6rem;">
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: Claude 101</span></li>
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: Claude Code 101 & Claude Code in Action</span></li>
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: Introduction to Subagents</span></li>
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: Introduction to Agent Skills</span></li>
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: Introduction to Claude Cowork</span></li>
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: AI Fluency Framework & Foundations</span></li>
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: AI Fluency for Students & Educators</span></li>
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: Teaching the AI Fluency Framework</span></li>
+                <li class="cert-item"><span class="cert-check">✓</span><span>Anthropic: AI Capabilities & Limitations</span></li>
+              </ul>
+            </div>
+
+            <button type="button" class="btn-toggle-certs" id="toggleCertsBtn">
+              عرض باقي البرامج المكتملة (9 برامج إضافية)
+            </button>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- Fixed Bottom Bar with Saffron Action Button (Hidden on Contact Panel) -->
-  <footer class="bottom-bar" id="bottomBar">
-    <a href="https://wa.me/201283279337" target="_blank" rel="noopener" class="btn-saffron-action">راسلني على واتساب</a>
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-content">
+      <div class="footer-copy">
+        جميع الحقوق محفوظة © 2026 <span class="footer-name">Ahmed Saber</span>.
+      </div>
+      <div style="font-size:0.8rem; color:var(--text-muted-dark);">
+        أنظمة أتمتة وذكاء اصطناعي مخصصة للأعمال • تم التطوير بهوية عربية مصقولة
+      </div>
+    </div>
   </footer>
 
-  <!-- ============================================================
-       NATIVE SCROLL-SNAP SYNC & LOGIC
-  ============================================================ -->
+  <!-- ========================================================================
+       CLIENT INTERACTIVITY & MOTION SCRIPTS
+       ======================================================================== -->
   <script>
-    (function() {
-      const deck = document.getElementById('deckViewport');
-      const panels = Array.from(document.querySelectorAll('.panel'));
-      const indicator = document.getElementById('panelIndicator');
-      const segments = document.querySelectorAll('.progress-segment');
-      const bottomBar = document.getElementById('bottomBar');
-      const copyBtn = document.getElementById('copyEmailBtn');
-      const emailText = document.getElementById('emailText');
-      const toggleCertsBtn = document.getElementById('toggleCertsBtn');
-      const hiddenCerts = document.getElementById('hiddenCerts');
+    // 1. Solution Tabs Switching
+    const tabButtons = document.querySelectorAll('.solution-tab-btn');
+    const tabPanels = document.querySelectorAll('.solution-panel-card');
 
-      const panelNames = [
-        'الرئيسية',
-        'التحديات',
-        'الحلول',
-        'آلية العمل',
-        'المشاريع',
-        'تواصل'
-      ];
-
-      // Update Top Indicator and Progress Track based on scroll position
-      function updateActivePanel() {
-        if (!deck || panels.length === 0) return;
-
-        // In native RTL scroll-snap, calculate index by offset
-        const scrollLeft = Math.abs(deck.scrollLeft);
-        const panelWidth = panels[0].offsetWidth + 12; // gap is 12px
-        let activeIdx = Math.round(scrollLeft / panelWidth);
-        if (activeIdx < 0) activeIdx = 0;
-        if (activeIdx >= panels.length) activeIdx = panels.length - 1;
-
-        // Update text
-        if (indicator && panelNames[activeIdx]) {
-          indicator.textContent = panelNames[activeIdx];
-        }
-
-        // Update progress bar
-        segments.forEach((seg, i) => {
-          seg.classList.toggle('active', i <= activeIdx);
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-tab');
+        
+        tabButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
         });
+        tabPanels.forEach(p => p.classList.remove('active'));
 
-        // Hide fixed bottom bar on Contact panel (index 5)
-        if (bottomBar) {
-          if (activeIdx === 5) {
-            bottomBar.classList.add('hide-bar');
-          } else {
-            bottomBar.classList.remove('hide-bar');
-          }
-        }
-      }
-
-      deck.addEventListener('scroll', updateActivePanel, { passive: true });
-      window.addEventListener('resize', updateActivePanel, { passive: true });
-      updateActivePanel();
-
-      // Keyboard Left/Right Arrow Support
-      window.addEventListener('keydown', (e) => {
-        const scrollLeft = Math.abs(deck.scrollLeft);
-        const panelWidth = panels[0].offsetWidth + 12;
-        let activeIdx = Math.round(scrollLeft / panelWidth);
-
-        if (e.key === 'ArrowLeft') {
-          // In RTL, left arrow goes forward to next panel
-          if (activeIdx < panels.length - 1) {
-            panels[activeIdx + 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
-          }
-        } else if (e.key === 'ArrowRight') {
-          // In RTL, right arrow goes backward to previous panel
-          if (activeIdx > 0) {
-            panels[activeIdx - 1].scrollIntoView({ behavior: 'smooth', inline: 'start' });
-          }
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
         }
       });
+    });
 
-      // Handle Direct Hash Linking on Load (e.g. #projects)
-      if (window.location.hash) {
-        const target = document.querySelector(window.location.hash);
-        if (target) {
+    // 2. Email Copy with Immediate Feedback
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const emailVal = document.getElementById('emailVal');
+    if (copyEmailBtn && emailVal) {
+      copyEmailBtn.addEventListener('click', () => {
+        const text = emailVal.textContent.trim();
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = copyEmailBtn.textContent;
+          copyEmailBtn.textContent = 'تم النسخ بنجاح!';
+          copyEmailBtn.style.backgroundColor = 'var(--color-sky)';
+          copyEmailBtn.style.color = 'var(--color-ink)';
           setTimeout(() => {
-            target.scrollIntoView({ behavior: 'smooth', inline: 'start' });
-          }, 150);
+            copyEmailBtn.textContent = originalText;
+            copyEmailBtn.style.backgroundColor = '';
+            copyEmailBtn.style.color = '';
+          }, 2000);
+        }).catch(err => {
+          console.error('Copy failed: ', err);
+        });
+      });
+    }
+
+    // 3. Toggle Certifications Accordion
+    const toggleCertsBtn = document.getElementById('toggleCertsBtn');
+    const moreCerts = document.getElementById('moreCerts');
+    if (toggleCertsBtn && moreCerts) {
+      let isOpen = false;
+      toggleCertsBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        if (isOpen) {
+          moreCerts.classList.add('open');
+          toggleCertsBtn.textContent = 'إخفاء البرامج الإضافية';
+        } else {
+          moreCerts.classList.remove('open');
+          toggleCertsBtn.textContent = 'عرض باقي البرامج المكتملة (9 برامج إضافية)';
+        }
+      });
+    }
+
+    // 4. Hero Motion Loop & IntersectionObserver (Pause out of view, replay on click)
+    const heroMotion = document.getElementById('heroMotion');
+    if (heroMotion) {
+      let isVisible = false;
+      let motionTimer = null;
+
+      function replayHeroMotion() {
+        heroMotion.classList.remove('is-active');
+        void heroMotion.offsetWidth; // Force reflow
+        heroMotion.classList.add('is-active');
+      }
+
+      heroMotion.addEventListener('click', () => {
+        replayHeroMotion();
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isVisible = entry.isIntersecting;
+          if (isVisible) {
+            heroMotion.classList.add('is-active');
+            if (!motionTimer) {
+              motionTimer = setInterval(() => {
+                if (isVisible) {
+                  replayHeroMotion();
+                }
+              }, 7500);
+            }
+          } else {
+            heroMotion.classList.remove('is-active');
+            if (motionTimer) {
+              clearInterval(motionTimer);
+              motionTimer = null;
+            }
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(heroMotion);
+    }
+
+    // 5. Contact WhatsApp Typing Simulation Loop
+    const waTextElem = document.getElementById('waSimulatedText');
+    if (waTextElem) {
+      const fullMsg = "أهلاً أحمد، أريد أتمتة الردود على عملائي في المتجر وربطها مع قاعدة البيانات..";
+      let charIdx = 0;
+      let isDeleting = false;
+
+      function typeLoop() {
+        if (!isDeleting) {
+          charIdx++;
+          waTextElem.innerHTML = fullMsg.substring(0, charIdx) + '<span class="wa-typing-live"></span>';
+          if (charIdx >= fullMsg.length) {
+            isDeleting = true;
+            setTimeout(typeLoop, 3500); // Pause on completed message
+            return;
+          }
+          setTimeout(typeLoop, 50);
+        } else {
+          charIdx--;
+          waTextElem.innerHTML = fullMsg.substring(0, charIdx) + '<span class="wa-typing-live"></span>';
+          if (charIdx <= 0) {
+            isDeleting = false;
+            setTimeout(typeLoop, 1000);
+            return;
+          }
+          setTimeout(typeLoop, 25);
         }
       }
-
-      // Copy Email functionality
-      if (copyBtn && emailText) {
-        copyBtn.addEventListener('click', () => {
-          const email = emailText.textContent.trim();
-          navigator.clipboard.writeText(email).then(() => {
-            const original = copyBtn.textContent;
-            copyBtn.textContent = 'تم النسخ';
-            setTimeout(() => {
-              copyBtn.textContent = original;
-            }, 1800);
-          }).catch(() => {
-            window.location.href = 'mailto:' + email;
-          });
-        });
-      }
-
-      // Toggle Hidden Certifications
-      if (toggleCertsBtn && hiddenCerts) {
-        let isExpanded = false;
-        toggleCertsBtn.addEventListener('click', () => {
-          isExpanded = !isExpanded;
-          hiddenCerts.classList.toggle('show', isExpanded);
-          toggleCertsBtn.textContent = isExpanded ? 'إخفاء باقي الدورات' : 'عرض باقي الدورات (9 دورات)';
-        });
-      }
-    })();
+      setTimeout(typeLoop, 1200);
+    }
   </script>
 </body>
 </html>
